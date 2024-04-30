@@ -17,7 +17,7 @@ genome_counts_filt %>%
     geom_bar(stat="identity", colour="white", linewidth=0.1) + #plot stacked bars with white borders
     scale_fill_manual(values=phylum_colors) +
     labs(x = "Relative abundance", y ="Samples") +
-    facet_nested(. ~ species.y + sample_type ,  scales="free", space="free") + #facet per day and treatment
+    facet_nested(. ~ species.y + region ,  scales="free", space="free") + #facet per day and treatment
     scale_y_continuous(expand = c(0.001, 0.001)) +
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
           axis.title.x = element_blank(),
