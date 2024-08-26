@@ -5,9 +5,9 @@ libraries
 data-preparation
 load-data
 sample-metadata
+genome-metadata
 read-counts
 genome-base-hits
-genome-taxonomy
 genome-tree
 genome-annotations
 create-working-objects
