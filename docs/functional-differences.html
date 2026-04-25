@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Data preparation | AlberdiLab | van-Riemsdijk et al. in prep</title>
+  <title>Chapter 9 Functional differences | AlberdiLab | van-Riemsdijk et al. in prep</title>
   <meta name="description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Data preparation | AlberdiLab | van-Riemsdijk et al. in prep" />
+  <meta property="og:title" content="Chapter 9 Functional differences | AlberdiLab | van-Riemsdijk et al. in prep" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   <meta name="github-repo" content="alberdilab/bombina_hologenomics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Data preparation | AlberdiLab | van-Riemsdijk et al. in prep" />
+  <meta name="twitter:title" content="Chapter 9 Functional differences | AlberdiLab | van-Riemsdijk et al. in prep" />
   
   <meta name="twitter:description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="data-statistics.html"/>
+<link rel="prev" href="beta-diversity.html"/>
+
 
 
 
@@ -2139,114 +2139,354 @@ color: #a52929;
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-preparation" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Data preparation<a href="data-preparation.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="load-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Load data<a href="data-preparation.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Load the original data files outputted by the bioinformatic pipeline.</p>
-<div id="sample-metadata" class="section level3 hasAnchor" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Sample metadata<a href="data-preparation.html#sample-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb3-1"><a href="data-preparation.html#cb3-1" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/DMB0163_metadata.tsv.gz&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="data-preparation.html#cb3-2" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">sample=</span><span class="dv">1</span>)</span></code></pre></div>
+<div id="functional-differences" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Functional differences<a href="functional-differences.html#functional-differences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb85-1"><a href="functional-differences.html#cb85-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb85-2"><a href="functional-differences.html#cb85-2" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="functional-differences.html#cb85-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
+<span id="cb85-4"><a href="functional-differences.html#cb85-4" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="functional-differences.html#cb85-5" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb85-6"><a href="functional-differences.html#cb85-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
+<span id="cb85-7"><a href="functional-differences.html#cb85-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span></code></pre></div>
+<pre><code>Rows: 72 Columns: 7
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb87-1"><a href="functional-differences.html#cb87-1" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a href="functional-differences.html#cb87-2" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb87-3"><a href="functional-differences.html#cb87-3" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="functional-differences.html#cb87-4" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb87-5"><a href="functional-differences.html#cb87-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
+<span id="cb87-6"><a href="functional-differences.html#cb87-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-7"><a href="functional-differences.html#cb87-7" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb87-8"><a href="functional-differences.html#cb87-8" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="functional-differences.html#cb87-9" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb87-10"><a href="functional-differences.html#cb87-10" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-11"><a href="functional-differences.html#cb87-11" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
+<span id="cb87-12"><a href="functional-differences.html#cb87-12" tabindex="-1"></a></span>
+<span id="cb87-13"><a href="functional-differences.html#cb87-13" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
+<span id="cb87-14"><a href="functional-differences.html#cb87-14" tabindex="-1"></a></span>
+<span id="cb87-15"><a href="functional-differences.html#cb87-15" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-16"><a href="functional-differences.html#cb87-16" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-17"><a href="functional-differences.html#cb87-17" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-18"><a href="functional-differences.html#cb87-18" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-19"><a href="functional-differences.html#cb87-19" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb87-20"><a href="functional-differences.html#cb87-20" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
+<span id="cb87-21"><a href="functional-differences.html#cb87-21" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span></code></pre></div>
+<pre><code>Rows: 202 Columns: 2
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (2): phylum, colors
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb89-1"><a href="functional-differences.html#cb89-1" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt[genome_counts_filt<span class="sc">$</span>genome <span class="sc">%in%</span> <span class="fu">rownames</span>(genome_gifts),]</span>
+<span id="cb89-2"><a href="functional-differences.html#cb89-2" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="functional-differences.html#cb89-3" tabindex="-1"></a>    <span class="fu">select</span>(genome, <span class="fu">all_of</span>(sample_metadata<span class="sc">$</span>sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb89-4"><a href="functional-differences.html#cb89-4" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="functional-differences.html#cb89-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb89-6"><a href="functional-differences.html#cb89-6" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb89-7"><a href="functional-differences.html#cb89-7" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>)</span>
+<span id="cb89-8"><a href="functional-differences.html#cb89-8" tabindex="-1"></a></span>
+<span id="cb89-9"><a href="functional-differences.html#cb89-9" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[<span class="fu">rownames</span>(genome_gifts) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
+<span id="cb89-10"><a href="functional-differences.html#cb89-10" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[, <span class="fu">colSums</span>(genome_gifts <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb89-11"><a href="functional-differences.html#cb89-11" tabindex="-1"></a></span>
+<span id="cb89-12"><a href="functional-differences.html#cb89-12" tabindex="-1"></a><span class="co">#Aggregate bundle-level GIFTs into the compound level</span></span>
+<span id="cb89-13"><a href="functional-differences.html#cb89-13" tabindex="-1"></a>GIFTs_elements <span class="ot">&lt;-</span> <span class="fu">to.elements</span>(genome_gifts,GIFT_db)</span>
+<span id="cb89-14"><a href="functional-differences.html#cb89-14" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> GIFTs_elements[<span class="fu">rownames</span>(GIFTs_elements) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
+<span id="cb89-15"><a href="functional-differences.html#cb89-15" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(GIFTs_elements_filtered) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-16"><a href="functional-differences.html#cb89-16" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.) <span class="sc">||</span> <span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb89-17"><a href="functional-differences.html#cb89-17" tabindex="-1"></a></span>
+<span id="cb89-18"><a href="functional-differences.html#cb89-18" tabindex="-1"></a><span class="co">#Aggregate element-level GIFTs into the function level</span></span>
+<span id="cb89-19"><a href="functional-differences.html#cb89-19" tabindex="-1"></a>GIFTs_functions <span class="ot">&lt;-</span> <span class="fu">to.functions</span>(GIFTs_elements_filtered,GIFT_db)</span>
+<span id="cb89-20"><a href="functional-differences.html#cb89-20" tabindex="-1"></a></span>
+<span id="cb89-21"><a href="functional-differences.html#cb89-21" tabindex="-1"></a><span class="co">#Aggregate function-level GIFTs into overall Biosynthesis, Degradation and Structural GIFTs</span></span>
+<span id="cb89-22"><a href="functional-differences.html#cb89-22" tabindex="-1"></a>GIFTs_domains <span class="ot">&lt;-</span> <span class="fu">to.domains</span>(GIFTs_functions,GIFT_db)</span>
+<span id="cb89-23"><a href="functional-differences.html#cb89-23" tabindex="-1"></a></span>
+<span id="cb89-24"><a href="functional-differences.html#cb89-24" tabindex="-1"></a><span class="co">#Get community-weighed average GIFTs per sample</span></span>
+<span id="cb89-25"><a href="functional-differences.html#cb89-25" tabindex="-1"></a>genome_counts_row <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb89-26"><a href="functional-differences.html#cb89-26" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>genome),<span class="sc">~</span>.<span class="sc">/</span><span class="fu">sum</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-27"><a href="functional-differences.html#cb89-27" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) </span>
+<span id="cb89-28"><a href="functional-differences.html#cb89-28" tabindex="-1"></a>GIFTs_elements_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_elements_filtered,genome_counts_row,GIFT_db)</span>
+<span id="cb89-29"><a href="functional-differences.html#cb89-29" tabindex="-1"></a>GIFTs_functions_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_functions,genome_counts_row,GIFT_db)</span>
+<span id="cb89-30"><a href="functional-differences.html#cb89-30" tabindex="-1"></a>GIFTs_domains_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_domains,genome_counts_row,GIFT_db)</span></code></pre></div>
+<div id="bd_status" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Bd_status<a href="functional-differences.html#bd_status" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb90-1"><a href="functional-differences.html#cb90-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="functional-differences.html#cb90-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb90-3"><a href="functional-differences.html#cb90-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-4"><a href="functional-differences.html#cb90-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb90-5"><a href="functional-differences.html#cb90-5" tabindex="-1"></a>  <span class="fu">group_by</span>(Bd_status) <span class="sc">%&gt;%</span></span>
+<span id="cb90-6"><a href="functional-differences.html#cb90-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb90-7"><a href="functional-differences.html#cb90-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_lyf2l9lo2ipm5j6v5qb7(i, j, css_id) {
+          var table = document.getElementById("tinytable_lyf2l9lo2ipm5j6v5qb7");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_lyf2l9lo2ipm5j6v5qb7');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_lyf2l9lo2ipm5j6v5qb7(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_lyf2l9lo2ipm5j6v5qb7");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 2, j: 0 }, { i: 2, j: 1 }, { i: 2, j: 2 },  ], css_id: 'tinytable_css_ypzk58ilsf1nt5tieldm',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_0zri8tgl5kkvcg151faz',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_lyf2l9lo2ipm5j6v5qb7(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+
+.table td.tinytable_css_ypzk58ilsf1nt5tieldm, .table th.tinytable_css_ypzk58ilsf1nt5tieldm { border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_0zri8tgl5kkvcg151faz, .table th.tinytable_css_0zri8tgl5kkvcg151faz { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+</style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_lyf2l9lo2ipm5j6v5qb7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">Bd_status</th>
+                <th scope="col">MCI</th>
+                <th scope="col">sd</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Bd_negative</td>
+                  <td>0.3136981</td>
+                  <td>0.07955659</td>
+                </tr>
+                <tr>
+                  <td>Bd_positive</td>
+                  <td>0.3255818</td>
+                  <td>0.07161224</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+<div class="sourceCode" id="cb91"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb91-1"><a href="functional-differences.html#cb91-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="functional-differences.html#cb91-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb91-3"><a href="functional-differences.html#cb91-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-4"><a href="functional-differences.html#cb91-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,Bd_status), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb91-5"><a href="functional-differences.html#cb91-5" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="functional-differences.html#cb91-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
+<span id="cb91-7"><a href="functional-differences.html#cb91-7" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="functional-differences.html#cb91-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
+<span id="cb91-9"><a href="functional-differences.html#cb91-9" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,Bd_status), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-10"><a href="functional-differences.html#cb91-10" tabindex="-1"></a>    <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
+<span id="cb91-11"><a href="functional-differences.html#cb91-11" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> Bd_status)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
+<span id="cb91-12"><a href="functional-differences.html#cb91-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-13"><a href="functional-differences.html#cb91-13" tabindex="-1"></a>    <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<pre class="script-output"><code># A tibble: 0 × 3
+# ℹ 3 variables: trait &lt;chr&gt;, p_value &lt;dbl&gt;, p_adjust &lt;dbl&gt;</code></pre>
 </div>
-<div id="genome-metadata" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Genome metadata<a href="data-preparation.html#genome-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb4-1"><a href="data-preparation.html#cb4-1" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/DMB0163_mag_info.tsv.gz&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="data-preparation.html#cb4-2" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">length=</span>mag_size)</span></code></pre></div>
-</div>
-<div id="read-counts" class="section level3 hasAnchor" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Read counts<a href="data-preparation.html#read-counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" tabindex="-1"></a>read_counts <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/DMB0163_counts.tsv.gz&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="data-preparation.html#cb5-2" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">genome=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="data-preparation.html#cb5-3" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample))) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="data-preparation.html#cb5-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_metadata<span class="sc">$</span>genome))</span></code></pre></div>
-</div>
-<div id="genome-base-hits" class="section level3 hasAnchor" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Genome base hits<a href="data-preparation.html#genome-base-hits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" tabindex="-1"></a>genome_coverage <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/DMB0163_coverage.tsv.gz&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="data-preparation.html#cb6-2" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">genome=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="data-preparation.html#cb6-3" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample))) <span class="sc">%&gt;%</span> <span class="co"># sort samples</span></span>
-<span id="cb6-4"><a href="data-preparation.html#cb6-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_metadata<span class="sc">$</span>genome)) <span class="co"># sort genomes</span></span></code></pre></div>
-</div>
-<div id="genome-tree" class="section level3 hasAnchor" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> Genome tree<a href="data-preparation.html#genome-tree" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb7-1"><a href="data-preparation.html#cb7-1" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">read_tree</span>(<span class="st">&quot;data/DMB0163.tree&quot;</span>)</span>
-<span id="cb7-2"><a href="data-preparation.html#cb7-2" tabindex="-1"></a>genome_tree<span class="sc">$</span>tip.label <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(genome_tree<span class="sc">$</span>tip.label,<span class="st">&quot;&#39;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="co">#remove single quotes in MAG names</span></span>
-<span id="cb7-3"><a href="data-preparation.html#cb7-3" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome) <span class="co"># keep only MAG tips</span></span></code></pre></div>
-</div>
-<div id="genome-annotations" class="section level3 hasAnchor" number="2.1.6">
-<h3><span class="header-section-number">2.1.6</span> Genome annotations<a href="data-preparation.html#genome-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Downloading individual annotation files from ERDA using information in Airtable and writing them to a single compressed table takes a while. The following chunk only needs to be run once, to generate the <strong><em>genome_annotations</em></strong> table that is saved in the data directory. Note that the airtable connection requires a personal access token.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb8-1"><a href="data-preparation.html#cb8-1" tabindex="-1"></a><span class="fu">airtable</span>(<span class="st">&quot;MAGs&quot;</span>, <span class="st">&quot;appWbHBNLE6iAsMRV&quot;</span>) <span class="sc">%&gt;%</span> <span class="co">#get base ID from Airtable browser URL</span></span>
-<span id="cb8-2"><a href="data-preparation.html#cb8-2" tabindex="-1"></a>  <span class="fu">read_airtable</span>(., <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;mag_name&quot;</span>,<span class="st">&quot;number_genes&quot;</span>,<span class="st">&quot;anno_url&quot;</span>), <span class="at">id_to_col =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="co">#get 3 columns from MAGs table</span></span>
-<span id="cb8-3"><a href="data-preparation.html#cb8-3" tabindex="-1"></a>  <span class="fu">filter</span>(mag_name <span class="sc">%in%</span> <span class="fu">paste0</span>(genome_metadata<span class="sc">$</span>genome,<span class="st">&quot;.fa&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#filter by MAG name</span></span>
-<span id="cb8-4"><a href="data-preparation.html#cb8-4" tabindex="-1"></a>  <span class="fu">filter</span>(number_genes <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co">#genes need to exist</span></span>
-<span id="cb8-5"><a href="data-preparation.html#cb8-5" tabindex="-1"></a>  <span class="fu">select</span>(anno_url) <span class="sc">%&gt;%</span> <span class="co">#list MAG annotation urls</span></span>
-<span id="cb8-6"><a href="data-preparation.html#cb8-6" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="data-preparation.html#cb8-7" tabindex="-1"></a>  <span class="fu">read_tsv</span>() <span class="sc">%&gt;%</span> <span class="co">#load all tables</span></span>
-<span id="cb8-8"><a href="data-preparation.html#cb8-8" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gene=</span><span class="dv">1</span>, <span class="at">genome=</span><span class="dv">2</span>, <span class="at">contig=</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co">#rename first 3 columns</span></span>
-<span id="cb8-9"><a href="data-preparation.html#cb8-9" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="at">file=</span><span class="st">&quot;data/genome_annotations.tsv.xz&quot;</span>) <span class="co">#write to overall compressed file</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb9-1"><a href="data-preparation.html#cb9-1" tabindex="-1"></a>genome_annotations <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/genome_annotations.tsv.xz&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="data-preparation.html#cb9-2" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">gene=</span><span class="dv">1</span>, <span class="at">genome=</span><span class="dv">2</span>, <span class="at">contig=</span><span class="dv">3</span>)</span></code></pre></div>
-</div>
-</div>
-<div id="create-working-objects" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Create working objects<a href="data-preparation.html#create-working-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Transform the original data files into working objects for downstream analyses.</p>
-<div id="filter-reads-by-coverage" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Filter reads by coverage<a href="data-preparation.html#filter-reads-by-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb10-1"><a href="data-preparation.html#cb10-1" tabindex="-1"></a>min_coverage<span class="ot">=</span><span class="fl">0.3</span></span>
-<span id="cb10-2"><a href="data-preparation.html#cb10-2" tabindex="-1"></a>read_counts_filt <span class="ot">&lt;-</span> genome_coverage <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="data-preparation.html#cb10-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">ifelse</span>(. <span class="sc">&gt;</span> min_coverage, <span class="dv">1</span>, <span class="dv">0</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="data-preparation.html#cb10-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">~</span> . <span class="sc">*</span> read_counts[[<span class="fu">cur_column</span>()]])) </span></code></pre></div>
-</div>
-<div id="transform-reads-into-genome-counts" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Transform reads into genome counts<a href="data-preparation.html#transform-reads-into-genome-counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb11-1"><a href="data-preparation.html#cb11-1" tabindex="-1"></a>readlength<span class="ot">=</span><span class="dv">150</span></span>
-<span id="cb11-2"><a href="data-preparation.html#cb11-2" tabindex="-1"></a>genome_counts <span class="ot">&lt;-</span> read_counts <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="data-preparation.html#cb11-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> . <span class="sc">/</span> (genome_metadata<span class="sc">$</span>length <span class="sc">/</span> readlength) ))</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb12-1"><a href="data-preparation.html#cb12-1" tabindex="-1"></a>readlength<span class="ot">=</span><span class="dv">150</span></span>
-<span id="cb12-2"><a href="data-preparation.html#cb12-2" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> read_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="data-preparation.html#cb12-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> . <span class="sc">/</span> (genome_metadata<span class="sc">$</span>length <span class="sc">/</span> readlength) ))</span></code></pre></div>
-</div>
-<div id="distill-annotations-into-gifts" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Distill annotations into GIFTs<a href="data-preparation.html#distill-annotations-into-gifts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb13-1"><a href="data-preparation.html#cb13-1" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> <span class="fu">distill</span>(genome_annotations,GIFT_db,<span class="at">genomecol=</span><span class="dv">2</span>,<span class="at">annotcol=</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">19</span>))</span></code></pre></div>
-</div>
-</div>
-<div id="prepare-color-scheme" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Prepare color scheme<a href="data-preparation.html#prepare-color-scheme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="www.alberdilab.dk">AlberdiLab</a> projects use unified color schemes developed for the <a href="www.earthhologenome.org">Earth Hologenome Initiative</a>, to facilitate figure interpretation.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb14-1"><a href="data-preparation.html#cb14-1" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="data-preparation.html#cb14-2" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="data-preparation.html#cb14-3" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="data-preparation.html#cb14-4" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-5"><a href="data-preparation.html#cb14-5" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="data-preparation.html#cb14-6" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="data-preparation.html#cb14-7" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span></code></pre></div>
-</div>
-<div id="wrap-working-objects" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Wrap working objects<a href="data-preparation.html#wrap-working-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>All working objects are wrapped into a single Rdata object to facilitate downstream usage.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb15-1"><a href="data-preparation.html#cb15-1" tabindex="-1"></a><span class="fu">save</span>(sample_metadata, </span>
-<span id="cb15-2"><a href="data-preparation.html#cb15-2" tabindex="-1"></a>     genome_metadata, </span>
-<span id="cb15-3"><a href="data-preparation.html#cb15-3" tabindex="-1"></a>     read_counts, </span>
-<span id="cb15-4"><a href="data-preparation.html#cb15-4" tabindex="-1"></a>     genome_counts, </span>
-<span id="cb15-5"><a href="data-preparation.html#cb15-5" tabindex="-1"></a>     genome_counts_filt, </span>
-<span id="cb15-6"><a href="data-preparation.html#cb15-6" tabindex="-1"></a>     genome_tree,</span>
-<span id="cb15-7"><a href="data-preparation.html#cb15-7" tabindex="-1"></a>     genome_gifts, </span>
-<span id="cb15-8"><a href="data-preparation.html#cb15-8" tabindex="-1"></a>     phylum_colors,</span>
-<span id="cb15-9"><a href="data-preparation.html#cb15-9" tabindex="-1"></a>     <span class="at">file =</span> <span class="st">&quot;data/data.Rdata&quot;</span>)</span></code></pre></div>
+<div id="region" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> region<a href="functional-differences.html#region" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb93-1"><a href="functional-differences.html#cb93-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="functional-differences.html#cb93-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb93-3"><a href="functional-differences.html#cb93-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb93-4"><a href="functional-differences.html#cb93-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb93-5"><a href="functional-differences.html#cb93-5" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb93-6"><a href="functional-differences.html#cb93-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb93-7"><a href="functional-differences.html#cb93-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_hmu5673egnyhaw77lbjw(i, j, css_id) {
+          var table = document.getElementById("tinytable_hmu5673egnyhaw77lbjw");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_hmu5673egnyhaw77lbjw');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_hmu5673egnyhaw77lbjw(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_hmu5673egnyhaw77lbjw");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 2, j: 0 }, { i: 2, j: 1 }, { i: 2, j: 2 },  ], css_id: 'tinytable_css_lcqhmu1nodavrwwvek9x',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_52zzayws0tri9kcbsuw9',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_hmu5673egnyhaw77lbjw(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+
+.table td.tinytable_css_lcqhmu1nodavrwwvek9x, .table th.tinytable_css_lcqhmu1nodavrwwvek9x { border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_52zzayws0tri9kcbsuw9, .table th.tinytable_css_52zzayws0tri9kcbsuw9 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+</style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_hmu5673egnyhaw77lbjw" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">region</th>
+                <th scope="col">MCI</th>
+                <th scope="col">sd</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Matra mountains</td>
+                  <td>0.3101076</td>
+                  <td>0.07767557</td>
+                </tr>
+                <tr>
+                  <td>None</td>
+                  <td>0.3742051</td>
+                  <td>0.03806951</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+<div class="sourceCode" id="cb94"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb94-1"><a href="functional-differences.html#cb94-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="functional-differences.html#cb94-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb94-3"><a href="functional-differences.html#cb94-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb94-4"><a href="functional-differences.html#cb94-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,region), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb94-5"><a href="functional-differences.html#cb94-5" tabindex="-1"></a></span>
+<span id="cb94-6"><a href="functional-differences.html#cb94-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
+<span id="cb94-7"><a href="functional-differences.html#cb94-7" tabindex="-1"></a></span>
+<span id="cb94-8"><a href="functional-differences.html#cb94-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
+<span id="cb94-9"><a href="functional-differences.html#cb94-9" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,region), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb94-10"><a href="functional-differences.html#cb94-10" tabindex="-1"></a>    <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
+<span id="cb94-11"><a href="functional-differences.html#cb94-11" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> region)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
+<span id="cb94-12"><a href="functional-differences.html#cb94-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb94-13"><a href="functional-differences.html#cb94-13" tabindex="-1"></a>    <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<pre class="script-output"><code># A tibble: 60 × 3
+   trait  p_value p_adjust
+   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 B0102 0.000308  0.00392
+ 2 B0103 0.00239   0.0144 
+ 3 B0105 0.00547   0.0226 
+ 4 B0208 0.00410   0.0179 
+ 5 B0209 0.0124    0.0394 
+ 6 B0210 0.0144    0.0395 
+ 7 B0213 0.00324   0.0160 
+ 8 B0215 0.00410   0.0179 
+ 9 B0216 0.000286  0.00392
+10 B0217 0.00175   0.0122 
+# ℹ 50 more rows</code></pre>
 
 </div>
 </div>
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="beta-diversity.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script>/*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */

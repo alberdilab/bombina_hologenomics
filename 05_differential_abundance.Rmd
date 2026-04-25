@@ -49,7 +49,7 @@ physeq_all = phyloseq(count_phy, TAX, sample_info_tab_phy, tree)
 ## Ancombc2
 
 ### MAG level
-```{r ancom_rand_Bd, comment="", message=FALSE, warning=FALSE, eval=FALSE}
+```{r ancom_rand_Bd, comment="", message=FALSE, warning=FALSE}
 ancom_rand_output_mag = ancombc2(data = physeq_all, 
                   assay_name = "counts", 
                   tax_level = NULL, 
