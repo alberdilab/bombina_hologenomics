@@ -1,8 +1,8 @@
 ---
 title: "AlberdiLab | van-Riemsdijk et al. in prep"
 subtitle: "Study title to be added"
-author:
-  - Isolde van Riemsdijk^[University of Copenhagen, isolde.vanriemsdijk@sund.ku.dk]
+data analysis:
+  - Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
   - Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -81,4 +81,5 @@ library(broom.mixed)
 #library(lmerTest)
 library(Hmsc)
 library(corrplot)
+library(ANCOMBC)
 ```

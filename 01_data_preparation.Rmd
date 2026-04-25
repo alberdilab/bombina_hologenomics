@@ -23,8 +23,8 @@ genome_metadata <- read_tsv("data/DMB0163_mag_info.tsv.gz") %>%
 ```{r load_read_counts, warning=FALSE, comments="", message=FALSE}
 read_counts <- read_tsv("data/DMB0163_counts.tsv.gz") %>%
     rename(genome=1) %>%
-    select(all_of(c("genome",sample_metadata$sample))) %>% # sort samples
-    arrange(match(genome,genome_metadata$genome)) # sort genomes
+    select(all_of(c("genome",sample_metadata$sample))) %>% 
+    arrange(match(genome,genome_metadata$genome))
 ```
 
 ### Genome base hits

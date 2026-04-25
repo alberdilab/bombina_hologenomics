@@ -1,0 +1,120 @@
+# Functional differences
+```{r load_data_funct}
+set.seed(1234) 
+
+load("data/data.Rdata")
+
+extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
+  rename(animal=sample) %>% 
+  rename(sample=EHI_code)
+sample_metadata <- sample_metadata %>% 
+  left_join(., extra_metadata, by="sample")
+
+genome_counts_filt <- genome_counts_filt %>%
+  select(one_of(c("genome",sample_metadata$sample)))%>%
+  filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
+  select_if(~!all(. == 0))
+
+genome_metadata <- genome_metadata %>%
+  semi_join(., genome_counts_filt, by = "genome") %>%
+  arrange(match(genome,genome_counts_filt$genome))
+
+genome_tree <- keep.tip(genome_tree, tip=genome_metadata$genome)
+
+phylum_colors <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
+    right_join(genome_metadata, by=join_by(phylum == phylum)) %>%
+    arrange(match(genome, genome_tree$tip.label)) %>%
+    select(phylum, colors) %>% 
+    unique() %>%
+    arrange(phylum) %>%
+    pull(colors, name=phylum)
+```
+```{r gift_analysis_func, comment="", message=FALSE, warning=FALSE}
+genome_counts_filt <- genome_counts_filt[genome_counts_filt$genome %in% rownames(genome_gifts),]
+genome_counts_filt <- genome_counts_filt %>%
+    select(genome, all_of(sample_metadata$sample)) %>%
+  column_to_rownames(., "genome") %>%
+  filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
+  select_if(~!all(. == 0))%>%
+  rownames_to_column(., "genome")
+
+genome_gifts <- genome_gifts[rownames(genome_gifts) %in% genome_counts_filt$genome,]
+genome_gifts <- genome_gifts[, colSums(genome_gifts != 0) > 0]
+
+#Aggregate bundle-level GIFTs into the compound level
+GIFTs_elements <- to.elements(genome_gifts,GIFT_db)
+GIFTs_elements_filtered <- GIFTs_elements[rownames(GIFTs_elements) %in% genome_counts_filt$genome,]
+GIFTs_elements_filtered <- as.data.frame(GIFTs_elements_filtered) %>% 
+  select_if(~ !is.numeric(.) || sum(.) != 0)
+
+#Aggregate element-level GIFTs into the function level
+GIFTs_functions <- to.functions(GIFTs_elements_filtered,GIFT_db)
+
+#Aggregate function-level GIFTs into overall Biosynthesis, Degradation and Structural GIFTs
+GIFTs_domains <- to.domains(GIFTs_functions,GIFT_db)
+
+#Get community-weighed average GIFTs per sample
+genome_counts_row <- genome_counts_filt %>%
+  mutate_at(vars(-genome),~./sum(.)) %>% 
+  column_to_rownames(., "genome") 
+GIFTs_elements_community <- to.community(GIFTs_elements_filtered,genome_counts_row,GIFT_db)
+GIFTs_functions_community <- to.community(GIFTs_functions,genome_counts_row,GIFT_db)
+GIFTs_domains_community <- to.community(GIFTs_domains,genome_counts_row,GIFT_db)
+```
+
+## Bd_status
+
+```{r gitfs_functional_bd, comment="", message=FALSE, warning=FALSE}
+GIFTs_functions_community %>%
+  rowMeans() %>%
+  as_tibble(., rownames = "sample") %>%
+  left_join(sample_metadata, by = join_by(sample == sample)) %>%
+  group_by(Bd_status) %>%
+  summarise(MCI = mean(value), sd = sd(value)) %>%
+  tt()
+```
+
+
+```{r commun_wilcox_elem_bd, comment="", message=FALSE, warning=FALSE}
+element_gift <- GIFTs_elements_community %>% 
+  as.data.frame() %>% 
+  rownames_to_column(., "sample") %>% 
+  left_join(sample_metadata %>% select(sample,Bd_status), by="sample")
+
+uniqueGIFT_db<- unique(GIFT_db[c(2,4,5,6)]) %>% unite("Function",Function:Element, sep= "_", remove=FALSE)
+
+element_gift %>%
+    pivot_longer(-c(sample,Bd_status), names_to = "trait", values_to = "value") %>%
+    group_by(trait) %>%
+    summarise(p_value = wilcox.test(value ~ Bd_status)$p.value) %>%
+    mutate(p_adjust=p.adjust(p_value, method="BH")) %>%
+    filter(p_adjust < 0.05)
+```
+
+## region
+
+```{r gitfs_functional_region, comment="", message=FALSE, warning=FALSE}
+GIFTs_functions_community %>%
+  rowMeans() %>%
+  as_tibble(., rownames = "sample") %>%
+  left_join(sample_metadata, by = join_by(sample == sample)) %>%
+  group_by(region) %>%
+  summarise(MCI = mean(value), sd = sd(value)) %>%
+  tt()
+```
+
+```{r commun_wilcox_elem_region, comment="", message=FALSE, warning=FALSE}
+element_gift <- GIFTs_elements_community %>% 
+  as.data.frame() %>% 
+  rownames_to_column(., "sample") %>% 
+  left_join(sample_metadata %>% select(sample,region), by="sample")
+
+uniqueGIFT_db<- unique(GIFT_db[c(2,4,5,6)]) %>% unite("Function",Function:Element, sep= "_", remove=FALSE)
+
+element_gift %>%
+    pivot_longer(-c(sample,region), names_to = "trait", values_to = "value") %>%
+    group_by(trait) %>%
+    summarise(p_value = wilcox.test(value ~ region)$p.value) %>%
+    mutate(p_adjust=p.adjust(p_value, method="BH")) %>%
+    filter(p_adjust < 0.05)
+```
