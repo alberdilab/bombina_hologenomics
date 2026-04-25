@@ -1,6 +1,6 @@
 # Data statistics
 
-```{r load_data_stats}
+```{r load_data_stats, warning=FALSE, comments="", message=FALSE}
 load("data/data.Rdata")
 extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
   rename(animal=sample) %>% 

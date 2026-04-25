@@ -1,7 +1,7 @@
 ---
 title: "AlberdiLab | van-Riemsdijk et al. in prep"
 subtitle: "Study title to be added"
-data analysis:
+author:
   - Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
   - Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
 date: "`r Sys.Date()`"
