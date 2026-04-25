@@ -1,6 +1,6 @@
 # Alpha diversity
 
-```{r load_data_diversity}
+```{r load_data_diversity, warning=FALSE, comments="", message=FALSE}
 set.seed(1234) 
 
 load("data/data.Rdata")

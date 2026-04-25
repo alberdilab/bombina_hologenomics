@@ -54,9 +54,9 @@ circular_tree <-  circular_tree +
 
 # Add text
 circular_tree <-  circular_tree +
-        annotate('text', x=2.7, y=0, label='            Phylum', family='arial', size=3.5) +
-        annotate('text', x=3.1, y=0, label='                         Genome quality', family='arial', size=3.5) +
-        annotate('text', x=3.5, y=0, label='                     Genome size', family='arial', size=3.5)
+        annotate('text', x=3.4, y=0, label='            Phylum', family='arial', size=3.5) +
+        annotate('text', x=4.1, y=0, label='                         Genome quality', family='arial', size=3.5) +
+        annotate('text', x=4.7, y=0, label='                     Genome size', family='arial', size=3.5)
 
 #Plot circular tree
 circular_tree %>% open_tree(30) %>% rotate_tree(90)
@@ -66,13 +66,13 @@ circular_tree %>% open_tree(30) %>% rotate_tree(90)
 
 ```{r genome_quality}
 genome_metadata %>% 
-    summarise(completeness_mean=mean(completeness) %>% round(2) %>% as.character(), 
-              completeness_sd=sd(completeness) %>% round(2) %>% as.character(), 
-              contamination_mean=mean(contamination) %>% round(2), 
-              contamination_sd=sd(contamination) %>% round(2)) %>%
-    unite("Completeness",completeness_mean, completeness_sd, sep = " ± ", remove = TRUE) %>%
-    unite("Contamination",contamination_mean, contamination_sd, sep = " ± ", remove = TRUE) %>%
-    tt()
+  summarise(completeness_mean=mean(completeness) %>% round(2) %>% as.character(), 
+            completeness_sd=sd(completeness) %>% round(2) %>% as.character(), 
+            contamination_mean=mean(contamination) %>% round(2), 
+            contamination_sd=sd(contamination) %>% round(2)) %>%
+  unite("Completeness",completeness_mean, completeness_sd, sep = " ± ", remove = TRUE) %>%
+  unite("Contamination",contamination_mean, contamination_sd, sep = " ± ", remove = TRUE) %>%
+  tt()
 ```
 
 ```{r genome_quality_plot, message=FALSE, warning=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
@@ -185,7 +185,7 @@ function_tree
 
 ## Functional ordination
 
-```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE, eval=FALSE}
+```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
 # Generate the tSNE ordination
 tSNE_function <- Rtsne(X=function_table, dims = 2, check_duplicates = FALSE)
 

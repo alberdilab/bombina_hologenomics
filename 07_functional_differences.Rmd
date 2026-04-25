@@ -1,5 +1,5 @@
 # Functional differences
-```{r load_data_funct}
+```{r load_data_funct, warning=FALSE, comments="", message=FALSE}
 set.seed(1234) 
 
 load("data/data.Rdata")
@@ -112,9 +112,11 @@ element_gift <- GIFTs_elements_community %>%
 uniqueGIFT_db<- unique(GIFT_db[c(2,4,5,6)]) %>% unite("Function",Function:Element, sep= "_", remove=FALSE)
 
 element_gift %>%
-    pivot_longer(-c(sample,region), names_to = "trait", values_to = "value") %>%
-    group_by(trait) %>%
-    summarise(p_value = wilcox.test(value ~ region)$p.value) %>%
-    mutate(p_adjust=p.adjust(p_value, method="BH")) %>%
-    filter(p_adjust < 0.05)
+  pivot_longer(-c(sample,region), names_to = "trait", values_to = "value") %>%
+  group_by(trait) %>%
+  summarise(p_value = wilcox.test(value ~ region)$p.value) %>%
+  mutate(p_adjust=p.adjust(p_value, method="BH")) %>%
+  filter(p_adjust < 0.05) %>% 
+  left_join(uniqueGIFT_db, by=join_by("trait"=="Code_element")) %>% 
+  tt()
 ```

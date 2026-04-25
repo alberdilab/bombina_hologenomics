@@ -1,5 +1,5 @@
 # Differential abundance analysis
-```{r load_data_dif}
+```{r load_data_dif, warning=FALSE, comments="", message=FALSE}
 set.seed(1234) 
 load("data/data.Rdata")
 extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
@@ -46,9 +46,7 @@ tree <- phy_tree(genome_tree)
 physeq_all = phyloseq(count_phy, TAX, sample_info_tab_phy, tree)
 ```
 
-## Ancombc2
-
-### MAG level
+## Ancombc2: MAG level
 ```{r ancom_rand_Bd, comment="", message=FALSE, warning=FALSE}
 ancom_rand_output_mag = ancombc2(data = physeq_all, 
                   assay_name = "counts", 

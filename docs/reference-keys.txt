@@ -26,13 +26,9 @@ genome-quality
 functional-overview
 functional-ordination
 compositional-analysis
-taxonomy-barplot-per-individual
-taxonomy-boxplot
 phylum-relative-abundances
-origin-dogs-vs-sled-dogs-vs-wolves
 differential-abundance-analysis
-ancombc2
-mag-level
+ancombc2-mag-level
 alpha-diversity
 beta-diversity
 richness

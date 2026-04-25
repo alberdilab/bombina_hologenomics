@@ -2091,18 +2091,11 @@ color: #a52929;
 </ul></li>
 <li class="chapter" data-level="5" data-path="compositional-analysis.html"><a href="compositional-analysis.html"><i class="fa fa-check"></i><b>5</b> Compositional analysis</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#taxonomy-barplot-per-individual"><i class="fa fa-check"></i><b>5.0.1</b> Taxonomy barplot per individual</a></li>
-<li class="chapter" data-level="5.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#taxonomy-boxplot"><i class="fa fa-check"></i><b>5.1</b> Taxonomy boxplot</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>5.1.1</b> Phylum relative abundances</a></li>
-</ul></li>
+<li class="chapter" data-level="5.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>5.1</b> Phylum relative abundances</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>6</b> Differential abundance analysis</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancombc2"><i class="fa fa-check"></i><b>6.1</b> Ancombc2</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#mag-level"><i class="fa fa-check"></i><b>6.1.1</b> MAG level</a></li>
-</ul></li>
+<li class="chapter" data-level="6.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancombc2-mag-level"><i class="fa fa-check"></i><b>6.1</b> Ancombc2: MAG level</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="alpha-diversity.html"><a href="alpha-diversity.html"><i class="fa fa-check"></i><b>7</b> Alpha diversity</a></li>
 <li class="chapter" data-level="8" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>8</b> Beta diversity</a>
@@ -2146,7 +2139,7 @@ color: #a52929;
 <span id="cb16-3"><a href="data-statistics.html#cb16-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
 <span id="cb16-4"><a href="data-statistics.html#cb16-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span></code></pre></div>
 <pre><code>Rows: 72 Columns: 7
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
 chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
 
@@ -2174,8 +2167,8 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
 
     <script>
 
-      function styleCell_f2l9lo2ipm5j6v5qb70z(i, j, css_id) {
-          var table = document.getElementById("tinytable_f2l9lo2ipm5j6v5qb70z");
+      function styleCell_cw5lywk3dqgq9gdleqca(i, j, css_id) {
+          var table = document.getElementById("tinytable_cw5lywk3dqgq9gdleqca");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -2185,7 +2178,7 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_f2l9lo2ipm5j6v5qb70z');
+        var table = document.getElementById('tinytable_cw5lywk3dqgq9gdleqca');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -2193,8 +2186,8 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_f2l9lo2ipm5j6v5qb70z(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_f2l9lo2ipm5j6v5qb70z");
+      function spanCell_cw5lywk3dqgq9gdleqca(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_cw5lywk3dqgq9gdleqca");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -2224,14 +2217,14 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 1, j: 0 }, { i: 1, j: 1 },  ], css_id: 'tinytable_css_zk58ilsf1nt5tieldmii',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_ri8tgl5kkvcg151fazyp',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 1, j: 1 },  ], css_id: 'tinytable_css_zqddhlcjua2u9hp23ukx',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_7fbmvezcdiw3ndu9ccqe',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_f2l9lo2ipm5j6v5qb70z(cell.i, cell.j, group.css_id);
+                  styleCell_cw5lywk3dqgq9gdleqca(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -2239,11 +2232,11 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
 
     <style>
 
-.table td.tinytable_css_zk58ilsf1nt5tieldmii, .table th.tinytable_css_zk58ilsf1nt5tieldmii { border-bottom: solid #d3d8dc 0.1em; }
-.table td.tinytable_css_ri8tgl5kkvcg151fazyp, .table th.tinytable_css_ri8tgl5kkvcg151fazyp { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_zqddhlcjua2u9hp23ukx, .table th.tinytable_css_zqddhlcjua2u9hp23ukx { border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_7fbmvezcdiw3ndu9ccqe, .table th.tinytable_css_7fbmvezcdiw3ndu9ccqe { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
 </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_f2l9lo2ipm5j6v5qb70z" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_cw5lywk3dqgq9gdleqca" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -2285,8 +2278,8 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
 
     <script>
 
-      function styleCell_u5673egnyhaw77lbjw52(i, j, css_id) {
-          var table = document.getElementById("tinytable_u5673egnyhaw77lbjw52");
+      function styleCell_9nj5xsmen0wj5ukr8wy5(i, j, css_id) {
+          var table = document.getElementById("tinytable_9nj5xsmen0wj5ukr8wy5");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -2296,7 +2289,7 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_u5673egnyhaw77lbjw52');
+        var table = document.getElementById('tinytable_9nj5xsmen0wj5ukr8wy5');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -2304,8 +2297,8 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_u5673egnyhaw77lbjw52(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_u5673egnyhaw77lbjw52");
+      function spanCell_9nj5xsmen0wj5ukr8wy5(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_9nj5xsmen0wj5ukr8wy5");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -2335,14 +2328,14 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_zzayws0tri9kcbsuw9lc',}, 
-          { positions: [ { i: 39, j: 0 }, { i: 39, j: 1 }, { i: 39, j: 2 }, { i: 39, j: 3 }, { i: 39, j: 4 },  ], css_id: 'tinytable_css_qhmu1nodavrwwvek9xo1',}, 
+          { positions: [ { i: 39, j: 0 }, { i: 39, j: 1 }, { i: 39, j: 2 }, { i: 39, j: 3 }, { i: 39, j: 4 },  ], css_id: 'tinytable_css_v6d66c60tyeirwnepfx0',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_uhoklgh1wkat6mjavdlq',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_u5673egnyhaw77lbjw52(cell.i, cell.j, group.css_id);
+                  styleCell_9nj5xsmen0wj5ukr8wy5(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -2350,11 +2343,11 @@ chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
 
     <style>
 
-.table td.tinytable_css_zzayws0tri9kcbsuw9lc, .table th.tinytable_css_zzayws0tri9kcbsuw9lc { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-.table td.tinytable_css_qhmu1nodavrwwvek9xo1, .table th.tinytable_css_qhmu1nodavrwwvek9xo1 { border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_v6d66c60tyeirwnepfx0, .table th.tinytable_css_v6d66c60tyeirwnepfx0 { border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_uhoklgh1wkat6mjavdlq, .table th.tinytable_css_uhoklgh1wkat6mjavdlq { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
 </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_u5673egnyhaw77lbjw52" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_9nj5xsmen0wj5ukr8wy5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>

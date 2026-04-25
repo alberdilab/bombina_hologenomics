@@ -2091,18 +2091,11 @@ color: #a52929;
 </ul></li>
 <li class="chapter" data-level="5" data-path="compositional-analysis.html"><a href="compositional-analysis.html"><i class="fa fa-check"></i><b>5</b> Compositional analysis</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#taxonomy-barplot-per-individual"><i class="fa fa-check"></i><b>5.0.1</b> Taxonomy barplot per individual</a></li>
-<li class="chapter" data-level="5.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#taxonomy-boxplot"><i class="fa fa-check"></i><b>5.1</b> Taxonomy boxplot</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>5.1.1</b> Phylum relative abundances</a></li>
-</ul></li>
+<li class="chapter" data-level="5.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>5.1</b> Phylum relative abundances</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>6</b> Differential abundance analysis</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancombc2"><i class="fa fa-check"></i><b>6.1</b> Ancombc2</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#mag-level"><i class="fa fa-check"></i><b>6.1.1</b> MAG level</a></li>
-</ul></li>
+<li class="chapter" data-level="6.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancombc2-mag-level"><i class="fa fa-check"></i><b>6.1</b> Ancombc2: MAG level</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="alpha-diversity.html"><a href="alpha-diversity.html"><i class="fa fa-check"></i><b>7</b> Alpha diversity</a></li>
 <li class="chapter" data-level="8" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>8</b> Beta diversity</a>
@@ -2141,116 +2134,92 @@ color: #a52929;
             <section class="normal" id="section-">
 <div id="differential-abundance-analysis" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Differential abundance analysis<a href="differential-abundance-analysis.html#differential-abundance-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb43-1"><a href="differential-abundance-analysis.html#cb43-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
-<span id="cb43-2"><a href="differential-abundance-analysis.html#cb43-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
-<span id="cb43-3"><a href="differential-abundance-analysis.html#cb43-3" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-4"><a href="differential-abundance-analysis.html#cb43-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-5"><a href="differential-abundance-analysis.html#cb43-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span></code></pre></div>
-<pre><code>Rows: 72 Columns: 7
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (7): EHI_code, sample, Species, Location, Batch, Date_sample, Bd_status
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb45-1"><a href="differential-abundance-analysis.html#cb45-1" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
-<span id="cb45-2"><a href="differential-abundance-analysis.html#cb45-2" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb45-3"><a href="differential-abundance-analysis.html#cb45-3" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="differential-abundance-analysis.html#cb45-4" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb45-5"><a href="differential-abundance-analysis.html#cb45-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
-<span id="cb45-6"><a href="differential-abundance-analysis.html#cb45-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-7"><a href="differential-abundance-analysis.html#cb45-7" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb45-8"><a href="differential-abundance-analysis.html#cb45-8" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="differential-abundance-analysis.html#cb45-9" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
-<span id="cb45-10"><a href="differential-abundance-analysis.html#cb45-10" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-11"><a href="differential-abundance-analysis.html#cb45-11" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
-<span id="cb45-12"><a href="differential-abundance-analysis.html#cb45-12" tabindex="-1"></a></span>
-<span id="cb45-13"><a href="differential-abundance-analysis.html#cb45-13" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
-<span id="cb45-14"><a href="differential-abundance-analysis.html#cb45-14" tabindex="-1"></a></span>
-<span id="cb45-15"><a href="differential-abundance-analysis.html#cb45-15" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-16"><a href="differential-abundance-analysis.html#cb45-16" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-17"><a href="differential-abundance-analysis.html#cb45-17" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-18"><a href="differential-abundance-analysis.html#cb45-18" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
-<span id="cb45-19"><a href="differential-abundance-analysis.html#cb45-19" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb45-20"><a href="differential-abundance-analysis.html#cb45-20" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
-<span id="cb45-21"><a href="differential-abundance-analysis.html#cb45-21" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span></code></pre></div>
-<pre><code>Rows: 202 Columns: 2
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;\t&quot;
-chr (2): phylum, colors
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb47-1"><a href="differential-abundance-analysis.html#cb47-1" tabindex="-1"></a>count_phy <span class="ot">&lt;-</span> genome_counts <span class="sc">%&gt;%</span></span>
-<span id="cb47-2"><a href="differential-abundance-analysis.html#cb47-2" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="differential-abundance-analysis.html#cb47-3" tabindex="-1"></a>  <span class="fu">otu_table</span>(., <span class="at">taxa_are_rows=</span>T)</span>
-<span id="cb47-4"><a href="differential-abundance-analysis.html#cb47-4" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="differential-abundance-analysis.html#cb47-5" tabindex="-1"></a>sample_info_tab_phy <span class="ot">&lt;-</span> sample_metadata<span class="sc">%&gt;%</span></span>
-<span id="cb47-6"><a href="differential-abundance-analysis.html#cb47-6" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;sample&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb47-7"><a href="differential-abundance-analysis.html#cb47-7" tabindex="-1"></a>  <span class="fu">sample_data</span>()</span>
-<span id="cb47-8"><a href="differential-abundance-analysis.html#cb47-8" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="differential-abundance-analysis.html#cb47-9" tabindex="-1"></a>TAX <span class="ot">&lt;-</span> genome_metadata<span class="sc">%&gt;%</span></span>
-<span id="cb47-10"><a href="differential-abundance-analysis.html#cb47-10" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb47-11"><a href="differential-abundance-analysis.html#cb47-11" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb47-12"><a href="differential-abundance-analysis.html#cb47-12" tabindex="-1"></a>  <span class="fu">as.matrix</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb47-13"><a href="differential-abundance-analysis.html#cb47-13" tabindex="-1"></a>  <span class="fu">tax_table</span>()</span>
-<span id="cb47-14"><a href="differential-abundance-analysis.html#cb47-14" tabindex="-1"></a></span>
-<span id="cb47-15"><a href="differential-abundance-analysis.html#cb47-15" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">phy_tree</span>(genome_tree)</span>
-<span id="cb47-16"><a href="differential-abundance-analysis.html#cb47-16" tabindex="-1"></a></span>
-<span id="cb47-17"><a href="differential-abundance-analysis.html#cb47-17" tabindex="-1"></a>physeq_all <span class="ot">=</span> <span class="fu">phyloseq</span>(count_phy, TAX, sample_info_tab_phy, tree)</span></code></pre></div>
-<pre><code>Found more than one class &quot;phylo&quot; in cache; using the first, from namespace &#39;phyloseq&#39;
-Also defined by &#39;tidytree&#39;
-Found more than one class &quot;phylo&quot; in cache; using the first, from namespace &#39;phyloseq&#39;
-Also defined by &#39;tidytree&#39;
-Found more than one class &quot;phylo&quot; in cache; using the first, from namespace &#39;phyloseq&#39;
-Also defined by &#39;tidytree&#39;
-Found more than one class &quot;phylo&quot; in cache; using the first, from namespace &#39;phyloseq&#39;
-Also defined by &#39;tidytree&#39;</code></pre>
-<div id="ancombc2" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Ancombc2<a href="differential-abundance-analysis.html#ancombc2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="mag-level" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> MAG level<a href="differential-abundance-analysis.html#mag-level" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb49-1"><a href="differential-abundance-analysis.html#cb49-1" tabindex="-1"></a>ancom_rand_output_mag <span class="ot">=</span> <span class="fu">ancombc2</span>(<span class="at">data =</span> physeq_all, </span>
-<span id="cb49-2"><a href="differential-abundance-analysis.html#cb49-2" tabindex="-1"></a>                  <span class="at">assay_name =</span> <span class="st">&quot;counts&quot;</span>, </span>
-<span id="cb49-3"><a href="differential-abundance-analysis.html#cb49-3" tabindex="-1"></a>                  <span class="at">tax_level =</span> <span class="cn">NULL</span>, </span>
-<span id="cb49-4"><a href="differential-abundance-analysis.html#cb49-4" tabindex="-1"></a>                  <span class="at">fix_formula =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
-<span id="cb49-5"><a href="differential-abundance-analysis.html#cb49-5" tabindex="-1"></a>                  <span class="at">p_adj_method =</span> <span class="st">&quot;BH&quot;</span>, </span>
-<span id="cb49-6"><a href="differential-abundance-analysis.html#cb49-6" tabindex="-1"></a>                  <span class="at">pseudo_sens =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb49-7"><a href="differential-abundance-analysis.html#cb49-7" tabindex="-1"></a>                  <span class="at">prv_cut =</span><span class="dv">0</span>, </span>
-<span id="cb49-8"><a href="differential-abundance-analysis.html#cb49-8" tabindex="-1"></a>                  <span class="at">lib_cut =</span> <span class="dv">0</span>, </span>
-<span id="cb49-9"><a href="differential-abundance-analysis.html#cb49-9" tabindex="-1"></a>                  <span class="at">s0_perc =</span> <span class="fl">0.05</span>,</span>
-<span id="cb49-10"><a href="differential-abundance-analysis.html#cb49-10" tabindex="-1"></a>                  <span class="at">group =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
-<span id="cb49-11"><a href="differential-abundance-analysis.html#cb49-11" tabindex="-1"></a>                  <span class="at">struc_zero =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb49-12"><a href="differential-abundance-analysis.html#cb49-12" tabindex="-1"></a>                  <span class="at">neg_lb =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb49-13"><a href="differential-abundance-analysis.html#cb49-13" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
-<span id="cb49-14"><a href="differential-abundance-analysis.html#cb49-14" tabindex="-1"></a>                  <span class="at">n_cl =</span> <span class="dv">2</span>, </span>
-<span id="cb49-15"><a href="differential-abundance-analysis.html#cb49-15" tabindex="-1"></a>                  <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb49-16"><a href="differential-abundance-analysis.html#cb49-16" tabindex="-1"></a>                  <span class="at">global =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb49-17"><a href="differential-abundance-analysis.html#cb49-17" tabindex="-1"></a>                  <span class="at">pairwise =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb49-18"><a href="differential-abundance-analysis.html#cb49-18" tabindex="-1"></a>                  <span class="at">dunnet =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb49-19"><a href="differential-abundance-analysis.html#cb49-19" tabindex="-1"></a>                  <span class="at">trend =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb49-20"><a href="differential-abundance-analysis.html#cb49-20" tabindex="-1"></a>                  <span class="at">iter_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">20</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb49-21"><a href="differential-abundance-analysis.html#cb49-21" tabindex="-1"></a>                  <span class="at">em_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">100</span>),</span>
-<span id="cb49-22"><a href="differential-abundance-analysis.html#cb49-22" tabindex="-1"></a>                  <span class="at">mdfdr_control =</span> <span class="fu">list</span>(<span class="at">fwer_ctrl_method =</span> <span class="st">&quot;holm&quot;</span>, <span class="at">B =</span> <span class="dv">100</span>), </span>
-<span id="cb49-23"><a href="differential-abundance-analysis.html#cb49-23" tabindex="-1"></a>                  <span class="at">trend_control =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb40-1"><a href="differential-abundance-analysis.html#cb40-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb40-2"><a href="differential-abundance-analysis.html#cb40-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
+<span id="cb40-3"><a href="differential-abundance-analysis.html#cb40-3" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="differential-abundance-analysis.html#cb40-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-5"><a href="differential-abundance-analysis.html#cb40-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span>
+<span id="cb40-6"><a href="differential-abundance-analysis.html#cb40-6" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
+<span id="cb40-7"><a href="differential-abundance-analysis.html#cb40-7" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb40-8"><a href="differential-abundance-analysis.html#cb40-8" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="differential-abundance-analysis.html#cb40-9" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb40-10"><a href="differential-abundance-analysis.html#cb40-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
+<span id="cb40-11"><a href="differential-abundance-analysis.html#cb40-11" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-12"><a href="differential-abundance-analysis.html#cb40-12" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb40-13"><a href="differential-abundance-analysis.html#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="differential-abundance-analysis.html#cb40-14" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb40-15"><a href="differential-abundance-analysis.html#cb40-15" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-16"><a href="differential-abundance-analysis.html#cb40-16" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
+<span id="cb40-17"><a href="differential-abundance-analysis.html#cb40-17" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="differential-abundance-analysis.html#cb40-18" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
+<span id="cb40-19"><a href="differential-abundance-analysis.html#cb40-19" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="differential-abundance-analysis.html#cb40-20" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-21"><a href="differential-abundance-analysis.html#cb40-21" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-22"><a href="differential-abundance-analysis.html#cb40-22" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-23"><a href="differential-abundance-analysis.html#cb40-23" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-24"><a href="differential-abundance-analysis.html#cb40-24" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-25"><a href="differential-abundance-analysis.html#cb40-25" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
+<span id="cb40-26"><a href="differential-abundance-analysis.html#cb40-26" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span>
+<span id="cb40-27"><a href="differential-abundance-analysis.html#cb40-27" tabindex="-1"></a></span>
+<span id="cb40-28"><a href="differential-abundance-analysis.html#cb40-28" tabindex="-1"></a>count_phy <span class="ot">&lt;-</span> genome_counts <span class="sc">%&gt;%</span></span>
+<span id="cb40-29"><a href="differential-abundance-analysis.html#cb40-29" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb40-30"><a href="differential-abundance-analysis.html#cb40-30" tabindex="-1"></a>  <span class="fu">otu_table</span>(., <span class="at">taxa_are_rows=</span>T)</span>
+<span id="cb40-31"><a href="differential-abundance-analysis.html#cb40-31" tabindex="-1"></a></span>
+<span id="cb40-32"><a href="differential-abundance-analysis.html#cb40-32" tabindex="-1"></a>sample_info_tab_phy <span class="ot">&lt;-</span> sample_metadata<span class="sc">%&gt;%</span></span>
+<span id="cb40-33"><a href="differential-abundance-analysis.html#cb40-33" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;sample&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb40-34"><a href="differential-abundance-analysis.html#cb40-34" tabindex="-1"></a>  <span class="fu">sample_data</span>()</span>
+<span id="cb40-35"><a href="differential-abundance-analysis.html#cb40-35" tabindex="-1"></a></span>
+<span id="cb40-36"><a href="differential-abundance-analysis.html#cb40-36" tabindex="-1"></a>TAX <span class="ot">&lt;-</span> genome_metadata<span class="sc">%&gt;%</span></span>
+<span id="cb40-37"><a href="differential-abundance-analysis.html#cb40-37" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb40-38"><a href="differential-abundance-analysis.html#cb40-38" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb40-39"><a href="differential-abundance-analysis.html#cb40-39" tabindex="-1"></a>  <span class="fu">as.matrix</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb40-40"><a href="differential-abundance-analysis.html#cb40-40" tabindex="-1"></a>  <span class="fu">tax_table</span>()</span>
+<span id="cb40-41"><a href="differential-abundance-analysis.html#cb40-41" tabindex="-1"></a></span>
+<span id="cb40-42"><a href="differential-abundance-analysis.html#cb40-42" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">phy_tree</span>(genome_tree)</span>
+<span id="cb40-43"><a href="differential-abundance-analysis.html#cb40-43" tabindex="-1"></a></span>
+<span id="cb40-44"><a href="differential-abundance-analysis.html#cb40-44" tabindex="-1"></a>physeq_all <span class="ot">=</span> <span class="fu">phyloseq</span>(count_phy, TAX, sample_info_tab_phy, tree)</span></code></pre></div>
+<div id="ancombc2-mag-level" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Ancombc2: MAG level<a href="differential-abundance-analysis.html#ancombc2-mag-level" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb41-1"><a href="differential-abundance-analysis.html#cb41-1" tabindex="-1"></a>ancom_rand_output_mag <span class="ot">=</span> <span class="fu">ancombc2</span>(<span class="at">data =</span> physeq_all, </span>
+<span id="cb41-2"><a href="differential-abundance-analysis.html#cb41-2" tabindex="-1"></a>                  <span class="at">assay_name =</span> <span class="st">&quot;counts&quot;</span>, </span>
+<span id="cb41-3"><a href="differential-abundance-analysis.html#cb41-3" tabindex="-1"></a>                  <span class="at">tax_level =</span> <span class="cn">NULL</span>, </span>
+<span id="cb41-4"><a href="differential-abundance-analysis.html#cb41-4" tabindex="-1"></a>                  <span class="at">fix_formula =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
+<span id="cb41-5"><a href="differential-abundance-analysis.html#cb41-5" tabindex="-1"></a>                  <span class="at">p_adj_method =</span> <span class="st">&quot;BH&quot;</span>, </span>
+<span id="cb41-6"><a href="differential-abundance-analysis.html#cb41-6" tabindex="-1"></a>                  <span class="at">pseudo_sens =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb41-7"><a href="differential-abundance-analysis.html#cb41-7" tabindex="-1"></a>                  <span class="at">prv_cut =</span><span class="dv">0</span>, </span>
+<span id="cb41-8"><a href="differential-abundance-analysis.html#cb41-8" tabindex="-1"></a>                  <span class="at">lib_cut =</span> <span class="dv">0</span>, </span>
+<span id="cb41-9"><a href="differential-abundance-analysis.html#cb41-9" tabindex="-1"></a>                  <span class="at">s0_perc =</span> <span class="fl">0.05</span>,</span>
+<span id="cb41-10"><a href="differential-abundance-analysis.html#cb41-10" tabindex="-1"></a>                  <span class="at">group =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
+<span id="cb41-11"><a href="differential-abundance-analysis.html#cb41-11" tabindex="-1"></a>                  <span class="at">struc_zero =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb41-12"><a href="differential-abundance-analysis.html#cb41-12" tabindex="-1"></a>                  <span class="at">neg_lb =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-13"><a href="differential-abundance-analysis.html#cb41-13" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb41-14"><a href="differential-abundance-analysis.html#cb41-14" tabindex="-1"></a>                  <span class="at">n_cl =</span> <span class="dv">2</span>, </span>
+<span id="cb41-15"><a href="differential-abundance-analysis.html#cb41-15" tabindex="-1"></a>                  <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb41-16"><a href="differential-abundance-analysis.html#cb41-16" tabindex="-1"></a>                  <span class="at">global =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb41-17"><a href="differential-abundance-analysis.html#cb41-17" tabindex="-1"></a>                  <span class="at">pairwise =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb41-18"><a href="differential-abundance-analysis.html#cb41-18" tabindex="-1"></a>                  <span class="at">dunnet =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb41-19"><a href="differential-abundance-analysis.html#cb41-19" tabindex="-1"></a>                  <span class="at">trend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-20"><a href="differential-abundance-analysis.html#cb41-20" tabindex="-1"></a>                  <span class="at">iter_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">20</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb41-21"><a href="differential-abundance-analysis.html#cb41-21" tabindex="-1"></a>                  <span class="at">em_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">100</span>),</span>
+<span id="cb41-22"><a href="differential-abundance-analysis.html#cb41-22" tabindex="-1"></a>                  <span class="at">mdfdr_control =</span> <span class="fu">list</span>(<span class="at">fwer_ctrl_method =</span> <span class="st">&quot;holm&quot;</span>, <span class="at">B =</span> <span class="dv">100</span>), </span>
+<span id="cb41-23"><a href="differential-abundance-analysis.html#cb41-23" tabindex="-1"></a>                  <span class="at">trend_control =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p><strong>Total number of structural zeros</strong></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb50-1"><a href="differential-abundance-analysis.html#cb50-1" tabindex="-1"></a><span class="co"># Extract structural zeros</span></span>
-<span id="cb50-2"><a href="differential-abundance-analysis.html#cb50-2" tabindex="-1"></a>structural_zeros <span class="ot">&lt;-</span> ancom_rand_output_mag<span class="sc">$</span>zero_ind</span>
-<span id="cb50-3"><a href="differential-abundance-analysis.html#cb50-3" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="differential-abundance-analysis.html#cb50-4" tabindex="-1"></a><span class="co"># Convert to a data frame for better readability</span></span>
-<span id="cb50-5"><a href="differential-abundance-analysis.html#cb50-5" tabindex="-1"></a>structural_zeros_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(structural_zeros) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-6"><a href="differential-abundance-analysis.html#cb50-6" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;taxon&quot;</span>)</span>
-<span id="cb50-7"><a href="differential-abundance-analysis.html#cb50-7" tabindex="-1"></a></span>
-<span id="cb50-8"><a href="differential-abundance-analysis.html#cb50-8" tabindex="-1"></a><span class="fu">rownames</span>(structural_zeros_df)[<span class="fu">apply</span>(structural_zeros_df, <span class="dv">1</span>, any)]</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb42-1"><a href="differential-abundance-analysis.html#cb42-1" tabindex="-1"></a><span class="co"># Extract structural zeros</span></span>
+<span id="cb42-2"><a href="differential-abundance-analysis.html#cb42-2" tabindex="-1"></a>structural_zeros <span class="ot">&lt;-</span> ancom_rand_output_mag<span class="sc">$</span>zero_ind</span>
+<span id="cb42-3"><a href="differential-abundance-analysis.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="differential-abundance-analysis.html#cb42-4" tabindex="-1"></a><span class="co"># Convert to a data frame for better readability</span></span>
+<span id="cb42-5"><a href="differential-abundance-analysis.html#cb42-5" tabindex="-1"></a>structural_zeros_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(structural_zeros) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-6"><a href="differential-abundance-analysis.html#cb42-6" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;taxon&quot;</span>)</span>
+<span id="cb42-7"><a href="differential-abundance-analysis.html#cb42-7" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="differential-abundance-analysis.html#cb42-8" tabindex="-1"></a><span class="fu">rownames</span>(structural_zeros_df)[<span class="fu">apply</span>(structural_zeros_df, <span class="dv">1</span>, any)]</span></code></pre></div>
 <pre class="script-output"><code>character(0)</code></pre>
 <p><strong>Enriched taxa</strong></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb52-1"><a href="differential-abundance-analysis.html#cb52-1" tabindex="-1"></a>ancom_rand_output_mag<span class="sc">$</span>res <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="differential-abundance-analysis.html#cb52-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxon, lfc_Bd_statusBd_positive, q_Bd_statusBd_positive) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="differential-abundance-analysis.html#cb52-3" tabindex="-1"></a>  <span class="fu">filter</span>(q_Bd_statusBd_positive <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb44-1"><a href="differential-abundance-analysis.html#cb44-1" tabindex="-1"></a>ancom_rand_output_mag<span class="sc">$</span>res <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="differential-abundance-analysis.html#cb44-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxon, lfc_Bd_statusBd_positive, q_Bd_statusBd_positive) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="differential-abundance-analysis.html#cb44-3" tabindex="-1"></a>  <span class="fu">filter</span>(q_Bd_statusBd_positive <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
 <pre class="script-output"><code>[1] taxon                    lfc_Bd_statusBd_positive q_Bd_statusBd_positive  
 &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 
-</div>
 </div>
 </div>
             </section>

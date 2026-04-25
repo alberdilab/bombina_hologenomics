@@ -1,6 +1,6 @@
 # Compositional analysis
 
-```{r load_data_composition}
+```{r load_data_composition, warning=FALSE, comments="", message=FALSE}
 load("data/data.Rdata")
 extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
   rename(animal=sample) %>% 
@@ -34,8 +34,6 @@ sample_metadata %>%
   summarise(count=n())
 ```
 
-### Taxonomy barplot per individual
-
 ```{r barplot_individuals, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
 genome_counts_filt %>%
   mutate_at(vars(-genome),~./sum(.)) %>% #apply TSS nornalisation
@@ -62,8 +60,8 @@ genome_counts_filt %>%
    labs(fill="Phylum",y = "Relative abundance",x="Samples")
 ```
 
-## Taxonomy boxplot
-### Phylum relative abundances
+
+## Phylum relative abundances
 
 ```{r taxonomy_phylum_summary, warning=FALSE, comments="", message=FALSE}
 phylum_summary <- genome_counts_filt %>%
@@ -75,7 +73,6 @@ phylum_summary <- genome_counts_filt %>%
   summarise(relabun=sum(count))
 ```
 
-#### Origin: Dogs vs Sled dogs vs Wolves
 ```{r taxonomy_phylum_summary_origin, warning=FALSE, comments="", message=FALSE}
 phylum_summary %>%
   group_by(phylum) %>%
