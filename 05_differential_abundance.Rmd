@@ -69,7 +69,7 @@ ancom_rand_output_mag = ancombc2(data = physeq_all,
                   trend = FALSE,
                   iter_control = list(tol = 1e-5, max_iter = 20, verbose = FALSE),
                   em_control = list(tol = 1e-5, max_iter = 100),
-                  mdfdr_control = list(fwer_ctrl_method = "holm", B = 100), 
+                  mdfdr_control = list(fwer_ctrl_method = "BH", B = 100), 
                   trend_control = NULL)
 ```
 

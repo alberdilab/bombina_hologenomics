@@ -2136,73 +2136,73 @@ color: #a52929;
             <section class="normal" id="section-">
 <div id="functional-differences" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Functional differences<a href="functional-differences.html#functional-differences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb74-1"><a href="functional-differences.html#cb74-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
-<span id="cb74-2"><a href="functional-differences.html#cb74-2" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="functional-differences.html#cb74-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
-<span id="cb74-4"><a href="functional-differences.html#cb74-4" tabindex="-1"></a></span>
-<span id="cb74-5"><a href="functional-differences.html#cb74-5" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-6"><a href="functional-differences.html#cb74-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-7"><a href="functional-differences.html#cb74-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span>
-<span id="cb74-8"><a href="functional-differences.html#cb74-8" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
-<span id="cb74-9"><a href="functional-differences.html#cb74-9" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb74-10"><a href="functional-differences.html#cb74-10" tabindex="-1"></a></span>
-<span id="cb74-11"><a href="functional-differences.html#cb74-11" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb74-12"><a href="functional-differences.html#cb74-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
-<span id="cb74-13"><a href="functional-differences.html#cb74-13" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-14"><a href="functional-differences.html#cb74-14" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb74-15"><a href="functional-differences.html#cb74-15" tabindex="-1"></a></span>
-<span id="cb74-16"><a href="functional-differences.html#cb74-16" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
-<span id="cb74-17"><a href="functional-differences.html#cb74-17" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-18"><a href="functional-differences.html#cb74-18" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
-<span id="cb74-19"><a href="functional-differences.html#cb74-19" tabindex="-1"></a></span>
-<span id="cb74-20"><a href="functional-differences.html#cb74-20" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
-<span id="cb74-21"><a href="functional-differences.html#cb74-21" tabindex="-1"></a></span>
-<span id="cb74-22"><a href="functional-differences.html#cb74-22" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-23"><a href="functional-differences.html#cb74-23" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
-<span id="cb74-24"><a href="functional-differences.html#cb74-24" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
-<span id="cb74-25"><a href="functional-differences.html#cb74-25" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-26"><a href="functional-differences.html#cb74-26" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb74-27"><a href="functional-differences.html#cb74-27" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
-<span id="cb74-28"><a href="functional-differences.html#cb74-28" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb75-1"><a href="functional-differences.html#cb75-1" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt[genome_counts_filt<span class="sc">$</span>genome <span class="sc">%in%</span> <span class="fu">rownames</span>(genome_gifts),]</span>
-<span id="cb75-2"><a href="functional-differences.html#cb75-2" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb75-3"><a href="functional-differences.html#cb75-3" tabindex="-1"></a>    <span class="fu">select</span>(genome, <span class="fu">all_of</span>(sample_metadata<span class="sc">$</span>sample)) <span class="sc">%&gt;%</span></span>
-<span id="cb75-4"><a href="functional-differences.html#cb75-4" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb75-5"><a href="functional-differences.html#cb75-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb75-6"><a href="functional-differences.html#cb75-6" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb75-7"><a href="functional-differences.html#cb75-7" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>)</span>
-<span id="cb75-8"><a href="functional-differences.html#cb75-8" tabindex="-1"></a></span>
-<span id="cb75-9"><a href="functional-differences.html#cb75-9" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[<span class="fu">rownames</span>(genome_gifts) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
-<span id="cb75-10"><a href="functional-differences.html#cb75-10" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[, <span class="fu">colSums</span>(genome_gifts <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
-<span id="cb75-11"><a href="functional-differences.html#cb75-11" tabindex="-1"></a></span>
-<span id="cb75-12"><a href="functional-differences.html#cb75-12" tabindex="-1"></a><span class="co">#Aggregate bundle-level GIFTs into the compound level</span></span>
-<span id="cb75-13"><a href="functional-differences.html#cb75-13" tabindex="-1"></a>GIFTs_elements <span class="ot">&lt;-</span> <span class="fu">to.elements</span>(genome_gifts,GIFT_db)</span>
-<span id="cb75-14"><a href="functional-differences.html#cb75-14" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> GIFTs_elements[<span class="fu">rownames</span>(GIFTs_elements) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
-<span id="cb75-15"><a href="functional-differences.html#cb75-15" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(GIFTs_elements_filtered) <span class="sc">%&gt;%</span> </span>
-<span id="cb75-16"><a href="functional-differences.html#cb75-16" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.) <span class="sc">||</span> <span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>)</span>
-<span id="cb75-17"><a href="functional-differences.html#cb75-17" tabindex="-1"></a></span>
-<span id="cb75-18"><a href="functional-differences.html#cb75-18" tabindex="-1"></a><span class="co">#Aggregate element-level GIFTs into the function level</span></span>
-<span id="cb75-19"><a href="functional-differences.html#cb75-19" tabindex="-1"></a>GIFTs_functions <span class="ot">&lt;-</span> <span class="fu">to.functions</span>(GIFTs_elements_filtered,GIFT_db)</span>
-<span id="cb75-20"><a href="functional-differences.html#cb75-20" tabindex="-1"></a></span>
-<span id="cb75-21"><a href="functional-differences.html#cb75-21" tabindex="-1"></a><span class="co">#Aggregate function-level GIFTs into overall Biosynthesis, Degradation and Structural GIFTs</span></span>
-<span id="cb75-22"><a href="functional-differences.html#cb75-22" tabindex="-1"></a>GIFTs_domains <span class="ot">&lt;-</span> <span class="fu">to.domains</span>(GIFTs_functions,GIFT_db)</span>
-<span id="cb75-23"><a href="functional-differences.html#cb75-23" tabindex="-1"></a></span>
-<span id="cb75-24"><a href="functional-differences.html#cb75-24" tabindex="-1"></a><span class="co">#Get community-weighed average GIFTs per sample</span></span>
-<span id="cb75-25"><a href="functional-differences.html#cb75-25" tabindex="-1"></a>genome_counts_row <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb75-26"><a href="functional-differences.html#cb75-26" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>genome),<span class="sc">~</span>.<span class="sc">/</span><span class="fu">sum</span>(.)) <span class="sc">%&gt;%</span> </span>
-<span id="cb75-27"><a href="functional-differences.html#cb75-27" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) </span>
-<span id="cb75-28"><a href="functional-differences.html#cb75-28" tabindex="-1"></a>GIFTs_elements_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_elements_filtered,genome_counts_row,GIFT_db)</span>
-<span id="cb75-29"><a href="functional-differences.html#cb75-29" tabindex="-1"></a>GIFTs_functions_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_functions,genome_counts_row,GIFT_db)</span>
-<span id="cb75-30"><a href="functional-differences.html#cb75-30" tabindex="-1"></a>GIFTs_domains_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_domains,genome_counts_row,GIFT_db)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb73-1"><a href="functional-differences.html#cb73-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb73-2"><a href="functional-differences.html#cb73-2" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="functional-differences.html#cb73-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
+<span id="cb73-4"><a href="functional-differences.html#cb73-4" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="functional-differences.html#cb73-5" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-6"><a href="functional-differences.html#cb73-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-7"><a href="functional-differences.html#cb73-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span>
+<span id="cb73-8"><a href="functional-differences.html#cb73-8" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
+<span id="cb73-9"><a href="functional-differences.html#cb73-9" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb73-10"><a href="functional-differences.html#cb73-10" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="functional-differences.html#cb73-11" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb73-12"><a href="functional-differences.html#cb73-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
+<span id="cb73-13"><a href="functional-differences.html#cb73-13" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-14"><a href="functional-differences.html#cb73-14" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb73-15"><a href="functional-differences.html#cb73-15" tabindex="-1"></a></span>
+<span id="cb73-16"><a href="functional-differences.html#cb73-16" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb73-17"><a href="functional-differences.html#cb73-17" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-18"><a href="functional-differences.html#cb73-18" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
+<span id="cb73-19"><a href="functional-differences.html#cb73-19" tabindex="-1"></a></span>
+<span id="cb73-20"><a href="functional-differences.html#cb73-20" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
+<span id="cb73-21"><a href="functional-differences.html#cb73-21" tabindex="-1"></a></span>
+<span id="cb73-22"><a href="functional-differences.html#cb73-22" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-23"><a href="functional-differences.html#cb73-23" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-24"><a href="functional-differences.html#cb73-24" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-25"><a href="functional-differences.html#cb73-25" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-26"><a href="functional-differences.html#cb73-26" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb73-27"><a href="functional-differences.html#cb73-27" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
+<span id="cb73-28"><a href="functional-differences.html#cb73-28" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb74-1"><a href="functional-differences.html#cb74-1" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt[genome_counts_filt<span class="sc">$</span>genome <span class="sc">%in%</span> <span class="fu">rownames</span>(genome_gifts),]</span>
+<span id="cb74-2"><a href="functional-differences.html#cb74-2" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="functional-differences.html#cb74-3" tabindex="-1"></a>    <span class="fu">select</span>(genome, <span class="fu">all_of</span>(sample_metadata<span class="sc">$</span>sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb74-4"><a href="functional-differences.html#cb74-4" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb74-5"><a href="functional-differences.html#cb74-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb74-6"><a href="functional-differences.html#cb74-6" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb74-7"><a href="functional-differences.html#cb74-7" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>)</span>
+<span id="cb74-8"><a href="functional-differences.html#cb74-8" tabindex="-1"></a></span>
+<span id="cb74-9"><a href="functional-differences.html#cb74-9" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[<span class="fu">rownames</span>(genome_gifts) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
+<span id="cb74-10"><a href="functional-differences.html#cb74-10" tabindex="-1"></a>genome_gifts <span class="ot">&lt;-</span> genome_gifts[, <span class="fu">colSums</span>(genome_gifts <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb74-11"><a href="functional-differences.html#cb74-11" tabindex="-1"></a></span>
+<span id="cb74-12"><a href="functional-differences.html#cb74-12" tabindex="-1"></a><span class="co">#Aggregate bundle-level GIFTs into the compound level</span></span>
+<span id="cb74-13"><a href="functional-differences.html#cb74-13" tabindex="-1"></a>GIFTs_elements <span class="ot">&lt;-</span> <span class="fu">to.elements</span>(genome_gifts,GIFT_db)</span>
+<span id="cb74-14"><a href="functional-differences.html#cb74-14" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> GIFTs_elements[<span class="fu">rownames</span>(GIFTs_elements) <span class="sc">%in%</span> genome_counts_filt<span class="sc">$</span>genome,]</span>
+<span id="cb74-15"><a href="functional-differences.html#cb74-15" tabindex="-1"></a>GIFTs_elements_filtered <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(GIFTs_elements_filtered) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-16"><a href="functional-differences.html#cb74-16" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.) <span class="sc">||</span> <span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb74-17"><a href="functional-differences.html#cb74-17" tabindex="-1"></a></span>
+<span id="cb74-18"><a href="functional-differences.html#cb74-18" tabindex="-1"></a><span class="co">#Aggregate element-level GIFTs into the function level</span></span>
+<span id="cb74-19"><a href="functional-differences.html#cb74-19" tabindex="-1"></a>GIFTs_functions <span class="ot">&lt;-</span> <span class="fu">to.functions</span>(GIFTs_elements_filtered,GIFT_db)</span>
+<span id="cb74-20"><a href="functional-differences.html#cb74-20" tabindex="-1"></a></span>
+<span id="cb74-21"><a href="functional-differences.html#cb74-21" tabindex="-1"></a><span class="co">#Aggregate function-level GIFTs into overall Biosynthesis, Degradation and Structural GIFTs</span></span>
+<span id="cb74-22"><a href="functional-differences.html#cb74-22" tabindex="-1"></a>GIFTs_domains <span class="ot">&lt;-</span> <span class="fu">to.domains</span>(GIFTs_functions,GIFT_db)</span>
+<span id="cb74-23"><a href="functional-differences.html#cb74-23" tabindex="-1"></a></span>
+<span id="cb74-24"><a href="functional-differences.html#cb74-24" tabindex="-1"></a><span class="co">#Get community-weighed average GIFTs per sample</span></span>
+<span id="cb74-25"><a href="functional-differences.html#cb74-25" tabindex="-1"></a>genome_counts_row <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb74-26"><a href="functional-differences.html#cb74-26" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>genome),<span class="sc">~</span>.<span class="sc">/</span><span class="fu">sum</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-27"><a href="functional-differences.html#cb74-27" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;genome&quot;</span>) </span>
+<span id="cb74-28"><a href="functional-differences.html#cb74-28" tabindex="-1"></a>GIFTs_elements_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_elements_filtered,genome_counts_row,GIFT_db)</span>
+<span id="cb74-29"><a href="functional-differences.html#cb74-29" tabindex="-1"></a>GIFTs_functions_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_functions,genome_counts_row,GIFT_db)</span>
+<span id="cb74-30"><a href="functional-differences.html#cb74-30" tabindex="-1"></a>GIFTs_domains_community <span class="ot">&lt;-</span> <span class="fu">to.community</span>(GIFTs_domains,genome_counts_row,GIFT_db)</span></code></pre></div>
 <div id="bd_status" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Bd_status<a href="functional-differences.html#bd_status" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb76-1"><a href="functional-differences.html#cb76-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
-<span id="cb76-2"><a href="functional-differences.html#cb76-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb76-3"><a href="functional-differences.html#cb76-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb76-4"><a href="functional-differences.html#cb76-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
-<span id="cb76-5"><a href="functional-differences.html#cb76-5" tabindex="-1"></a>  <span class="fu">group_by</span>(Bd_status) <span class="sc">%&gt;%</span></span>
-<span id="cb76-6"><a href="functional-differences.html#cb76-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb76-7"><a href="functional-differences.html#cb76-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb75-1"><a href="functional-differences.html#cb75-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
+<span id="cb75-2"><a href="functional-differences.html#cb75-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a href="functional-differences.html#cb75-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb75-4"><a href="functional-differences.html#cb75-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb75-5"><a href="functional-differences.html#cb75-5" tabindex="-1"></a>  <span class="fu">group_by</span>(Bd_status) <span class="sc">%&gt;%</span></span>
+<span id="cb75-6"><a href="functional-differences.html#cb75-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb75-7"><a href="functional-differences.html#cb75-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
 <!-- preamble start -->
 
     <script>
@@ -2301,31 +2301,31 @@ color: #a52929;
       </table>
     </div>
 <!-- hack to avoid NA insertion in last line -->
-<div class="sourceCode" id="cb77"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb77-1"><a href="functional-differences.html#cb77-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
-<span id="cb77-2"><a href="functional-differences.html#cb77-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb77-3"><a href="functional-differences.html#cb77-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb77-4"><a href="functional-differences.html#cb77-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,Bd_status), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb77-5"><a href="functional-differences.html#cb77-5" tabindex="-1"></a></span>
-<span id="cb77-6"><a href="functional-differences.html#cb77-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
-<span id="cb77-7"><a href="functional-differences.html#cb77-7" tabindex="-1"></a></span>
-<span id="cb77-8"><a href="functional-differences.html#cb77-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
-<span id="cb77-9"><a href="functional-differences.html#cb77-9" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,Bd_status), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb77-10"><a href="functional-differences.html#cb77-10" tabindex="-1"></a>    <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
-<span id="cb77-11"><a href="functional-differences.html#cb77-11" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> Bd_status)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
-<span id="cb77-12"><a href="functional-differences.html#cb77-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb77-13"><a href="functional-differences.html#cb77-13" tabindex="-1"></a>    <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb76-1"><a href="functional-differences.html#cb76-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
+<span id="cb76-2"><a href="functional-differences.html#cb76-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="functional-differences.html#cb76-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-4"><a href="functional-differences.html#cb76-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,Bd_status), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb76-5"><a href="functional-differences.html#cb76-5" tabindex="-1"></a></span>
+<span id="cb76-6"><a href="functional-differences.html#cb76-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
+<span id="cb76-7"><a href="functional-differences.html#cb76-7" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="functional-differences.html#cb76-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
+<span id="cb76-9"><a href="functional-differences.html#cb76-9" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,Bd_status), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb76-10"><a href="functional-differences.html#cb76-10" tabindex="-1"></a>    <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
+<span id="cb76-11"><a href="functional-differences.html#cb76-11" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> Bd_status)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
+<span id="cb76-12"><a href="functional-differences.html#cb76-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-13"><a href="functional-differences.html#cb76-13" tabindex="-1"></a>    <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
 <pre class="script-output"><code># A tibble: 0 × 3
 # ℹ 3 variables: trait &lt;chr&gt;, p_value &lt;dbl&gt;, p_adjust &lt;dbl&gt;</code></pre>
 </div>
 <div id="region" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> region<a href="functional-differences.html#region" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb79-1"><a href="functional-differences.html#cb79-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a href="functional-differences.html#cb79-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a href="functional-differences.html#cb79-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb79-4"><a href="functional-differences.html#cb79-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
-<span id="cb79-5"><a href="functional-differences.html#cb79-5" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
-<span id="cb79-6"><a href="functional-differences.html#cb79-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb79-7"><a href="functional-differences.html#cb79-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb78-1"><a href="functional-differences.html#cb78-1" tabindex="-1"></a>GIFTs_functions_community <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="functional-differences.html#cb78-2" tabindex="-1"></a>  <span class="fu">rowMeans</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb78-3"><a href="functional-differences.html#cb78-3" tabindex="-1"></a>  <span class="fu">as_tibble</span>(., <span class="at">rownames =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb78-4"><a href="functional-differences.html#cb78-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata, <span class="at">by =</span> <span class="fu">join_by</span>(sample <span class="sc">==</span> sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb78-5"><a href="functional-differences.html#cb78-5" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb78-6"><a href="functional-differences.html#cb78-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MCI =</span> <span class="fu">mean</span>(value), <span class="at">sd =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb78-7"><a href="functional-differences.html#cb78-7" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
 <!-- preamble start -->
 
     <script>
@@ -2424,21 +2424,21 @@ color: #a52929;
       </table>
     </div>
 <!-- hack to avoid NA insertion in last line -->
-<div class="sourceCode" id="cb80"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb80-1"><a href="functional-differences.html#cb80-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
-<span id="cb80-2"><a href="functional-differences.html#cb80-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb80-3"><a href="functional-differences.html#cb80-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb80-4"><a href="functional-differences.html#cb80-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,region), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb80-5"><a href="functional-differences.html#cb80-5" tabindex="-1"></a></span>
-<span id="cb80-6"><a href="functional-differences.html#cb80-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
-<span id="cb80-7"><a href="functional-differences.html#cb80-7" tabindex="-1"></a></span>
-<span id="cb80-8"><a href="functional-differences.html#cb80-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
-<span id="cb80-9"><a href="functional-differences.html#cb80-9" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,region), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb80-10"><a href="functional-differences.html#cb80-10" tabindex="-1"></a>  <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
-<span id="cb80-11"><a href="functional-differences.html#cb80-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> region)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
-<span id="cb80-12"><a href="functional-differences.html#cb80-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb80-13"><a href="functional-differences.html#cb80-13" tabindex="-1"></a>  <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb80-14"><a href="functional-differences.html#cb80-14" tabindex="-1"></a>  <span class="fu">left_join</span>(uniqueGIFT_db, <span class="at">by=</span><span class="fu">join_by</span>(<span class="st">&quot;trait&quot;</span><span class="sc">==</span><span class="st">&quot;Code_element&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb80-15"><a href="functional-differences.html#cb80-15" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb79-1"><a href="functional-differences.html#cb79-1" tabindex="-1"></a>element_gift <span class="ot">&lt;-</span> GIFTs_elements_community <span class="sc">%&gt;%</span> </span>
+<span id="cb79-2"><a href="functional-differences.html#cb79-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb79-3"><a href="functional-differences.html#cb79-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-4"><a href="functional-differences.html#cb79-4" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample,region), <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb79-5"><a href="functional-differences.html#cb79-5" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="functional-differences.html#cb79-6" tabindex="-1"></a>uniqueGIFT_db<span class="ot">&lt;-</span> <span class="fu">unique</span>(GIFT_db[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;Function&quot;</span>,Function<span class="sc">:</span>Element, <span class="at">sep=</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
+<span id="cb79-7"><a href="functional-differences.html#cb79-7" tabindex="-1"></a></span>
+<span id="cb79-8"><a href="functional-differences.html#cb79-8" tabindex="-1"></a>element_gift <span class="sc">%&gt;%</span></span>
+<span id="cb79-9"><a href="functional-differences.html#cb79-9" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(sample,region), <span class="at">names_to =</span> <span class="st">&quot;trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-10"><a href="functional-differences.html#cb79-10" tabindex="-1"></a>  <span class="fu">group_by</span>(trait) <span class="sc">%&gt;%</span></span>
+<span id="cb79-11"><a href="functional-differences.html#cb79-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">wilcox.test</span>(value <span class="sc">~</span> region)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span></span>
+<span id="cb79-12"><a href="functional-differences.html#cb79-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_adjust=</span><span class="fu">p.adjust</span>(p_value, <span class="at">method=</span><span class="st">&quot;BH&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb79-13"><a href="functional-differences.html#cb79-13" tabindex="-1"></a>  <span class="fu">filter</span>(p_adjust <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-14"><a href="functional-differences.html#cb79-14" tabindex="-1"></a>  <span class="fu">left_join</span>(uniqueGIFT_db, <span class="at">by=</span><span class="fu">join_by</span>(<span class="st">&quot;trait&quot;</span><span class="sc">==</span><span class="st">&quot;Code_element&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-15"><a href="functional-differences.html#cb79-15" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
 <!-- preamble start -->
 
     <script>
