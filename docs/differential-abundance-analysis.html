@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep</title>
+  <title>Chapter 9 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep</title>
   <meta name="description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep" />
+  <meta property="og:title" content="Chapter 9 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   <meta name="github-repo" content="alberdilab/bombina_hologenomics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep" />
+  <meta name="twitter:title" content="Chapter 9 Differential abundance analysis | AlberdiLab | van-Riemsdijk et al. in prep" />
   
   <meta name="twitter:description" content="&lt;p&gt;Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from lizard faecal samples.&lt;/p&gt;" />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Antton Alberdi" />
 
 
-<meta name="date" content="2026-04-25" />
+<meta name="date" content="2026-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="compositional-analysis.html"/>
-<link rel="next" href="alpha-diversity.html"/>
+<link rel="prev" href="beta-diversity.html"/>
+<link rel="next" href="functional-differences.html"/>
 
 
 
@@ -2084,20 +2084,17 @@ color: #a52929;
 <li class="chapter" data-level="3.2" data-path="data-statistics.html"><a href="data-statistics.html#dna-fractions"><i class="fa fa-check"></i><b>3.2</b> DNA fractions</a></li>
 <li class="chapter" data-level="3.3" data-path="data-statistics.html"><a href="data-statistics.html#recovered-microbial-fraction"><i class="fa fa-check"></i><b>3.3</b> Recovered microbial fraction</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="mag-catalogue.html"><a href="mag-catalogue.html"><i class="fa fa-check"></i><b>4</b> MAG catalogue</a>
+<li class="chapter" data-level="4" data-path="filtered-samples.html"><a href="filtered-samples.html"><i class="fa fa-check"></i><b>4</b> Filtered samples</a></li>
+<li class="chapter" data-level="5" data-path="mag-catalogue.html"><a href="mag-catalogue.html"><i class="fa fa-check"></i><b>5</b> MAG catalogue</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="mag-catalogue.html"><a href="mag-catalogue.html#genome-phylogeny"><i class="fa fa-check"></i><b>4.1</b> Genome phylogeny</a></li>
-<li class="chapter" data-level="4.2" data-path="mag-catalogue.html"><a href="mag-catalogue.html#genome-quality"><i class="fa fa-check"></i><b>4.2</b> Genome quality</a></li>
-<li class="chapter" data-level="4.3" data-path="mag-catalogue.html"><a href="mag-catalogue.html#functional-overview"><i class="fa fa-check"></i><b>4.3</b> Functional overview</a></li>
-<li class="chapter" data-level="4.4" data-path="mag-catalogue.html"><a href="mag-catalogue.html#functional-ordination"><i class="fa fa-check"></i><b>4.4</b> Functional ordination</a></li>
+<li class="chapter" data-level="5.1" data-path="mag-catalogue.html"><a href="mag-catalogue.html#genome-phylogeny"><i class="fa fa-check"></i><b>5.1</b> Genome phylogeny</a></li>
+<li class="chapter" data-level="5.2" data-path="mag-catalogue.html"><a href="mag-catalogue.html#genome-quality"><i class="fa fa-check"></i><b>5.2</b> Genome quality</a></li>
+<li class="chapter" data-level="5.3" data-path="mag-catalogue.html"><a href="mag-catalogue.html#functional-overview"><i class="fa fa-check"></i><b>5.3</b> Functional overview</a></li>
+<li class="chapter" data-level="5.4" data-path="mag-catalogue.html"><a href="mag-catalogue.html#functional-ordination"><i class="fa fa-check"></i><b>5.4</b> Functional ordination</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="compositional-analysis.html"><a href="compositional-analysis.html"><i class="fa fa-check"></i><b>5</b> Compositional analysis</a>
+<li class="chapter" data-level="6" data-path="compositional-analysis.html"><a href="compositional-analysis.html"><i class="fa fa-check"></i><b>6</b> Compositional analysis</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>5.1</b> Phylum relative abundances</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>6</b> Differential abundance analysis</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancombc2-mag-level"><i class="fa fa-check"></i><b>6.1</b> Ancombc2: MAG level</a></li>
+<li class="chapter" data-level="6.1" data-path="compositional-analysis.html"><a href="compositional-analysis.html#phylum-relative-abundances"><i class="fa fa-check"></i><b>6.1</b> Phylum relative abundances</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="alpha-diversity.html"><a href="alpha-diversity.html"><i class="fa fa-check"></i><b>7</b> Alpha diversity</a></li>
 <li class="chapter" data-level="8" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>8</b> Beta diversity</a>
@@ -2107,10 +2104,15 @@ color: #a52929;
 <li class="chapter" data-level="8.3" data-path="beta-diversity.html"><a href="beta-diversity.html#phylogenetic"><i class="fa fa-check"></i><b>8.3</b> Phylogenetic</a></li>
 <li class="chapter" data-level="8.4" data-path="beta-diversity.html"><a href="beta-diversity.html#functional"><i class="fa fa-check"></i><b>8.4</b> Functional</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="functional-differences.html"><a href="functional-differences.html"><i class="fa fa-check"></i><b>9</b> Functional differences</a>
+<li class="chapter" data-level="9" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>9</b> Differential abundance analysis</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="functional-differences.html"><a href="functional-differences.html#bd_status"><i class="fa fa-check"></i><b>9.1</b> Bd_status</a></li>
-<li class="chapter" data-level="9.2" data-path="functional-differences.html"><a href="functional-differences.html#region"><i class="fa fa-check"></i><b>9.2</b> region</a></li>
+<li class="chapter" data-level="9.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#structural-zeros"><i class="fa fa-check"></i><b>9.1</b> Structural zeros</a></li>
+<li class="chapter" data-level="9.2" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#enriched-mags"><i class="fa fa-check"></i><b>9.2</b> Enriched MAGs</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="functional-differences.html"><a href="functional-differences.html"><i class="fa fa-check"></i><b>10</b> Functional differences</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="functional-differences.html"><a href="functional-differences.html#bd_status"><i class="fa fa-check"></i><b>10.1</b> Bd_status</a></li>
+<li class="chapter" data-level="10.2" data-path="functional-differences.html"><a href="functional-differences.html#region"><i class="fa fa-check"></i><b>10.2</b> region</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.alberdilab.dk" target="blank"><b>www.alberdilab.dk</b></a></li>
@@ -2134,93 +2136,870 @@ color: #a52929;
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="differential-abundance-analysis" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Differential abundance analysis<a href="differential-abundance-analysis.html#differential-abundance-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb39-1"><a href="differential-abundance-analysis.html#cb39-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
-<span id="cb39-2"><a href="differential-abundance-analysis.html#cb39-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span>
-<span id="cb39-3"><a href="differential-abundance-analysis.html#cb39-3" tabindex="-1"></a>extra_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Bombina_microbiome_metadata.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-4"><a href="differential-abundance-analysis.html#cb39-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">animal=</span>sample) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-5"><a href="differential-abundance-analysis.html#cb39-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample=</span>EHI_code)</span>
-<span id="cb39-6"><a href="differential-abundance-analysis.html#cb39-6" tabindex="-1"></a>sample_metadata <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span> </span>
-<span id="cb39-7"><a href="differential-abundance-analysis.html#cb39-7" tabindex="-1"></a>  <span class="fu">left_join</span>(., extra_metadata, <span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb39-8"><a href="differential-abundance-analysis.html#cb39-8" tabindex="-1"></a></span>
-<span id="cb39-9"><a href="differential-abundance-analysis.html#cb39-9" tabindex="-1"></a>genome_counts_filt <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
-<span id="cb39-10"><a href="differential-abundance-analysis.html#cb39-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">one_of</span>(<span class="fu">c</span>(<span class="st">&quot;genome&quot;</span>,sample_metadata<span class="sc">$</span>sample)))<span class="sc">%&gt;%</span></span>
-<span id="cb39-11"><a href="differential-abundance-analysis.html#cb39-11" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(. <span class="sc">!=</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-12"><a href="differential-abundance-analysis.html#cb39-12" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">all</span>(. <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb39-13"><a href="differential-abundance-analysis.html#cb39-13" tabindex="-1"></a></span>
-<span id="cb39-14"><a href="differential-abundance-analysis.html#cb39-14" tabindex="-1"></a>genome_metadata <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
-<span id="cb39-15"><a href="differential-abundance-analysis.html#cb39-15" tabindex="-1"></a>  <span class="fu">semi_join</span>(., genome_counts_filt, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-16"><a href="differential-abundance-analysis.html#cb39-16" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(genome,genome_counts_filt<span class="sc">$</span>genome))</span>
-<span id="cb39-17"><a href="differential-abundance-analysis.html#cb39-17" tabindex="-1"></a></span>
-<span id="cb39-18"><a href="differential-abundance-analysis.html#cb39-18" tabindex="-1"></a>genome_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(genome_tree, <span class="at">tip=</span>genome_metadata<span class="sc">$</span>genome)</span>
-<span id="cb39-19"><a href="differential-abundance-analysis.html#cb39-19" tabindex="-1"></a></span>
-<span id="cb39-20"><a href="differential-abundance-analysis.html#cb39-20" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-21"><a href="differential-abundance-analysis.html#cb39-21" tabindex="-1"></a>    <span class="fu">right_join</span>(genome_metadata, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-22"><a href="differential-abundance-analysis.html#cb39-22" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">match</span>(genome, genome_tree<span class="sc">$</span>tip.label)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-23"><a href="differential-abundance-analysis.html#cb39-23" tabindex="-1"></a>    <span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-24"><a href="differential-abundance-analysis.html#cb39-24" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb39-25"><a href="differential-abundance-analysis.html#cb39-25" tabindex="-1"></a>    <span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
-<span id="cb39-26"><a href="differential-abundance-analysis.html#cb39-26" tabindex="-1"></a>    <span class="fu">pull</span>(colors, <span class="at">name=</span>phylum)</span>
-<span id="cb39-27"><a href="differential-abundance-analysis.html#cb39-27" tabindex="-1"></a></span>
-<span id="cb39-28"><a href="differential-abundance-analysis.html#cb39-28" tabindex="-1"></a>count_phy <span class="ot">&lt;-</span> genome_counts <span class="sc">%&gt;%</span></span>
-<span id="cb39-29"><a href="differential-abundance-analysis.html#cb39-29" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb39-30"><a href="differential-abundance-analysis.html#cb39-30" tabindex="-1"></a>  <span class="fu">otu_table</span>(., <span class="at">taxa_are_rows=</span>T)</span>
-<span id="cb39-31"><a href="differential-abundance-analysis.html#cb39-31" tabindex="-1"></a></span>
-<span id="cb39-32"><a href="differential-abundance-analysis.html#cb39-32" tabindex="-1"></a>sample_info_tab_phy <span class="ot">&lt;-</span> sample_metadata<span class="sc">%&gt;%</span></span>
-<span id="cb39-33"><a href="differential-abundance-analysis.html#cb39-33" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;sample&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb39-34"><a href="differential-abundance-analysis.html#cb39-34" tabindex="-1"></a>  <span class="fu">sample_data</span>()</span>
-<span id="cb39-35"><a href="differential-abundance-analysis.html#cb39-35" tabindex="-1"></a></span>
-<span id="cb39-36"><a href="differential-abundance-analysis.html#cb39-36" tabindex="-1"></a>TAX <span class="ot">&lt;-</span> genome_metadata<span class="sc">%&gt;%</span></span>
-<span id="cb39-37"><a href="differential-abundance-analysis.html#cb39-37" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;genome&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb39-38"><a href="differential-abundance-analysis.html#cb39-38" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb39-39"><a href="differential-abundance-analysis.html#cb39-39" tabindex="-1"></a>  <span class="fu">as.matrix</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb39-40"><a href="differential-abundance-analysis.html#cb39-40" tabindex="-1"></a>  <span class="fu">tax_table</span>()</span>
-<span id="cb39-41"><a href="differential-abundance-analysis.html#cb39-41" tabindex="-1"></a></span>
-<span id="cb39-42"><a href="differential-abundance-analysis.html#cb39-42" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">phy_tree</span>(genome_tree)</span>
-<span id="cb39-43"><a href="differential-abundance-analysis.html#cb39-43" tabindex="-1"></a></span>
-<span id="cb39-44"><a href="differential-abundance-analysis.html#cb39-44" tabindex="-1"></a>physeq_all <span class="ot">=</span> <span class="fu">phyloseq</span>(count_phy, TAX, sample_info_tab_phy, tree)</span></code></pre></div>
-<div id="ancombc2-mag-level" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Ancombc2: MAG level<a href="differential-abundance-analysis.html#ancombc2-mag-level" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb40-1"><a href="differential-abundance-analysis.html#cb40-1" tabindex="-1"></a>ancom_rand_output_mag <span class="ot">=</span> <span class="fu">ancombc2</span>(<span class="at">data =</span> physeq_all, </span>
-<span id="cb40-2"><a href="differential-abundance-analysis.html#cb40-2" tabindex="-1"></a>                  <span class="at">assay_name =</span> <span class="st">&quot;counts&quot;</span>, </span>
-<span id="cb40-3"><a href="differential-abundance-analysis.html#cb40-3" tabindex="-1"></a>                  <span class="at">tax_level =</span> <span class="cn">NULL</span>, </span>
-<span id="cb40-4"><a href="differential-abundance-analysis.html#cb40-4" tabindex="-1"></a>                  <span class="at">fix_formula =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
-<span id="cb40-5"><a href="differential-abundance-analysis.html#cb40-5" tabindex="-1"></a>                  <span class="at">p_adj_method =</span> <span class="st">&quot;BH&quot;</span>, </span>
-<span id="cb40-6"><a href="differential-abundance-analysis.html#cb40-6" tabindex="-1"></a>                  <span class="at">pseudo_sens =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb40-7"><a href="differential-abundance-analysis.html#cb40-7" tabindex="-1"></a>                  <span class="at">prv_cut =</span><span class="dv">0</span>, </span>
-<span id="cb40-8"><a href="differential-abundance-analysis.html#cb40-8" tabindex="-1"></a>                  <span class="at">lib_cut =</span> <span class="dv">0</span>, </span>
-<span id="cb40-9"><a href="differential-abundance-analysis.html#cb40-9" tabindex="-1"></a>                  <span class="at">s0_perc =</span> <span class="fl">0.05</span>,</span>
-<span id="cb40-10"><a href="differential-abundance-analysis.html#cb40-10" tabindex="-1"></a>                  <span class="at">group =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
-<span id="cb40-11"><a href="differential-abundance-analysis.html#cb40-11" tabindex="-1"></a>                  <span class="at">struc_zero =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb40-12"><a href="differential-abundance-analysis.html#cb40-12" tabindex="-1"></a>                  <span class="at">neg_lb =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb40-13"><a href="differential-abundance-analysis.html#cb40-13" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
-<span id="cb40-14"><a href="differential-abundance-analysis.html#cb40-14" tabindex="-1"></a>                  <span class="at">n_cl =</span> <span class="dv">2</span>, </span>
-<span id="cb40-15"><a href="differential-abundance-analysis.html#cb40-15" tabindex="-1"></a>                  <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb40-16"><a href="differential-abundance-analysis.html#cb40-16" tabindex="-1"></a>                  <span class="at">global =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb40-17"><a href="differential-abundance-analysis.html#cb40-17" tabindex="-1"></a>                  <span class="at">pairwise =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb40-18"><a href="differential-abundance-analysis.html#cb40-18" tabindex="-1"></a>                  <span class="at">dunnet =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb40-19"><a href="differential-abundance-analysis.html#cb40-19" tabindex="-1"></a>                  <span class="at">trend =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb40-20"><a href="differential-abundance-analysis.html#cb40-20" tabindex="-1"></a>                  <span class="at">iter_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">20</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb40-21"><a href="differential-abundance-analysis.html#cb40-21" tabindex="-1"></a>                  <span class="at">em_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">100</span>),</span>
-<span id="cb40-22"><a href="differential-abundance-analysis.html#cb40-22" tabindex="-1"></a>                  <span class="at">mdfdr_control =</span> <span class="fu">list</span>(<span class="at">fwer_ctrl_method =</span> <span class="st">&quot;BH&quot;</span>, <span class="at">B =</span> <span class="dv">100</span>), </span>
-<span id="cb40-23"><a href="differential-abundance-analysis.html#cb40-23" tabindex="-1"></a>                  <span class="at">trend_control =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div id="differential-abundance-analysis" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Differential abundance analysis<a href="differential-abundance-analysis.html#differential-abundance-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb68-1"><a href="differential-abundance-analysis.html#cb68-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb68-2"><a href="differential-abundance-analysis.html#cb68-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data_filtered.Rdata&quot;</span>)</span>
+<span id="cb68-3"><a href="differential-abundance-analysis.html#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="differential-abundance-analysis.html#cb68-4" tabindex="-1"></a>count_phy <span class="ot">&lt;-</span> genome_counts_filt <span class="sc">%&gt;%</span></span>
+<span id="cb68-5"><a href="differential-abundance-analysis.html#cb68-5" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-6"><a href="differential-abundance-analysis.html#cb68-6" tabindex="-1"></a>  <span class="fu">otu_table</span>(., <span class="at">taxa_are_rows =</span> T)</span>
+<span id="cb68-7"><a href="differential-abundance-analysis.html#cb68-7" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="differential-abundance-analysis.html#cb68-8" tabindex="-1"></a>sample_info_tab_phy <span class="ot">&lt;-</span> sample_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb68-9"><a href="differential-abundance-analysis.html#cb68-9" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-10"><a href="differential-abundance-analysis.html#cb68-10" tabindex="-1"></a>  <span class="fu">sample_data</span>()</span>
+<span id="cb68-11"><a href="differential-abundance-analysis.html#cb68-11" tabindex="-1"></a></span>
+<span id="cb68-12"><a href="differential-abundance-analysis.html#cb68-12" tabindex="-1"></a>TAX <span class="ot">&lt;-</span> genome_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb68-13"><a href="differential-abundance-analysis.html#cb68-13" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-14"><a href="differential-abundance-analysis.html#cb68-14" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-15"><a href="differential-abundance-analysis.html#cb68-15" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb68-16"><a href="differential-abundance-analysis.html#cb68-16" tabindex="-1"></a>  <span class="fu">tax_table</span>()</span>
+<span id="cb68-17"><a href="differential-abundance-analysis.html#cb68-17" tabindex="-1"></a></span>
+<span id="cb68-18"><a href="differential-abundance-analysis.html#cb68-18" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">phy_tree</span>(genome_tree)</span>
+<span id="cb68-19"><a href="differential-abundance-analysis.html#cb68-19" tabindex="-1"></a></span>
+<span id="cb68-20"><a href="differential-abundance-analysis.html#cb68-20" tabindex="-1"></a>physeq_all <span class="ot">=</span> <span class="fu">phyloseq</span>(count_phy, TAX, sample_info_tab_phy, tree)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb69-1"><a href="differential-abundance-analysis.html#cb69-1" tabindex="-1"></a>ancom_rand_output_mag <span class="ot">=</span> <span class="fu">ancombc2</span>(<span class="at">data =</span> physeq_all, </span>
+<span id="cb69-2"><a href="differential-abundance-analysis.html#cb69-2" tabindex="-1"></a>                  <span class="at">assay_name =</span> <span class="st">&quot;counts&quot;</span>, </span>
+<span id="cb69-3"><a href="differential-abundance-analysis.html#cb69-3" tabindex="-1"></a>                  <span class="at">tax_level =</span> <span class="cn">NULL</span>, </span>
+<span id="cb69-4"><a href="differential-abundance-analysis.html#cb69-4" tabindex="-1"></a>                  <span class="at">fix_formula =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
+<span id="cb69-5"><a href="differential-abundance-analysis.html#cb69-5" tabindex="-1"></a>                  <span class="at">p_adj_method =</span> <span class="st">&quot;BH&quot;</span>, </span>
+<span id="cb69-6"><a href="differential-abundance-analysis.html#cb69-6" tabindex="-1"></a>                  <span class="at">pseudo_sens =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb69-7"><a href="differential-abundance-analysis.html#cb69-7" tabindex="-1"></a>                  <span class="at">prv_cut =</span><span class="dv">0</span>, </span>
+<span id="cb69-8"><a href="differential-abundance-analysis.html#cb69-8" tabindex="-1"></a>                  <span class="at">lib_cut =</span> <span class="dv">0</span>, </span>
+<span id="cb69-9"><a href="differential-abundance-analysis.html#cb69-9" tabindex="-1"></a>                  <span class="at">s0_perc =</span> <span class="fl">0.05</span>,</span>
+<span id="cb69-10"><a href="differential-abundance-analysis.html#cb69-10" tabindex="-1"></a>                  <span class="at">group =</span> <span class="st">&quot;Bd_status&quot;</span>, </span>
+<span id="cb69-11"><a href="differential-abundance-analysis.html#cb69-11" tabindex="-1"></a>                  <span class="at">struc_zero =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb69-12"><a href="differential-abundance-analysis.html#cb69-12" tabindex="-1"></a>                  <span class="at">neg_lb =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb69-13"><a href="differential-abundance-analysis.html#cb69-13" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb69-14"><a href="differential-abundance-analysis.html#cb69-14" tabindex="-1"></a>                  <span class="at">n_cl =</span> <span class="dv">2</span>, </span>
+<span id="cb69-15"><a href="differential-abundance-analysis.html#cb69-15" tabindex="-1"></a>                  <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb69-16"><a href="differential-abundance-analysis.html#cb69-16" tabindex="-1"></a>                  <span class="at">global =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb69-17"><a href="differential-abundance-analysis.html#cb69-17" tabindex="-1"></a>                  <span class="at">pairwise =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb69-18"><a href="differential-abundance-analysis.html#cb69-18" tabindex="-1"></a>                  <span class="at">dunnet =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb69-19"><a href="differential-abundance-analysis.html#cb69-19" tabindex="-1"></a>                  <span class="at">trend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb69-20"><a href="differential-abundance-analysis.html#cb69-20" tabindex="-1"></a>                  <span class="at">iter_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">20</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb69-21"><a href="differential-abundance-analysis.html#cb69-21" tabindex="-1"></a>                  <span class="at">em_control =</span> <span class="fu">list</span>(<span class="at">tol =</span> <span class="fl">1e-5</span>, <span class="at">max_iter =</span> <span class="dv">100</span>),</span>
+<span id="cb69-22"><a href="differential-abundance-analysis.html#cb69-22" tabindex="-1"></a>                  <span class="at">mdfdr_control =</span> <span class="fu">list</span>(<span class="at">fwer_ctrl_method =</span> <span class="st">&quot;BH&quot;</span>, <span class="at">B =</span> <span class="dv">100</span>), </span>
+<span id="cb69-23"><a href="differential-abundance-analysis.html#cb69-23" tabindex="-1"></a>                  <span class="at">trend_control =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div id="structural-zeros" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Structural zeros<a href="differential-abundance-analysis.html#structural-zeros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Total number of structural zeros</strong></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb41-1"><a href="differential-abundance-analysis.html#cb41-1" tabindex="-1"></a><span class="co"># Extract structural zeros</span></span>
-<span id="cb41-2"><a href="differential-abundance-analysis.html#cb41-2" tabindex="-1"></a>structural_zeros <span class="ot">&lt;-</span> ancom_rand_output_mag<span class="sc">$</span>zero_ind</span>
-<span id="cb41-3"><a href="differential-abundance-analysis.html#cb41-3" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="differential-abundance-analysis.html#cb41-4" tabindex="-1"></a><span class="co"># Convert to a data frame for better readability</span></span>
-<span id="cb41-5"><a href="differential-abundance-analysis.html#cb41-5" tabindex="-1"></a>structural_zeros_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(structural_zeros) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-6"><a href="differential-abundance-analysis.html#cb41-6" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;taxon&quot;</span>)</span>
-<span id="cb41-7"><a href="differential-abundance-analysis.html#cb41-7" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="differential-abundance-analysis.html#cb41-8" tabindex="-1"></a><span class="fu">rownames</span>(structural_zeros_df)[<span class="fu">apply</span>(structural_zeros_df, <span class="dv">1</span>, any)]</span></code></pre></div>
-<pre class="script-output"><code>character(0)</code></pre>
-<p><strong>Enriched taxa</strong></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb43-1"><a href="differential-abundance-analysis.html#cb43-1" tabindex="-1"></a>ancom_rand_output_mag<span class="sc">$</span>res <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a href="differential-abundance-analysis.html#cb43-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxon, lfc_Bd_statusBd_positive, q_Bd_statusBd_positive) <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="differential-abundance-analysis.html#cb43-3" tabindex="-1"></a>  <span class="fu">filter</span>(q_Bd_statusBd_positive <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<pre class="script-output"><code>[1] taxon                    lfc_Bd_statusBd_positive q_Bd_statusBd_positive  
-&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb70-1"><a href="differential-abundance-analysis.html#cb70-1" tabindex="-1"></a><span class="co"># Extract structural zeros</span></span>
+<span id="cb70-2"><a href="differential-abundance-analysis.html#cb70-2" tabindex="-1"></a>structural_zeros <span class="ot">&lt;-</span> ancom_rand_output_mag<span class="sc">$</span>zero_ind</span>
+<span id="cb70-3"><a href="differential-abundance-analysis.html#cb70-3" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="differential-abundance-analysis.html#cb70-4" tabindex="-1"></a><span class="co"># Convert to a data frame for better readability</span></span>
+<span id="cb70-5"><a href="differential-abundance-analysis.html#cb70-5" tabindex="-1"></a>structural_zeros_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(structural_zeros) <span class="sc">%&gt;%</span> </span>
+<span id="cb70-6"><a href="differential-abundance-analysis.html#cb70-6" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(., <span class="st">&quot;taxon&quot;</span>)</span>
+<span id="cb70-7"><a href="differential-abundance-analysis.html#cb70-7" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="differential-abundance-analysis.html#cb70-8" tabindex="-1"></a>structural_zero_taxa <span class="ot">&lt;-</span> <span class="fu">rownames</span>(structural_zeros_df)[<span class="fu">apply</span>(structural_zeros_df, <span class="dv">1</span>, any)]</span>
+<span id="cb70-9"><a href="differential-abundance-analysis.html#cb70-9" tabindex="-1"></a></span>
+<span id="cb70-10"><a href="differential-abundance-analysis.html#cb70-10" tabindex="-1"></a>structural_zero_groups <span class="ot">&lt;-</span> structural_zeros_df[structural_zero_taxa, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">%&gt;%</span> </span>
+<span id="cb70-11"><a href="differential-abundance-analysis.html#cb70-11" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Bd_negative&quot;</span><span class="ot">=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb70-12"><a href="differential-abundance-analysis.html#cb70-12" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Bd_positive&quot;</span><span class="ot">=</span><span class="dv">2</span>)</span>
+<span id="cb70-13"><a href="differential-abundance-analysis.html#cb70-13" tabindex="-1"></a></span>
+<span id="cb70-14"><a href="differential-abundance-analysis.html#cb70-14" tabindex="-1"></a><span class="fu">nrow</span>(structural_zero_groups)</span></code></pre></div>
+<pre class="script-output"><code>[1] 102</code></pre>
+<p><strong><em>Structural zeros in Bd_negative</em></strong></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb72-1"><a href="differential-abundance-analysis.html#cb72-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="differential-abundance-analysis.html#cb72-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_negative<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="differential-abundance-analysis.html#cb72-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<pre class="script-output"><code>[1] 44</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb74-1"><a href="differential-abundance-analysis.html#cb74-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb74-2"><a href="differential-abundance-analysis.html#cb74-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_negative<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-3"><a href="differential-abundance-analysis.html#cb74-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-4"><a href="differential-abundance-analysis.html#cb74-4" tabindex="-1"></a>  <span class="fu">left_join</span>(., genome_metadata, <span class="at">by=</span><span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-5"><a href="differential-abundance-analysis.html#cb74-5" tabindex="-1"></a>  <span class="fu">count</span>(phylum, <span class="at">name =</span> <span class="st">&quot;sample_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb74-6"><a href="differential-abundance-analysis.html#cb74-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sample_count)) </span></code></pre></div>
+<pre class="script-output"><code>                phylum sample_count
+1      p__Bacteroidota           18
+2    p__Pseudomonadota           16
+3   p__Patescibacteria            3
+4 p__Verrucomicrobiota            3
+5   p__Acidobacteriota            1
+6    p__Actinomycetota            1
+7       p__Bacillota_A            1
+8      p__Nitrospirota            1</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb76-1"><a href="differential-abundance-analysis.html#cb76-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb76-2"><a href="differential-abundance-analysis.html#cb76-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_negative<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="differential-abundance-analysis.html#cb76-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-4"><a href="differential-abundance-analysis.html#cb76-4" tabindex="-1"></a>  <span class="fu">left_join</span>(., genome_metadata, <span class="at">by=</span><span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-5"><a href="differential-abundance-analysis.html#cb76-5" tabindex="-1"></a>  <span class="fu">select</span>(family, genus, species) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-6"><a href="differential-abundance-analysis.html#cb76-6" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_yof8jbg2lhtihmu5673e(i, j, css_id) {
+          var table = document.getElementById("tinytable_yof8jbg2lhtihmu5673e");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_yof8jbg2lhtihmu5673e');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_yof8jbg2lhtihmu5673e(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_yof8jbg2lhtihmu5673e");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_gnyhaw77lbjw52zzayws',}, 
+          { positions: [ { i: 44, j: 0 }, { i: 44, j: 1 }, { i: 44, j: 2 },  ], css_id: 'tinytable_css_0tri9kcbsuw9lcqhmu1n',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_yof8jbg2lhtihmu5673e(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+
+.table td.tinytable_css_gnyhaw77lbjw52zzayws, .table th.tinytable_css_gnyhaw77lbjw52zzayws { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_0tri9kcbsuw9lcqhmu1n, .table th.tinytable_css_0tri9kcbsuw9lcqhmu1n { border-bottom: solid #d3d8dc 0.1em; }
+</style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_yof8jbg2lhtihmu5673e" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">family</th>
+                <th scope="col">genus</th>
+                <th scope="col">species</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>f__Chthoniobacteraceae</td>
+                  <td>g__CAIURC01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Akkermansiaceae</td>
+                  <td>g__Luteolibacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Opitutaceae</td>
+                  <td>g__JADKHC01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Cyclobacteriaceae</td>
+                  <td>g__ELB16-189</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Spirosomaceae</td>
+                  <td>g__Spirosoma</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Marinilabiliaceae</td>
+                  <td>g__JAGPHP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Marinilabiliaceae</td>
+                  <td>g__JAGPHP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Marinilabiliaceae</td>
+                  <td>g__JAGPHP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Marinilabiliaceae</td>
+                  <td>g__JAGPHP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Marinilabiliaceae</td>
+                  <td>g__JAGPHP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Prolixibacteraceae</td>
+                  <td>g__UBA6024</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__JAAUTT01</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__JAAUTT01</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Paludibacteraceae</td>
+                  <td>g__Paludibacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Paludibacteraceae</td>
+                  <td>g__Paludibacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Crocinitomicaceae</td>
+                  <td>g__Fluviicola</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Flavobacteriaceae</td>
+                  <td>g__Flavobacterium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Flavobacteriaceae</td>
+                  <td>g__Flavobacterium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__B-17BO</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingobacteriaceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Saprospiraceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Holophagaceae</td>
+                  <td>g__Holophaga</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Beijerinckiaceae</td>
+                  <td>g__CAIYZJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Beijerinckiaceae</td>
+                  <td>g__CAIYZJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Beijerinckiaceae</td>
+                  <td>g__CAIYZJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Aestuariivirgaceae</td>
+                  <td>g__CABJBCQ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Aestuariivirgaceae</td>
+                  <td>g__CABJBCQ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Sphingomonas_O</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Sphingomonas_O</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Sphingomonas_O</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Sphingomonas_O</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Chromatiaceae</td>
+                  <td>g__Thiodictyon</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Moraxellaceae</td>
+                  <td>g__Aquirhabdus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Azonexus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Rhodoferax_C</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Rhodoferax_C</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Variovorax</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA9217</td>
+                  <td>g__JALNZF01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA6164</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA2023</td>
+                  <td>g__JABFSX01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Absconditicoccaceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Demequinaceae</td>
+                  <td>g__Demequina</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Caloramatoraceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+<p><strong><em>Structural zeros in Bd_positive</em></strong></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb77-1"><a href="differential-abundance-analysis.html#cb77-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="differential-abundance-analysis.html#cb77-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_positive<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-3"><a href="differential-abundance-analysis.html#cb77-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<pre class="script-output"><code>[1] 58</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb79-1"><a href="differential-abundance-analysis.html#cb79-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb79-2"><a href="differential-abundance-analysis.html#cb79-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_positive<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-3"><a href="differential-abundance-analysis.html#cb79-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-4"><a href="differential-abundance-analysis.html#cb79-4" tabindex="-1"></a>  <span class="fu">left_join</span>(., genome_metadata, <span class="at">by=</span><span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb79-5"><a href="differential-abundance-analysis.html#cb79-5" tabindex="-1"></a>  <span class="fu">count</span>(phylum, <span class="at">name =</span> <span class="st">&quot;sample_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-6"><a href="differential-abundance-analysis.html#cb79-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sample_count)) </span></code></pre></div>
+<pre class="script-output"><code>                  phylum sample_count
+1      p__Pseudomonadota           31
+2        p__Bacteroidota           14
+3     p__Patescibacteria            5
+4      p__Actinomycetota            2
+5           p__Bacillota            1
+6    p__Bdellovibrionota            1
+7  p__Desulfobacterota_F            1
+8     p__Gemmatimonadota            1
+9      p__Halobacteriota            1
+10  p__Verrucomicrobiota            1</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb81-1"><a href="differential-abundance-analysis.html#cb81-1" tabindex="-1"></a>structural_zero_groups <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a href="differential-abundance-analysis.html#cb81-2" tabindex="-1"></a>  <span class="fu">filter</span>(Bd_positive<span class="sc">==</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-3"><a href="differential-abundance-analysis.html#cb81-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-4"><a href="differential-abundance-analysis.html#cb81-4" tabindex="-1"></a>  <span class="fu">left_join</span>(., genome_metadata, <span class="at">by=</span><span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-5"><a href="differential-abundance-analysis.html#cb81-5" tabindex="-1"></a>  <span class="fu">select</span>(family, genus, species) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-6"><a href="differential-abundance-analysis.html#cb81-6" tabindex="-1"></a>  <span class="fu">tt</span>()</span></code></pre></div>
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_l9niccqmeti9cw5lywk3(i, j, css_id) {
+          var table = document.getElementById("tinytable_l9niccqmeti9cw5lywk3");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_l9niccqmeti9cw5lywk3');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_l9niccqmeti9cw5lywk3(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_l9niccqmeti9cw5lywk3");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_dqgq9gdleqca7fbmvezc',}, 
+          { positions: [ { i: 58, j: 0 }, { i: 58, j: 1 }, { i: 58, j: 2 },  ], css_id: 'tinytable_css_diw3ndu9ccqezqddhlcj',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_l9niccqmeti9cw5lywk3(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+
+.table td.tinytable_css_dqgq9gdleqca7fbmvezc, .table th.tinytable_css_dqgq9gdleqca7fbmvezc { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_diw3ndu9ccqezqddhlcj, .table th.tinytable_css_diw3ndu9ccqezqddhlcj { border-bottom: solid #d3d8dc 0.1em; }
+</style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_l9niccqmeti9cw5lywk3" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">family</th>
+                <th scope="col">genus</th>
+                <th scope="col">species</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>f__Methanoregulaceae</td>
+                  <td>g__Methanoregula</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Akkermansiaceae</td>
+                  <td>g__Luteolibacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Spirosomaceae</td>
+                  <td>g__Spirosoma</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Spirosomaceae</td>
+                  <td>g__Spirosoma</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Spirosomaceae</td>
+                  <td>g__JALRIJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Spirosomaceae</td>
+                  <td>g__JALRIJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__NBLH01</td>
+                  <td>g__NBLH01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Prolixibacteraceae</td>
+                  <td>g__UBA6024</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__VadinHA17</td>
+                  <td>g__SR-FBR-E99</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA7332</td>
+                  <td>g__UBA7332</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Crocinitomicaceae</td>
+                  <td>g__Fluviicola</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Crocinitomicaceae</td>
+                  <td>g__Fluviicola</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Flavobacteriaceae</td>
+                  <td>g__Flavobacterium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Flavobacteriaceae</td>
+                  <td>g__Flavobacterium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Chitinophagaceae</td>
+                  <td>g__Ferruginibacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Ignavibacteriaceae</td>
+                  <td>g__Fen-1301</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Gemmatimonadaceae</td>
+                  <td>g__UBA4720</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodobacteraceae</td>
+                  <td>g__Stagnihabitans</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodobacteraceae</td>
+                  <td>g__Gemmobacter_B</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Novosphingobium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Sphingomonadaceae</td>
+                  <td>g__Novosphingobium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Methylomonadaceae</td>
+                  <td>g__CAIQWF01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Methylomonadaceae</td>
+                  <td>g__Methylomonas</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Thiotrichaceae</td>
+                  <td>g__Thiothrix</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Diplorickettsiaceae</td>
+                  <td>g__Rickettsiella_B</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Azonexus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Azonexus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Azonexus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Azonexus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__Rhodocyclus</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Rhodocyclaceae</td>
+                  <td>g__CAJBIL01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae</td>
+                  <td>g__Polynucleobacter</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae</td>
+                  <td>g__JACPVY01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae</td>
+                  <td>g__Telluria</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae</td>
+                  <td>g__CAILRJ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Polaromonas</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__JADJBS01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__JADJBS01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__JADJBS01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__JADJBS01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__JADJDQ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Leptothrix</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Ideonella</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Ideonella</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Burkholderiaceae_B</td>
+                  <td>g__Ideonella</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Usitatibacteraceae</td>
+                  <td>g__JAEUMZ01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Methylophilaceae</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA11063</td>
+                  <td>g__Aquella</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Pseudopelobacteraceae</td>
+                  <td>g__JACRCG01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Silvanigrellaceae</td>
+                  <td>g__Silvanigrella</td>
+                  <td>s__Silvanigrella cienkowskii</td>
+                </tr>
+                <tr>
+                  <td>f__SC72</td>
+                  <td>g__UBA5232</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__GWC2-37-73</td>
+                  <td>g__UBA12068</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__CAIMLA01</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA2023</td>
+                  <td>g__</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__UBA2023</td>
+                  <td>g__JANJWP01</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Microbacteriaceae</td>
+                  <td>g__Aurantimicrobium</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__S36-B12</td>
+                  <td>g__UBA11398</td>
+                  <td>s__</td>
+                </tr>
+                <tr>
+                  <td>f__Erysipelotrichaceae</td>
+                  <td>g__UBA2212</td>
+                  <td>s__</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+<div id="enriched-mags" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Enriched MAGs<a href="differential-abundance-analysis.html#enriched-mags" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb82-1"><a href="differential-abundance-analysis.html#cb82-1" tabindex="-1"></a>taxonomy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(physeq_all<span class="sc">@</span>tax_table) <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="differential-abundance-analysis.html#cb82-2" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(., <span class="st">&quot;taxon&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="differential-abundance-analysis.html#cb82-3" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(phylum, order, family, genus, species), <span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">&quot;[dpcofgs]__&quot;</span>, <span class="st">&quot;&quot;</span>))</span>
+<span id="cb82-4"><a href="differential-abundance-analysis.html#cb82-4" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="differential-abundance-analysis.html#cb82-5" tabindex="-1"></a>ancombc_rand_table_mag_status <span class="ot">&lt;-</span> ancom_rand_output_mag<span class="sc">$</span>res <span class="sc">%&gt;%</span></span>
+<span id="cb82-6"><a href="differential-abundance-analysis.html#cb82-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxon, lfc_Bd_statusBd_positive, q_Bd_statusBd_positive) <span class="sc">%&gt;%</span></span>
+<span id="cb82-7"><a href="differential-abundance-analysis.html#cb82-7" tabindex="-1"></a>  <span class="fu">filter</span>(q_Bd_statusBd_positive <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb82-8"><a href="differential-abundance-analysis.html#cb82-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(q_Bd_statusBd_positive) <span class="sc">%&gt;%</span></span>
+<span id="cb82-9"><a href="differential-abundance-analysis.html#cb82-9" tabindex="-1"></a>  <span class="fu">left_join</span>(taxonomy, <span class="at">by =</span> <span class="fu">join_by</span>(taxon <span class="sc">==</span> taxon)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-10"><a href="differential-abundance-analysis.html#cb82-10" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(phylum, species), <span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">&quot;[dpcofgs]__&quot;</span>, <span class="st">&quot;&quot;</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb82-11"><a href="differential-abundance-analysis.html#cb82-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(lfc_Bd_statusBd_positive)</span>
+<span id="cb82-12"><a href="differential-abundance-analysis.html#cb82-12" tabindex="-1"></a>  </span>
+<span id="cb82-13"><a href="differential-abundance-analysis.html#cb82-13" tabindex="-1"></a>colors_alphabetic <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb82-14"><a href="differential-abundance-analysis.html#cb82-14" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(phylum), <span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">&quot;[dpcofgs]__&quot;</span>, <span class="st">&quot;&quot;</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb82-15"><a href="differential-abundance-analysis.html#cb82-15" tabindex="-1"></a>  <span class="fu">right_join</span>(taxonomy, <span class="at">by=</span><span class="fu">join_by</span>(phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-16"><a href="differential-abundance-analysis.html#cb82-16" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(phylum, colors) <span class="sc">%&gt;%</span></span>
+<span id="cb82-17"><a href="differential-abundance-analysis.html#cb82-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">colors =</span> <span class="fu">str_c</span>(colors, <span class="st">&quot;80&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-18"><a href="differential-abundance-analysis.html#cb82-18" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb82-19"><a href="differential-abundance-analysis.html#cb82-19" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(phylum)</span>
+<span id="cb82-20"><a href="differential-abundance-analysis.html#cb82-20" tabindex="-1"></a></span>
+<span id="cb82-21"><a href="differential-abundance-analysis.html#cb82-21" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">unique</span>(ancombc_rand_table_mag_status<span class="sc">$</span>phylum))</span>
+<span id="cb82-22"><a href="differential-abundance-analysis.html#cb82-22" tabindex="-1"></a>  </span>
+<span id="cb82-23"><a href="differential-abundance-analysis.html#cb82-23" tabindex="-1"></a><span class="fu">colnames</span>(tax_table)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;phylum&quot;</span></span>
+<span id="cb82-24"><a href="differential-abundance-analysis.html#cb82-24" tabindex="-1"></a>tax_color <span class="ot">&lt;-</span> <span class="fu">merge</span>(tax_table, colors_alphabetic, <span class="at">by=</span><span class="st">&quot;phylum&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb82-25"><a href="differential-abundance-analysis.html#cb82-25" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(phylum) <span class="sc">%&gt;%</span></span>
+<span id="cb82-26"><a href="differential-abundance-analysis.html#cb82-26" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(colors) <span class="sc">%&gt;%</span></span>
+<span id="cb82-27"><a href="differential-abundance-analysis.html#cb82-27" tabindex="-1"></a>    <span class="fu">pull</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb83-1"><a href="differential-abundance-analysis.html#cb83-1" tabindex="-1"></a>ancombc_rand_table_mag_status <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="differential-abundance-analysis.html#cb83-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genome=</span><span class="fu">factor</span>(taxon,<span class="at">levels=</span>ancombc_rand_table_mag_status<span class="sc">$</span>taxon)) <span class="sc">%&gt;%</span></span>
+<span id="cb83-3"><a href="differential-abundance-analysis.html#cb83-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span>lfc_Bd_statusBd_positive, <span class="at">y=</span>forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(genome,lfc_Bd_statusBd_positive), <span class="at">fill=</span>phylum)) <span class="sc">+</span></span>
+<span id="cb83-4"><a href="differential-abundance-analysis.html#cb83-4" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb83-5"><a href="differential-abundance-analysis.html#cb83-5" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span>tax_color) <span class="sc">+</span> </span>
+<span id="cb83-6"><a href="differential-abundance-analysis.html#cb83-6" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb83-7"><a href="differential-abundance-analysis.html#cb83-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb83-8"><a href="differential-abundance-analysis.html#cb83-8" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb83-9"><a href="differential-abundance-analysis.html#cb83-9" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb83-10"><a href="differential-abundance-analysis.html#cb83-10" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb83-11"><a href="differential-abundance-analysis.html#cb83-11" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb83-12"><a href="differential-abundance-analysis.html#cb83-12" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb83-13"><a href="differential-abundance-analysis.html#cb83-13" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb83-14"><a href="differential-abundance-analysis.html#cb83-14" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>, <span class="at">legend.box =</span> <span class="st">&quot;vertical&quot;</span>)<span class="sc">+</span></span>
+<span id="cb83-15"><a href="differential-abundance-analysis.html#cb83-15" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb83-16"><a href="differential-abundance-analysis.html#cb83-16" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Enriched in negatives (− LFC) vs Enriched in positives (+ LFC)&quot;</span>,</span>
+<span id="cb83-17"><a href="differential-abundance-analysis.html#cb83-17" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;log2FoldChange&quot;</span>,</span>
+<span id="cb83-18"><a href="differential-abundance-analysis.html#cb83-18" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Genome&quot;</span>,</span>
+<span id="cb83-19"><a href="differential-abundance-analysis.html#cb83-19" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;Phylum&quot;</span></span>
+<span id="cb83-20"><a href="differential-abundance-analysis.html#cb83-20" tabindex="-1"></a>    )</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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dvWrX33R9N74xjem73znO+l+97tfesQjHrHo9m3eoK33CbP63nKPUP10zMq9elRzdbnXlc5qKpG21/VRlrOu7+uq6yPv6vtQWEVTvnhW/ZRvlDu5yGv51zTMvffeu3de+cM9tew95CEP6R3n6KOPntpxpp3wJZdc0juPuCb++te/LuuQs3JfVubstGyBk046aeS+ynwkzYIrXvrSl3Y/czko0bniiisW3HZWK4866qje98B1r3vdiQ6bA0m9tJZbz+Tg/Vh5yIGezitf+crOjW50owWPmX8I6Bx66KGdHHRbMN2vfvWr3XTWX3/9Tv6DZ8Ft276yrfcJs/reco9Q/YTMyr16VHNLcVff13u9tL2uD61Z1fd11/WRd/V9KKyeSRewVRTsc6oECCxP4Ac/+EG6173ulfbdd9/lJWCvoQLf//7306te9aruute//vVp7bVVSUOhxlj4kY98JN385jdPhxxySIpfpxeaooXTc5/73JQDRenUU08dueld73rX9NCHPrTbOuuJT3ziyO2sIECAQFsE1Pf1l6S6vj7TadT1kTv1fX1ltBJS0gVsSClFN6511llnyBqLCBBYbQIXXHBBuvWtb91t2rveeuutttOf2vnm1j7p8Y9/fNf1gQ98YNp5552ndqwmJRxdua5xjWssKUu5FdLI7fPvVenZz352igBaebrzne+cdt11126QZ/PNN09xHf/0pz9N73//+1P8gRPT7373u7T77runL3zhC+l2t7tdeffe+9e97nXp5JNPTp/97GfTcccdlx73uMf11q3mN+4TVnPpO/e2Cqjv6y/Z1VrXh2Sd9f206/rIr/o+FFbHJAA0pJwjuhrj2LRhOvDAA1P8cRXTHe5whzac0oo4B+4ropjGymT06Y5/i03KfDGh6vo3velN6fTTT+8ufNnLXlZd2eK5t7/97WmnnXaq7Qyj3345+BOBiZi/xz3uMfQYL3zhC9P73ve+dMABB6S//e1v6S9/+Ut3jJ9vfvObaautthrYJ8YM2m+//dKxxx6bDjrooG7AaKGA1EACLV3QlvsE31vzuUC5N9NdfV9/uazWuj4k66zvp13XR37V96GwSqbV09tt9Jn29+3Pg2aO3tiaoQL69w9lsbAFAuU+3bkFUAvOaP6nEGNrxdg6uZrt7LbbbvPPUF8OpjkG0GmnndZ3tOXPnnXWWZ3cWrXr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m5UlEF0NisG3Y0DuaHZsap5AdM/MT3/rZiwGmI4WeyYCBAgQIDCOgLp+HKVmbKO+b0Y5zCIXxgCahbJjECCwqMAjH/nI9IEPfGDR7WKDGD/mPe95z0SDOY91IBtNVSCeWhUDgP75z39O5QFHp3pQiY8tEIOoR1e9s846Kz3mMY9J0V3PRIBAewWMAdTesp3nmanr56k/3rHV9+M5tWUrLYDaUpLOg8AKF3jf+97XffpIPHp21BSPnz7mmGPSxz72McGfUUgraHkMLHzkkUd2c/yyl70sxRPdTM0RiCBrBH8222yzFC3zTAQItF8gnvg6z6e+tl949Z2hur75Za6+b34Z1ZlDLYDq1JQWAQK1CMSjV+Px7fEvBn6OR1hvvfXWacstt6wlfYk0S+Dd7353uuyyy9Iuu+yS4hHDpmYIRKD1/PPPTzvuuGPaYYcdmpEpuSBAgACBFSmgrm9usanvm1s208iZANA0VKVJgAABAgQIECBAgAABAgQIEGiQgC5gDSoMWSFAgAABAgQIECBAgAABAgQITENAAGgaqtIkQIAAAQIECBAgQIAAAQIECDRIQACoQYUhKwQIECBAgAABAgQIECBAgACBaQgIAE1DVZoECBAgQIAAAQIECBAgQIAAgQYJCAA1qDBkhQABAgQIECBAgAABAgQIECAwDQEBoGmoSpMAAQIECBAgQIAAAQIECBAg0CABAaAGFYasECBAgAABAgQIECBAgAABAgSmISAANA1VaRIgQIAAAQIECBAgQIAAAQIEGiQgANSgwpAVAgQIECBAgAABAgQIECBAgMA0BASApqEqTQIECBAgQIAAAQIECBAgQIBAgwQEgBpUGLJCgAABAgQIECBAgAABAgQIEJiGgADQNFSlSYAAAQIECBAgQIAAAQIECBBokMCaBuVlplk5//zz00UXXdQ95tZbb53WW2+9mR7fwQgQIECAAAECBAgQIECAAAECsxJYtS2ADjnkkHTLW96y++873/nOrLwdhwABAgQIECBAgAABAgQIECAwc4FVGwCaubQDEiBAgAABAgQIECBAgAABAgTmJCAANCd4hyVAgAABAgQIECBAgAABAgQIzEpAAGhW0o5DgAABAgQIECBAgAABAgQIEJiTgADQnOAdlgABAgQIECBAgAABAgQIECAwKwEBoFlJOw4BAgQIECBAgAABAgQIECBAYE4CAkBzgndYAgQIECBAgAABAgQIECBAgMCsBASAZiXtOAQIECBAgAABAgQIECBAgACBOQkIAM0J3mEJECBAgAABAgQIECBAgAABArMSEACalbTjECBAgAABAgQIECBAgAABAgTmJCAANCd4hyVAgAABAgQIECBAgAABAgQIzEpAAGhW0o5DgAABAgQIECBAgAABAgQIEJiTgADQnOAdlgABAgQIECBAgAABAgQIECAwKwEBoFlJOw4BAgQIECBAgAABAgQIECBAYE4CAkBzgndYAgQIECBAgAABAgQIECBAgMCsBASAZiXtOAQIECBAgAABAgQIECBAgACBOQkIAM0J3mEJECBAgAABAgQIECBAgAABArMSEACalbTjECBAgAABAgQIECBAgAABAgTmJCAANCd4hyVAgAABAgQIECBAgAABAgQIzEpAAGhW0o5DgAABAgQIECBAgAABAgQIEJiTwJo5HddhCRAg0GqBC894davPz8kRIECAwPIENrn9wcvb0V4ECBAgQGBCAS2AJgS0OwECBAgQIECAAAECBAgQIECg6QICQE0vIfkjQIAAAQIECBAgQIAAAQIECEwoIAA0IaDdCRAgQIAAAQIECBAgQIAAAQJNFxAAanoJyR8BAgQIECBAgAABAgQIECBAYEIBAaAJAe1OgAABAgQIECBAgAABAgQIEGi6gABQ00tI/ggQIECAAAECBAgQIECAAAECEwoIAE0IaHcCBAgQIECAAAECBAgQIECAQNMFBICaXkLyR4AAAQIECBAgQIAAAQIECBCYUEAAaEJAuxMgQIAAAQIECBAgQIAAAQIEmi4gANT0EpI/AgQIECBAgAABAgQIECBAgMCEAgJAEwLanQABAgQIECBAgAABAgQIECDQdAEBoKaXkPwRIECAAAECBAgQIECAAAECBCYUEACaENDuBAgQIECAAAECBAgQIECAAIGmCwgANb2E5I8AAQIECBAgQIAAAQIECBAgMKGAANCEgHYnQIAAAQIECBAgQIAAAQIECDRdQACo6SUkfwQIECBAgAABAgQIECBAgACBCQUEgCYEtDsBAgQIECBAgAABAgQIECBAoOkCAkBNLyH5I0CAAAECBAgQIECAAAECBAhMKCAANCGg3QkQIECAAAECBAgQIECAAAECTRcQAGp6CckfAQIECBAgQIAAAQIECBAgQGBCAQGgCQHtToAAAQIECBAgQIAAAQIECBBouoAAUNNLSP4IECBAgAABAgQIECBAgAABAhMKCABNCGh3AgQIECBAgAABAgQIECBAgEDTBQSAml5C8keAAAECBAgQIECAAAECBAgQmFBAAGhCQLsTIECAAAECBAgQIECAAAECBJouIADU9BKSPwIECBAgQIAAAQIECBAgQIDAhAICQBMC2p0AAQIECBAgQIAAAQIECBAg0HQBAaCml5D8ESBAgAABAgQIECBAgAABAgQmFBAAmhDQ7gQIECBAgAABAgQIECBAgACBpgsIADW9hOSPAAECBAgQIECAAAECBAgQIDChgADQhIB2J0CAAAECBAgQIECAAAECBAg0XUAAqOklJH8ECBAgQIAAAQIECBAgQIAAgQkFBIAmBLQ7AQIECBAgQIAAAQIECBAgQKDpAgJATS8h+SNAgAABAgQIECBAgAABAgQITCggADQhoN0JECBAgAABAgQIECBAgAABAk0XEABqegnJHwECBAgQIECAAAECBAgQIEBgQgEBoAkB7U6AAAECBAgQIECAAAECBAgQaLqAAFDTS0j+CBAgQIAAAQIECBAgQIAAAQITCggATQhodwIECBAgQIAAAQIECBAgQIBA0wUEgJpeQvJHgAABAgQIECBAgAABAgQIEJhQQABoQkC7EyBAgAABAgQIECBAgAABAgSaLiAA1PQSkj8CBAgQIECAAAECBAgQIECAwIQCAkATAtqdAAECBAgQIECAAAECBAgQINB0AQGgppeQ/BEgQIAAAQIECBAgQIAAAQIEJhQQAJoQ0O4ECBAgQIAAAQIECBAgQIAAgaYLCAA1vYTkjwABAgQIECBAgAABAgQIECAwoYAA0ISAdidAgAABAgQIECBAgAABAgQINF1AAKjpJSR/BAgQIECAAAECBAgQIECAAIEJBQSAJgS0OwECBAgQIECAAAECBAgQIECg6QICQE0vIfkjQIAAAQIECBAgQIAAAQIECEwoIAA0IaDdCRAgQIAAAQIECBAgQIAAAQJNFxAAanoJyR8BAgQIECBAgAABAgQIECBAYEIBAaAJAe1OgAABAgQIECBAgAABAgQIEGi6gABQ00tI/ggQIECAAAECBAgQIECAAAECEwoIAE0IaHcCBAgQIECAAAECBAgQIECAQNMFBICaXkLyR4AAAQIECBAgQIAAAQIECBCYUEAAaEJAuxMgQIAAAQIECBAgQIAAAQIEmi4gANT0EpI/AgQIECBAgAABAgQIECBAgMCEAgJAEwLanQABAgQIECBAgAABAgQIECDQdIE1Tc/gpPm78sor0xVXXDGQTCw3ESBAgAABAgQIECBAgAABAgRWg0DrA0BvfvOb01FHHTW0LLfccst0zjnnDF1nIQECBAgQIECAAAECBAgQIECgLQK6gLWlJJ0HAQIECBAgQIAAAQIECBAgQGCEQOtbAG288cZpm222GTj98847L1188cUDyy0gQIAAAQIECBAgQIAAAQIECLRNoPUBoH322SfFv/5p//33T8cdd1z/YvMECBAgQIAAAQIECBAgQIAAgdYJ6ALWuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKCABVPcwRIECAAAECBAgQIECAAAECBFonIADUuiJ1QgQIECBAgAABAgQIECBAgACBqoAAUNXDHAECBAgQIECAAAECBAgQIECgdQICQK0rUidEgAABAgQIECBAgAABAgQIEKgKrKnOmiNAgACBOgQ2uf3BdSQjDQIECBAgQIAAAQIECNQioAVQLYwSIUCAAAECBAgQIECAAAECBAg0V0AAqLllI2cECBAgQIAAAQIECBAgQIAAgVoEBIBqYZQIAQIECBAgQIAAAQIECBAgQKC5AgJAzS0bOSNAgAABAgQIECBAgAABAgQI1CIgAFQLo0QIECBAgAABAgQIECBAgAABAs0VEABqbtnIGQECBAgQIECAAAECBAgQIECgFgEBoFoYJUKAAAECBAgQIECAAAECBAgQaK6AAFBzy0bOCBAgQIAAAQIECBAgQIAAAQK1CAgA1cIoEQIECBAgQIAAAQIECBAgQIBAcwUEgJpbNnJGgAABAgQIECBAgAABAgQIEKhFQACoFkaJECBAgAABAgQIECBAgAABAgSaKyAA1NyykTMCBAgQIECAAAECBAgQIECAQC0CAkC1MEqEAAECBAgQIECAAAECBAgQINBcgTXNzZqcESBAYOUKXHjGq1du5uWcAAECBCYS2OT2B0+0v50JECBAgMA0BLQAmoaqNAkQIECAAAECBAgQIECAAAECDRIQAGpQYcgKAQIECBAgQIAAAQIECBAgQGAaAgJA01CVJgECBAgQIECAAAECBAgQIECgQQICQA0qDFkhQIAAAQIECBAgQIAAAQIECExDQABoGqrSJECAAAECBAgQIECAAAECBAg0SEAAqEGFISsECBAgQIAAAQIECBAgQIAAgWkICABNQ1WaBAgQIECAAAECBAgQIECAAIEGCQgANagwZIUAAQIECBAgQIAAAQIECBAgMA0BAaBpqEqTAAECBAgQIECAAAECBAgQINAgAQGgBhWGrBAgQIAAAQIECBAgQIAAAQIEpiEgADQNVWkSIECAAAECBAgQIECAAAECBBokIADUoMKQFQIECBAgQIAAAQIECBAgQIDANAQEgKahKk0CBAgQIECAAAECBAgQIECAQIMEBIAaVBiyQoAAAQIECBAgQIAAAQIECBCYhoAA0DRUpUmAAAECBAgQIECAAAECBAgQaJCAAFCDCkNWCBAgQIAAAQIECBAgQIAAAQLTEBAAmoaqNAkQIECAAAECBAgQIECAAAECDRIQAGpQYcgKAQIECBAgQIAAAQIECBAgQGAaAgJA01CVJgECBAgQIECAAAECBAgQIECgQQICQA0qDFkhQIAAAQIECBAgQIAAAQIECExDQABoGqrSJECAAAECBAgQIECAAAECBAg0SEAAqEGFISsECBAgQIAAAQIECBAgQIAAgWkICABNQ1WaBAgQIECAAAECBAgQIECAAIEGCQgANagwZIUAAQIECBAgQIAAAQIECBAgMA0BAaBpqEqTAAECBAgQIECAAAECBAgQINAgAQGgBhWGrBAgQIAAAQIECBAgQIAAAQIEpiEgADQNVWkSIECAAAECBAgQIECAAAECBBokIADUoMKQFQIECBAgQIAAAQIECBAgQIDANAQEgKahKk0CBAgQIECAAAECBAgQIECAQIMEBIAaVBiyQoAAAQIECBAgQIAAAQIECBCYhoAA0DRUpUmAAAECBAgQIECAAAECBAgQaJCAAFCDCkNWCBAgQIAAAQIECBAgQIAAAQLTEBAAmoaqNAkQIECAAAECBAgQIECAAAECDRIQAGpQYcgKAQIECBAgQIAAAQIECBAgQGAaAgJA01CVJgECBAgQIECAAAECBAgQIECgQQICQA0qDFkhQIAAAQIECBAgQIAAAQIECExDQABoGqrSJECAAAECBAgQIECAAAECBAg0SEAAqEGFISsECBAgQIAAAQIECBAgQIAAgWkICABNQ1WaBAgQIECAAAECBAgQIECAAIEGCQgANagwZIUAAQIECBD2sbYeAABAAElEQVQgQIAAAQIECBAgMA0BAaBpqEqTAAECBAgQIECAAAECBAgQINAgAQGgBhWGrBAgQIAAAQIECBAgQIAAAQIEpiEgADQNVWkSIECAAAECBAgQIECAAAECBBokIADUoMKQFQIECBAgQIAAAQIECBAgQIDANAQEgKahKk0CBAgQIECAAAECBAgQIECAQIMEBIAaVBiyQoAAAQIECBAgQIAAAQIECBCYhoAA0DRUpUmAAAECBAgQIECAAAECBAgQaJCAAFCDCkNWCBAgQIAAAQIECBAgQIAAAQLTEBAAmoaqNAkQIECAAAECBAgQIECAAAECDRIQAGpQYcgKAQIECBAgQIAAAQIECBAgQGAaAgJA01CVJgECBAgQIECAAAECBAgQIECgQQICQA0qDFkhQIAAAQIECBAgQIAAAQIECExDQABoGqrSJECAAAECBAgQIECAAAECBAg0SEAAqEGFISsECBAgQIAAAQIECBAgQIAAgWkICABNQ1WaBAgQIECAAAECBAgQIECAAIEGCQgANagwZIUAAQIECBAgQIAAAQIECBAgMA0BAaBpqEqTAAECBAgQIECAAAECBAgQINAgAQGgBhWGrBAgQIAAAQIECBAgQIAAAQIEpiEgADQNVWkSIECAAAECBAgQIECAAAECBBoksKZBeZlKVs4+++wU//qn3/72t2mDDTZIl1xySf8q8wQIECBAgAABAgQIECBAgACBVgm0PgD0hS98IR111FFDC+3a1762ANBQGQsJECBAgAABAgQIECBAgACBNgnoAtam0nQuBAgQIECAAAECBAgQIECAAIEhAq1vAXTXu941rb/++gOnfsIJJ6TTTjttYLkFBAgQIECAAAECBAgQIECAAIG2CbQ+AHTb2942xb/+6dRTT00XX3xx/2LzBAgQIECAAAECBAgQIECAAIHWCegC1roidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCggAVT3MESBAgAABAgQIECBAgAABAgRaJyAA1LoidUIECBAgQIAAAQIECBAgQIAAgaqAAFDVwxwBAgQIECBAgAABAgQIECBAoHUCAkCtK1InRIAAAQIECBAgQIAAAQIECBCoCqypzpojQIAAgToENrn9wXUkIw0CBAgQIECAAAECBAjUIqAFUC2MEiFAgAABAgQIECBAgAABAgQINFdAAKi5ZSNnBAgQIECAAAECBAgQIECAAIFaBASAamGUCAECBAgQIECAAAECBAgQIECguQICQM0tGzkjQIAAAQIECBAgQIAAAQIECNQiIABUC6NECBAgQIAAAQIECBAgQIAAAQLNFRAAam7ZyBkBAgQIECBAgAABAgQIECBAoBYBAaBaGCVCgAABAgQIECBAgAABAgQIEGiugABQc8tGzggQIECAAAECBAgQIECAAAECtQgIANXCKBECBAgQIECAAAECBAgQIECAQHMFBICaWzZyRoAAAQIECBAgQIAAAQIECBCoRUAAqBZGiRAgQIAAAQIECBAgQIAAAQIEmisgANTcspEzAgQIECBAgAABAgQIECBAgEAtAgJAtTBKhAABAgQIECBAgAABAgQIECDQXIE1zc2anBEgQGDlClx4xqtXbublnAABAgSWLLDJ7Q9e8j52IECAAAECsxTQAmiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4CAkBzQHdIAgQIECBAgAABAgQIECBAgMAsBQSAZqntWAQIECBAgAABAgQIECBAgACBOQgIAM0B3SEJECBAgAABAgQIECBAgAABArMUEACapbZjESBAgAABAgQIECBAgAABAgTmICAANAd0hyRAgAABAgQIECBAgAABAgQIzFJAAGiW2o5FgAABAgQIECBAgAABAgQIEJiDgADQHNAdkgABAgQIECBAgAABAgQIECAwSwEBoFlqOxYBAgQIECBAgAABAgQIECBAYA4Ca+ZwzJke8sQTT0wnnXTSwDF/9rOfpU033TRdcMEFA+ssIECAAAECBAgQIECAAAECBAi0SaD1AaDf/va36cwzzxxaZuuss87Q5RYSIECAAAECBAgQIECAAAECBNokoAtYm0rTuRAgQIAAAQIECBAgQIAAAQIEhgi0vgXQE5/4xLTffvsNnPpTn/rUdPzxxw8st4AAAQIECBAgQIAAAQIECBAg0DaB1geAopvXsK5ea9asSZ1Op23l6XwIECBAgAABAgQIECBAgAABAgMCuoANkFhAgAABAgQIECBAgAABAgQIEGiXgABQu8rT2RAgQIAAAQIECBAgQIAAAQIEBgQEgAZILCBAgAABAgQIECBAgAABAgQItEtAAKhd5elsCBAgQIAAAQIECBAgQIAAAQIDAgJAAyQWECBAgAABAgQIECBAgAABAgTaJSAA1K7ydDYECBAgQIAAAQIECBAgQIAAgQEBAaABEgsIECBAgAABAgQIECBAgAABAu0SEABqV3k6GwIECBAgQIAAAQIECBAgQIDAgIAA0ACJBQQIECBAgAABAgQIECBAgACBdgkIALWrPJ0NAQIECBAgQIAAAQIECBAgQGBAQABogMQCAgQIECBAgAABAgQIECBAgEC7BASA2lWezoYAAQIECBAgQIAAAQIECBAgMCAgADRAYgEBAgQIECBAgAABAgQIECBAoF0CAkDtKk9nQ4AAAQIECBAgQIAAAQIECBAYEBAAGiCxgAABAgQIECBAgAABAgQIECDQLgEBoHaVp7MhQIAAAQIECBAgQIAAAQIECAwICAANkFhAgAABAgQIECBAgAABAgQIEGiXgABQu8rT2RAgQIAAAQIECBAgQIAAAQIEBgQEgAZILCBAgAABAgQIECBAgAABAgQItEtAAKhd5elsCBAgQIAAAQIECBAgQIAAAQIDAgJAAyQWECBAgAABAgQIECBAgAABAgTaJSAA1K7ydDYECBAgQIAAAQIECBAgQIAAgQGBNQNLLCBAgAABAgQIECBAgECDBM4444z0whe+cMEcrbXWWmnttddOa9asSeutt17aYIMN0qabbpq23Xbb9OAHPzhtuOGGC+7/la98Jb3qVa+qbBP7vvGNb6wsa8LM1772tfTyl7+8kpVtttkmHXXUUZVlZggQIFAWEAAqa3hPgAABAgQIECBAgEDjBC688MJ0yimnLDtfEfw54IADukGTq1/96kPT+e1vfztwjD//+c9Dt533wt/97ncDeQ0jEwECBBYS0AVsIR3rCBAgQIAAAQIECBBY8QJ/+ctf0hFHHJF22223dPHFF6/483ECBAgQWI6AANBy1OxDgAABAgQIECBAgMCKE4huXnvvvfeKy7cMEyBAoA4BXcDqUJQGAQIECBAgQIAAAQIzF7jVrW6Vrna1q6VOp5OuuOKK9I9//CNdcsklKbpzXX755UPz8+lPfzpFIOjud7/70PUWEiBAoK0CAkBtLVnnRYAAAQIECBAgQKDlAp/4xCfS5ptvPnCWf/3rX7uDN7/2ta9Nw8bxefWrXy0ANKBmAQECbRfQBaztJez8CBAgQIAAAQIECKwygXgK2POf//x09tlnp4022mjg7L/1rW8NLLOAAAECbRfQAqjtJez8CBAgQIAAAQIECKxSgc022yztv//+6cgjj6wIxBOzYmDoxR4NX97poosuSvH49dNOOy2dfvrp6frXv366wx3u0P230047lTftvo9uZuecc05l+XWve9206667Vpb1z/zxj39Mn/zkJ/sXp7322iutu+66A8sXW/CjH/0offOb36xstsUWW6R73OMelWXlmQ9+8IPp73//e3lResADHpCuec1r9pZ96UtfSueee25vPt486lGPSmuttVa68sor03e/+9301a9+NZ166qndtO5617umu93tbul2t7tdWrOm+mdoPNUsvOJf7LfJJpukm9/85ukxj3lMisfbmwgQqEeg+smrJ02pECBAgAABAgQIECBAoBECW2+99dB8nH/++WMHgD7zmc+kRz7ykSmCQOXpPe95T3f2YQ97WDr22GPTBhts0Fv9/e9/Pz3lKU/pzceb9ddfP0WwY9Sj6GOb9773velpT3tavO1N2267bXr0ox/dm1/Km1NOOWUgvQc96EELBoAOOOCAboCsfJyzzjqrEgCKp6p9/OMfL2+SHvGIR6Q//elP6SEPeUg3+FNeefLJJ3dnI/AUAa7C4LjjjktPetKTuuM3lbeP96961avSs5/97PS6170urb22ziv9PuYJLFXAp2ipYrYnQIAAAQIECBAgQGDFCESLnWHTta997WGLK8ticOkYR+j+97//QPCnvOGJJ56Ydtxxx27wo1geAaN11lmnmO2+XnrppSnGLVpoOumkkwZW77vvvgPLmrgggl7hEC1/Rk1f/vKX04Mf/OB02WWXpec+97ndFloxePeo6fDDD0/Pe97zRq22nACBJQgIAC0By6YECBAgQIAAAQIECKwcgehOFU/96p/iyWHRzWixKbpOveAFL+h2aVps2x/84Afp7W9/e2+za13rWt1AR2/Bv99E96pRUzy9LLpMlafoUrXc1j/ldGbxPrp4/eIXv1j0UJ/97GfTjW50o3TYYYctum1sEF34fvjDH461rY0IEBgtIAA02sYaAgQIECBAgAABAgRWqMAZZ5yRdthhhxRBoP4pxuEZp0tRtACKKZ40FoNKf+ELX0hf/OIXu0Ghq1zlKv3JpqOOOqoSLHrc4x43sE10f4qWQMOmj3zkI5X9Y5udd945bbnllsM2b9yySy65pJunaOHzrne9K8Vg2294wxuGjl0UXeFiiq5gT37yk9PnPve5FK2D9t577+7y8n9XXHFF+u///u/yIu8JEFiGgDGAloFmFwIECBAgQIAAAQIE5i9w0EEHdcfViZxEN6LoVhTBlWgt8qtf/WpkBp/whCeMXNe/Isb1iTGAtttuu96qCMpsvPHG3fFpegvzmxj0OcYWKh5Nv8suu3TflwdLjjzG2DkPf/jDy7t23w/r/rXffvsNbNfkBTEQ9PHHH9/LYgThYkDp6O41bIoAUYw5VEzRiujHP/5xOvPMM4tF3df++cpKMwQIjCWgBdBYTDYiQIAAAQIECBAgQKBpAtGdKgYRjn8RdPjwhz/cDdYsFPyJoNEee+wx9qm86U1vqgR/ih3/3//7f90nXhXzxWs52BOtjIYFcE444YRi897r73//+24LmN6C/CZaxzz0oQ8tL2r0+xvc4AbprW9960AeY9DpYdPuu+9eCf7ENtHlbbfddhvYPAaXNhEgMJmAANBkfvYmQIAAAQIECBAgQGCFCMTTqQ499NCxcxsBnNhn2LTeeuulTTfddGDVX//618qyxz72sZX5mPnUpz6VLr744sry6P4VXZ3K05577pmucY1rlBc1+n203ik/Ca3I7PWvf/3ibeU1zm/YdL3rXW9gcb/XwAYWECCwqIAA0KJENiBAgAABAgQIECBAYCULxIDPL37xi7uthMYZ+6c4180222zBR8VHEKh/uvzyyyuLttlmm3TXu961suxvf/vbwJg2bej+ddOb3rRynsXMuuuuW7ytvN785jevzBczG264YfG299ofHOut8IYAgbEFjAE0NpUNCRAgQIAAAQIECBBokkA8yr0I6ETXoXi6Vzx6PQIO0Trnhje8Ydppp5263bCGBWsWO5eNNtpowU36H/MeGxcDR5d3jMGg+5/uFd3X9tlnn+5mf/jDH7qDS5f3ie5U9773vcuLZvZ+2GPZh51Xf4bWX3/9/kXd+SiXYdOwQE9sN8x12P6WESCwNAEBoKV52ZoAAQIECBAgQIAAgYYIfPe73+0NuDyNLMUYPAtNRfBpoW1iXTzZ6mlPe1rl6V/xePq//OUv3RZGJ598cvrnP/9ZSSaCQ8OeNFbZaJkzwwI85aT6WzHFugiwLTYt5tW//6iAUf925gkQqEdAF7B6HKVCgAABAgQIECBAgEDLBMYJeoxzyjEuzl577VXZNIIsH/vYx7rLTjzxxMq6mBk2ePTARstcEE/lGjVFIOrKK68ctXrB5eMGxIpElrp9sZ9XAgSWJyAAtDw3exEgQIAAAQIECBAgQGBsgegG1j/F08Di6Vaf//znK6tuc5vbpO23376yrM6ZhVoA/fGPf6zzUNIiQKBBAgJADSoMWSFAgAABAgQIECBAoJ0Cd7/73dONb3zjysmdcsop6V3velfqD8jU2fpnWDerCy64oJKP8swPf/jD8mzv/ThjAPU29oYAgUYKCAA1slhkigABAgQIECBAgACBNglEd7L+R8JHV6xDDjmkcppr1qzpDQ5dWbHMmRgou3/61a9+1W151L88gjxHHHFE/2LzBAi0REAAqCUF6TQIECBAgAABAgQIEGi2QLTs6R/35pJLLqlketddd+0+wayycIKZLbfccmDveAz9k5/85MryGPvnRS96UW9cospKMwQItELAU8BaUYxOggABAgQIECBAgACBpgtEMCYe7f7Zz352ZFbr7P4VB4nxhDbZZJN04YUXVo75gQ98IH3zm99M97vf/dJFF12UPvnJTw5tFVTZyQwBAitaQAugFV18Mk+AAAECBAgQIECAwEoSGDYYdJH/jTbaKD3oQQ8qZmt5jRZHT3rSk4am9bOf/Sy9+c1vTu973/t6wZ9tt902PeABDxi6vYUECKxsAQGglV1+ck+AAAECBAgQIECAwAoS2HPPPdM1r3nNoTmOR8Wvt956Q9dNsjC6dt35zndeNIm73e1u6etf/3raaqutBraNMYxMBAisbAEBoJVdfnJPgAABAgQIECBAgMAKElh33XXTIx7xiKE5rrv7V3GQddZZJ33xi19Mz3/+84cGn6Ll0dOf/vRu17RrXetaxW5eCRBomcBaeaT3TsvOaazT2X///dNxxx3X3fZrX/vaWBHxsRK2EQECBLLAhWe8mgMBAgQIrCKBTW5/8Co6W6c6qUB0yXrb295WSSZa3fz85z9P025pEwNARyufc845p3v8G97whmmnnXaaSsujygmaIUBg7gIGgZ57EcgAAQIECBAgQIAAAQKrReDXv/51euc73zlwuo961KOmHvyJg0YLpHvd614Dx7eAAIH2C+gC1v4ydoYECBAgQIAAAQIECDRE4KUvfWn6+9//PpCbfffdd2CZBQQIEKhTQAugOjWlRYAAAQIECBAgQIAAgX8LxGPWf/KTn6TrXe966dxzz00f/OAH0yc+8YkBn1133TXd7GY3G1huAQECBOoUEACqU1NaBAgQIECAAAECBAgQ+LfAmWeemZ74xCcu6nHIIYcsuo0NCBAgMKmALmCTCtqfAAECBAgQIECAAAECQwS22GKLIUuriw466KAUj183ESBAYNoCWgBNW1j6BAgQIECAAAECBAisSoGFAkBXvepV0zOe8Yx06KGHrkobJ02AwOwFBIBmb+6IBAgQIECAAAECBAisAoF4tPsBBxzQHf/n/PPP7z5qfcstt0y3uMUt0uMf//i02WabrQIFp0iAQFMEBICaUhLyQYAAAQIECBAgQIBAqwTWX3/99La3va1V5+RkCBBYuQLGAFq5ZSfnBAgQIECAAAECBAgQIECAAIGxBLQAGovJRgQIEFiawCa3P3hpO9iaAAECBAgQIECAAAECUxTQAmiKuJImQIAAAQIECBAgQIAAAQIECDRBYG4BoMsvvzz94he/SGeddVYTHOSBAAECBAgQIECAAAECBAgQINBagZkFgH7yk5+k/fffP93mNrdJ17nOddK6666btt566+6yQvf4449PT3nKU1KMkG8iQIAAAQIECBAgQIAAAQIECBCoR2DqAaBf/vKX3SDPdtttl4477rj03e9+N1144YVDc//tb387HX300enGN75xOuaYY4ZuYyEBAgQIECBAgAABAgQIECBAgMDSBKY6CPTXvva1dM973jP94x//GCtXZ599dne7v/3tb+mAAw5IV7nKVdJjH/vYsfa1EQECBAgQIECAAAECBAgQIECAwHCBqbUA+tOf/pT22WefsYM/kb0iABTvO51OevzjH59+9KMfxayJAAECBAgQIECAAAECBAgQIEBgmQJTCwA98YlPTOecc85AttasWdMdA6h/xZ///Od03nnnVRZfeeWV6fDDD68sM0OAAAECBAgQIECAAAECBAgQILA0gakEgH7wgx+kE088sZKT7bffPp1yyinpsssuS0cddVRlXcxc/epXT8cee2zacsstK+ve8573pL/85S+VZWYIECBAgAABAgQIECBAgAABAgTGF5hKACgGei5P22yzTTrttNPSLrvskq561auWV/Xex/LHPe5x6fTTT+8Gg4oV8bj4n/70p8WsVwIECBAgQIAAAQIECBAgQIAAgSUKTGUQ6DPPPLOSjZe85CVp/fXXrywbNbPpppum3XbbLX3oQx/qbRJPEtthhx16894QIECAAAECBAgQILB6BF5/3rkr4mSftdnmKyKfMkmAwOoUmEoLoLPOOquieetb37oyv9jMne50p8omF1xwQWXeDAECBAgQIECAAAECBAgQIECAwPgCUwkAXe1qV6vk4Fe/+lVlfrGZGEOoPF372tcuz3pPgAABAgQIECBAgAABAgQIECCwBIGpdAGL7lonn3xyLxvveMc70u67796bX+hNdPfqH0A6uoWZCBAgsJIEPnXUm1dSduWVAAECBCYU2O3Ap0yYgt0JECBAgMB0BabSAqh/vJ6PfvSj6VnPela65JJLFjybGDz6wQ9+cOWpX+uss066wx3usOB+VhIgQIAAAQIECBAgQIAAAQIECIwWmEoLoJ122ild4xrXSBdffHHvyEceeWR63/vel2J8n7/97W+95TG+z0EHHZS+//3vp89//vPpiiuu6K2LN/e5z33GHkC6sqMZAgQIECBAgAABAgQIECBAgACBrsBUAkCbbLJJOvroo9O+++5bYY5gT7QGKk/nnntuev3rX19e1Hu/9tprp3iCmIkAAQIECBAgQIAAAQIECBAgQGD5AlPpAhbZefSjH5322Wef5ecs7xndxnT/mojQzgQIECBAgAABAgQIECBAgACBNLUAUNi+5S1vSfvtt19aa621lkwdwZ/DDjtsyfvZgQABAgQIECBAgAABAgQIECBAoCow1QDQhhtumN71rnel0047Le24447VIw+Zi0DRHnvskU4//fR0xBFHDNnCIgIECBAgQIAAAQIECBAgQIAAgaUKTGUMoP5M3PGOd0zf+MY3uoGgH/3oR+knP/lJ+vGPf5zOO++8dP3rXz/d6EY3SltvvXXaeeed0y1ucYv+3c0TIECAAAECBAgQIEBg1QvEA3Nuc5vbpN///vddi1133TW9+93vnrlL5OM3v/lN2nzzzQeOHUN4/PrXv04bbbRRir/9TO0TWKj86z7bX/7yl2mrrbaqO9lVm95MAkChG6177nznO3f/rVptJ06AAAECBAgQIECAAIFlCnzmM5/pPj252P39739/es1rXpM222yzYtHUX0899dT0lKc8JR1wwAHpwAMPHDjehRdemOLhP5dffvnAOgtWvsBi5V/XGV566aXpFa94RTfAef7559eV7KpPZ6pdwFa9LgACBAgQIECAAAECBAjUJHDsscd2U9p4443/P3t3Aj/1tP9x/KBFSVLRag2lRPaiKAollLpkT4m2W0iSorKkSEQqSd1IthYSpURI3ULRIku2lEiIVNb8e5//PePMd74zv21mfr/f/F7n8Rgz3/18n9+pe+fT53yOff/zzz/NI488kqSzZ32aGTNmmEaNGpnly5dnvTN7ZJxAOp//KaecYoYOHWp+//33jHPMzxsiAJSf+lwbAQQQQAABBBBAAAEEEMiGgDJr9ANc7aqrrrJlNPR53LhxRoGgdLQff/wxcpl4E/2MGjXKTJkyxdaCjezMh4wQyM7zT9aN/vDDD/ZU8b5nybpOUTtPyoeAffjhh+aFF14w7733ntm8ebPZsmWL0ZjBnLS33norJ7uzLwIIIIAAAggggAACCCCQUQKPP/64+eOPP+w9NW/e3AZ9NHGO6qrq91br1q0LxP2qbzQEECiYAikLAO3YscP06dPH3HfffTkO+BRMKnqFAAIIIIAAAggggAACCOSPgBv+teeee9q6qnp3MyePHj26wASA8keHqyKAQHYEUhYAUvBn2LBh2ekD+yCAAAIIIIAAAggggAACCMQRePvttyPFn5s2bWqKFy9ujjnmGFO7dm3zwQcfmFdeecWsWbPGHHLIIXHOELt68eLFdvjYu+++a9auXWsUUNLxqvFz7bXXmrJly0YOevXVV80zzzxjZ3J2K5966imzYsUKu3j99debww47zH7u16+f+f77703p0qXN8OHD3e72vW/fvkbDiDRL9JVXXmk0rE3nWbhwoZ0xulixYva+NHlQly5dTIkSJaKOD1vQbNOaCU0OGn2i2ceOPPJI++rYsaOpWrVq2GFGo0yUVaV25513GtVVmjVrlrWcP3++0RCkU0891c5Uff7550c8lOigIW4yee2118z27dtNrVq1TNu2bW1h7OCQpf79+9v71HUGDRpkKlWqpI9xm4bQqcaSzqMC3+XKlYva96effjJPPPGEmTZtmvnss8/sKBvNqi3/zp072z5HHRBYUBaZgon6TmmUzpdffmlq1qxpZ5fTd6tVq1aBI4y91+w+f//g3DwbfZe2bdtmv0M61y+//GLvS591j9oebHr206dPt89f3wG57LvvvubQQw+1r3bt2hnNTkfbOTnX3ztbsiE0zbv7CyAZ505BF02HDh3MhAkTbPf0h19/ydAQQACBZAnMGvlQsk7FeRBAAAEECoFA8+7dCkEvC28Xh69fVyg6f3212GnRk9Fx/bB/+OGH7akUMLnwwgvtZxXJvemmm+znXr16Zesf4FWSo3379jaAEK9v5cuXt0GC8847z+4yYsQIGxSKt78CJgqWqCkYoam7Fbjwa8Zo23777WfWrVtnLr30UjvDk6ax12/HsKYf7Ao6xJsCXDON9e7d20yaNMnE+7249957mwceeMBeL3iNRx991NZS0noFDHSPeoW1s846y7z44otGwZ8rrrjCTJ48OWw3owCKZmrbddd/Su327NnT9kEHaHSMgmvxmma+qly5sg161KtXzyxbtixqV/VBdiqtEq+1bNnSupUqVSpml9WrV5tLLrkk5rz+jvpuKaNMdq7l5PnrmLw8G1033v01btzYBt1cv1RaRkknAwYMSDjr3G677Wb0HPTnRUHGotxScvcTJ04syqbcOwIIIIAAAggggAACCCCQFAFlmCjoo6agigvKaPmyyy4zyrjRD+H//Oc/5o477jC77767NoU2zaik2ZWU+aGmrJ82bdrYrBsFN1566SUzZ84cm/1y0UUXGQV2TjjhBFO3bl2bhfHRRx9FfoA3bNjQHHHEEfY88bJs7MaQ/yjoc/LJJxtN760sDfVJGTiaYnzJkiW2vpEyVNSHRYsWxZxB93vuuefafbVRWT9aPvbYY40yZJRRpECMAlAyev/9980999wTcx63QtPaK/tHwYH69esb3dtXX31lnn32WTsL1ezZs40yeXT/yrypXr26DfYoy+SNN94w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3daff/5pPvnkE7NixQrz3Xffmdq1a5u6deuaihUrJjqMbQgggAACCCCAAAIIIFBEBe6a8mahuPO+bRsVin7SSQQQKJoCaQsAzZs3z/Tt29csX77c/PbbbzHalStXNuecc44ZOnSo2XvvvWO2swIBBBBAAAEEEEAAAQQQQAABBBBAIHcCKR8C9tNPP5lOnTqZpk2bmrfffjs0+KOuf/PNN+aRRx6xGUHTpk3L3d1wFAIIIIAAAggggAACCCCAAAIIIIBAjEBKA0BfffWVqVOnjhk3blzMheOtUCCoTZs2pmvXrvF2YT0CCCCAAAIIIIAAAggggAACCCCAQA4EUhoAUubP+vXrc9Cdf3YdPXq0mT59+j8r+IQAAggggAACCCCAAAIIIIAAAgggkCuBlAWAlPXz8ssvx+1UlSpV7HCvPfbYI+4+nTt3toWi4+7ABgQQQAABBBBAAAEEEEAAAQQQQACBLAVSEgDavHmz6dWrV8zFjzzySPPiiy+arVu3mq+//tqsWrXK/PLLL7b+zx133GHKli0bdczGjRtN7969o9axgAACCCCAAAIIIIAAAggggAACCCCQM4GUBICWLVtmfv7556ieXHTRRUbrW7RoYUqXLh21rVKlSqZfv342IKTPftPsYTQEEEAAAQQQQAABBBBAAAEEEEAAgdwLpCQApKne/XbggQeasWPHml13TXy56tWrm4kTJ/qHmnXr1pkffvghah0LCCCAAAIIIIAAAggggAACCCCAAALZF0gckcn+eaL2XLFiRdRy8+bNTZkyZaLWxVs444wzYoaCvf/++/F2Zz0CCCCAAAIIIIAAAggggAACCCCAQBYCxbLYnqvN9Ipe+QAAQABJREFUH3/8cdRxtWrVilpOtLDLLrsY7b9kyZLIbp988olp0qRJZJkPCCCAAAIIIIAAAggggECmCqxZs8Y0bNgw4e3ttttupnz58qZChQrmxBNPNK1btzb169dPeExB2Xj88cebr776yuy1117mo48+iupWjRo1bM3Ygw46yCxatCjb26J2TMLCX3/9ZTZs2GA0SoWGQKYIpCQApL+E/Bb8Q+1vC37++++/TTCAVLFixeBuLCOAAAIIIIAAAggggAACGSmg4MO3336b5b1pYh21119/3dxzzz1GE+vcfPPNWR6X3zts2rTJ3t9vv/0W0xVNBKSJgvbcc88cbYvZ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E/WFbQgkQyAlNYBUTKt3795Gf2DUZsyYUeACQMnA4xwIIIAAAggggAACCCCAQGETUMZOvXr17CsZfdesYJrlK5UzfeW0n+rTwQcfbF85PdbtryF1devWdYsx78l2jLkAKxBIskBKhoDts88+5vbbb490VQXCXMpcZCUfEEAAAQQQQAABBBBAAAEEEEAAAQTSIpCSAJB6rgrrGnuppsr0xx9/vK0qv23bNruO/yCAAAIIIIAAAggggAACCCCAAAIIpEcgJUPANJ701VdfNY0bNzYLFy4069atM1u3bjUdO3Y0V111lVHxLY0NVYGtEiVKZHmnCxYsyHIfdkAAAQQQQAABBBBAAAEEEEAAAQQQCBdISQBo8eLF5pprrgm9oopxBafUC92RlQgggAACCCCAAAIIIIAAAggggAACSRFI2RCwpPSOkyCAAAIIIIAAAggggAACCCCAAAII5FmAAFCeCTkBAggggAACCCCAAAIIIIAAAgggULAFCAAV7OdD7xBAAAEEEEAAAQQQQAABBBBAAIE8C6SkBtDJJ59sJk2alOfOcQIEEEAAAQQQQAABBBBAoG/bRiAggAACCORRICUBoAMPPNDoRUMAAQQQQAABBBBAAAEEEEAAAQQQyH8BhoDl/zOgBwgggAACCCCAAAIIIIAAAggggEBKBfItAPTbb7+Zzz//3CxfvjylN8jJEUAAAQQQQAABBBBAAAEEEEAAgaIukJIhYGGon3zyibnrrrvM0qVLzfr1682mTZvsbscee6x555137GfVDVq0aJHp16+fqVq1athpWIcAAggggAACCCCAAAJFTGDWyIcKxR03796tUPSTTiKAQNEUSHkG0BdffGE6dOhgateubSZMmGDef//9SPAnSK7g0KhRo0yNGjXMo48+GtzMMgIIIIAAAggggAACCCCAAAIIIIBALgRSmgH01ltvmSZNmpg//vgjW11btWqV3e/XX381nTp1Mrvttptp3759to5lJwQQQAABBBBAAAEEEEAAAQQQQACBcIGUZQBt3rzZXHzxxdkO/qh7LgCkz3///bfp2LGj+eijj7RIQwABBBBAAAEEEEAAAQQQQAABBBDIpUDKAkBXX321Wbt2bUy3ihUrZvbZZ5+Y9T/99JOtDeRv2LFjhxk2bJi/is8IIIAAAggggAACCCCAAAIIIIAAAjkUSEkAaPXq1ebZZ5+N6krdunXNnDlzzLZt28zIkSOjtmmhdOnSZvz48Wb//feP2vb444+bn3/+OWodCwgggAACCCCAAAIIIIAAAggggAAC2RdISQBIhZ79duihh9rZvZo1a2aKFy/ub4p81vorr7zSLFmyxAaD3AZNF79mzRq3yDsCCCCAAAIIIIAAAggggAACCCCAQA4FUhIAeu+996K6MWDAALPHHntErYu3UKlSJdO8efOozZpJjIYAAggggAACCCCAAAIIIIAAAgggkDuBlASAli9fHtWbo446Kmo5q4UGDRpE7fLtt99GLbOAAAIIIIAAAggggAACCCCAAAIIIJB9gZQEgEqUKBHVgy+//DJqOasF1RDyW/ny5f1FPiOAAAIIIIAAAggggAACCCCAAAII5EAgJQGgY445JqoL48aNi1pOtKDhXsEC0hoWRkMAAQQQQAABBBBAAAEEioKAaqBWrlw54atatWpGE+00btzY9OnTx/z3v/8tdDR//fWXWbduXaHrd6IOH3/88fa51axZM9FuCbfNnj078uzvv//+hPsmYyMlV5KhWDjOkZYA0HPPPWeuv/5688svvyRUUfHoVq1aRc36VbJkSaM/RDQEEEAAAQQQQAABBBBAoCgIKDCiMhiJXl9//bVZuXKlef31183dd99tTjrpJDN48OBCw7NgwQKjxAH9VsyktmnTJvvcNm7cmOvb0kRI7tlv3bo11+fJ6kCd+6abbrLfnaz2ZXtmCBRLxW3Ur1/f7LnnnmbLli2R0993331m8uTJRvV9fv3118h6fbF79epl//KaN2+e0V92fmvatGm2C0j7x/EZAQQQQAABBBBAAAEEECjsAiqvceSRR0bdxo4dO8z27dvt763169ebv//+27769etnPv30U/Pwww+bYsVS8lMvqh+5XZgxY4Y577zzcns4xyVJ4JRTTjFLly41FSpUSNIZOU1BF0jJ3woVK1Y0o0aNMpdddlnU/SvYE4zwKuVv+PDhUfu5hV133dVoBjEaAggggAACCCCAAAIIIFAUBapWrWrefvvtuLeuURaDBg0yw4YNs/uMHz/e/qP7VVddFfeY/N7w448/Rrqwyy67RD5nwgf9Dt62bZspXrx4gb+dH374wfYx055BgYfPxw6mZAiY7ufSSy81F198cZ5uTcPGGP6VJ0IORgABBBBAAAEEEEAAgQwWKFOmjLnn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AggUeYFiRV4AAAQQQAABBBBAAAEEECjQAhWPu7lA94/OIYAAAoVBgAygwvCU6CMCCCCAAAIIIIAAAggggAACCCCQBwECQHnA41AEEEAAAQQQQAABBBBAAAEEEECgMAgQACoMT4k+IoAAAggggAACCCCAAAIIIIAAAnkQIACUBzwORQABBBBAAAEEEEAAAQQQQAABBAqDAAGgwvCU6CMCCCCAAAIIIIAAAggggAACCCCQBwECQHnA41AEEEAAAQQQQAABBBBAAAEEEECgMAgQACoMT4k+IoAAAggggAACCCCAAAIIIIAAAnkQIACUBzwORQABBBBAAAEEEEAAAQQQQAABBAqDAAGgwvCU6CMCCCCAAAIIIIAAAggggAACCCCQBwECQHnA41AEEEAAAQQQQAABBBBAAAEEEECgMAgQACoMT4k+IoAAAggggAACCCCAAAIIIIAAAnkQIACUBzwORQABBBBAAAEEEEAAAQQQQAABBAqDAAGgwvCU6CMCCCCAAAIIIIAAAggggAACCCCQBwECQHnA41AEEEAAAQQQQAABBBBAAAEEEECgMAgQACoMT4k+IoAAAggggAACCCCAAAIIIIAAAnkQIACUBzwORQABBBBAAAEEEEAAAQQQQAABBAqDAAGgwvCU6CMCCCCAAAIIIIAAAggggAACCCCQBwECQHnA41AEEEAAAQQQQAABBBBAAAEEEECgMAgQACoMT4k+IoAAAggggAACCCCAAAIIIIAAAnkQIACUBzwORQABBBBAAAEEEEAAAQQQQAABBAqDQLHC0Mm89HHhwoVm0aJFMaf44osvTLly5czmzZtjtrECAQQQQAABBBBAAAEEEEAAAQQQyCSBjA8Avfvuu2bs2LGhz6xs2bIEgEJlWIkAAggggAACCCCAAAIIIIAAApkkwBCwTHqa3AsCCCCAAAIIIIAAAggggAACCCAQIpDxGUAtWrQwtWrVirn1kSNHmrlz58asZwUCCCCAAAIIIIAAAggggAACCCCQaQIZHwCqUaOG0SvYnnzySbN9+/bgapYRQAABBBBAAAEEEEAAAQQQQACBjBNgCFjGPVJuCAEEEEAAAQQQQAABBBBAAAEEEIgWIAAU7cESAggggAACCCCAAAIIIIAAAgggkHECBIAy7pFyQwgggAACCCCAAAIIIIAAAggggEC0AAGgaA+WEEAAAQQQ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CBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKuAAKgrjRMECBAgQIAAAQIECBAgQIAAgTwEBEB59KNWECBAgAABAgQIECBAgAABAgS6CgiAutI4QYAAAQIECBAgQIAAAQIECBDIQ0AAlEc/agUBAgQIECBAgAABAgQIECBAoKvAxK5nMjlx5plnpvjTvr388stpqaWWSo8//nj7KfsECBAgQIAAAQIECBAgQIAAgawEsg+AXn/99fTcc89Vdtqss85aedxBAgQIECBAgAABAgQIECBAgEBOAtkHQHPMMUeab775OvosgqF33nmn47gDBAgQIECAAAECBAgQIECAAIHcBLIPgHbdddcUf9q3L37xi+mss85qP2yfAAECBAgQIECAAAECBAgQIJCdgEWgs+tSDSJAgAABAgQIECBAgAABAgQIlAUEQGUPewQIECBAgAABAgQIECBAgACB7AQEQNl1qQYRIECAAAECBAgQIECAAAECBMoCAqCyhz0CBAgQIECAAAECBAgQIECAQHYCAqDsulSDCBAgQIAAAQIECBAgQIAAAQJlAQFQ2cMeAQIECBAgQIAAAQIECBAgQCA7AQFQdl2qQQQIECBAgAABAgQIECBAgACBsoAAqOxhjwABAgQIECBAgAABAgQIECCQnYAAKLsu1SACBAgQIECAAAECBAgQIECAQFlAAFT2sEeAAAECBAgQIECAAAECBAgQyE5AAJRdl2oQAQIECBAgQIAAAQIECBAgQKAsIAAqe9gjQIAAAQIECBAgQIAAAQIECGQnIADKrks1iAABAgQIECBAgAABAgQIECBQFhAAlT3sESBAgAABAgQIECBAgAABAgSyExAAZdelGkSAAAECBAgQIECAAAECBAgQKAsIgMoe9ggQIECAAAECBAgQIECAAAEC2QkIgLLrUg0iQIAAAQIECBAgQIAAAQIECJQFBEBlD3sECBAgQIAAAQIECBAgQIAAgewEBEDZdakGESBAgAABAgQIECBAgAABAgTKAgKgsoc9AgQIECBAgAABAgQIECBAgEB2AgKg7LpUgwgQIECAAAECBAgQIECAAAECZQEBUNnDHgECBAgQIECAAAECBAgQIEAgOwEBUHZdqkEECBAgQIAAAQIECBAgQIAAgbKAAKjsYY8AAQIECBAgQIAAAQIECBAgkJ2AACi7LtUgAgQIECBAgAABAgQIECBAgEBZQABU9rBHgAABAgQIECBAgAABAgQIEMhOQACUXZdqEAECBAgQIECAAAECBAgQIECgLCAAKnvYI0CAAAECBAgQIECAAAECBAhkJyAAyq5LNYgAAQIECBAgQIAAAQIECBAgUBYQAJU97BEgQIAAAQIECBAgQIAAAQIEshMQAGXXpRpEgAABAgQIECBAgAABAgQIECgLCIDKHvYIECBAgAABAgQIECBAgAABAtkJCICy61INIkCAAAECBAgQIECAAAECBAiUBQRAZQ97BAgQIECAAAECBAgQIECAAIHsBARA2XWpBhEgQIAAAQIECBAgQIAAAQIEygICoLKHPQIECBAgQIAAAQIECBAgQIBAdgICoOy6VIMIECBAgAABAgQIECBAgAABAmUBAVDZwx4BAgQIECBAgAABAgQIECBAIDsBAVB2XapBBAgQIECAAAECBAgQIECAAIGygACo7GGPAAECBAgQIECAAAECBAgQIJCdgAAouy7VIAIECBAgQIAAAQIECBAgQIBAWUAAVPawR4AAAQIECBAgQIAAAQIECBDITkAAlF2XahABAgQIECBAgAABAgQIECBAoCwgACp72CNAgAABAgQIECBAgAABAgQIZCcgAMquSzWIAAECBAgQIECAAAECBAgQIFAWEACVPewRIECAAAECBAgQIECAAAECBLITEABl16UaRIAAAQIECBAgQIAAAQIECBAoCwiAyh72CBAgQIAAAQIECBAgQIAAAQLZCQiAsutSDSJAgAABAgQIECBAgAABAgQIlAUEQGUPewQIECBAgAABAgQIECBAgACB7AQEQNl1qQYRIECAAAECBAgQIECAAAECBMoCAqCyhz0CBAgQIECAAAECBAgQIECAQHYCAqDsulSDCBAgQIAAAQIECBAgQIAAAQJlAQFQ2cMeAQIECBAgQIAAAQIECBAgQCA7AQFQdl2qQQQIECBAgAABAgQIECBAgACBsoAAqOxhjwABAgQIECBAgAABAgQIECCQnYAAKLsu1SACBAgQIECAAAECBAgQIECAQFlAAFT2sEeAAAECBAgQIECAAAECBAgQyE5AAJRdl2oQAQIECBAgQIAAAQIECBAgQKAsMLG8a48AAQIE6hDYd6n31VGNOggQIECAAAECBAgQIFCLgBFAtTCqhAABAgQIECBAgAABAgQIECDQuwICoN7tG3dGgAABAgQIECBAgAABAgQIEKhFQABUC6NKCBAgQIAAAQIECBAgQIAAAQK9KyAA6t2+cWcECBAgQIAAAQIECBAgQIAAgVoEBEC1MKqEAAECBAgQIECAAAECBAgQINC7AgKg3u0bd0aAAAECBAgQIECAAAECBAgQqEVAAFQLo0oIECBAgAABAgQIECBAgAABAr0rIADq3b5xZwQIECBAgAABAgQIECBAgACBWgQEQLUwqoQAAQIECBAgQIAAAQIECBAg0LsCAqDe7Rt3RoAAAQIECBAgQIAAAQIECBCoRUAAVAujSggQIECAAAECBAgQIECAAAECvSsgAOrdvnFnBAgQIECAAAECBAgQIECAAIFaBARAtTCqhAABAgQIECBAgAABAgQIECDQuwITe/fW+uPOnv3DUf3RUK0k0GcCi6xzYJ+1WHMJECBAgAABAgQIEOhlASOAerl33BsBAgQIECBAgAABAgQIECBAoAYBAVANiKogQIAAAQIECBAgQIAAAQIECPSygACol3vHvREgQIAAAQIECBAgQIAAAQIEahAQANWAqAoCBAgQIECAAAECBAgQIECAQC8LCIB6uXfcGwECBAgQIECAAAECBAgQIECgBgEBUA2IqiBAgAABAgQIECBAgAABAgQI9LKAAKiXe8e9ESBAgAABAgQIECBAgAABAgRqEBAA1YCoCgIECBAgQIAAAQIECBAgQIBALwsIgHq5d9wbAQIECBAgQIAAAQIECBAgQKAGAQFQDYiqIECAAAECBAgQIECAAAECBAj0soAAqJd7x70RIECAAAECBAgQIECAAAECBGoQEADVgKgKAgQIECBAgAABAgQIECBAgEAvCwiAerl33BsBAgQIECBAgAABAgQIECBAoAYBAVANiKogQIAAAQIECBAgQIAAAQIECPSygACol3vHvREgQIAAAQIECBAgQIAAAQIEahAQANWAqAoCBAgQIECAAAECBAgQIECAQC8LCIB6uXfcGwECBAgQIECAAAECBAgQIECgBgEBUA2IqiBAgAABAgQIECBAgAABAgQI9LKAAKiXe8e9ESBAgAABAgQIECBAgAABAgRqEBAA1YCoCgIECBAgQIAAAQIECBAgQIBALwsIgHq5d9wbAQIECBAgQIAAAQIECBAgQKAGAQFQDYiqIECAAAECBAgQIECAAAECBAj0soAAqJd7x70RIECAAAECBAgQIECAAAECBGoQEADVgKgKAgQIECBAgAABAgQIECBAgEAvCwiAerl33BsBAgQIECBAgAABAgQIECBAoAYBAVANiKogQIAAAQIECBAgQIAAAQIECPSygACol3vHvREgQIAAAQIECBAgQIAAAQIEahAQANWAqAoCBAgQIECAAAECBAgQIECAQC8LCIB6uXfcGwECBAgQIECAAAECBAgQIECgBgEBUA2IqiBAgAABAgQIECBAgAABAgQI9LKAAKiXe8e9ESBAgAABAgQIECBAgAABAgRqEBAA1YCoCgIECBAgQIAAAQIECBAgQIBALwsIgHq5d9wbAQIECBAgQIAAAQIECBAgQKAGAQFQDYiqIECAAAECBAgQIECAAAECBAj0soAAqJd7x70RIECAAAECBAgQIECAAAECBGoQEADVgKgKAgQIECBAgAABAgQIECBAgEAvCwiAerl33BsBAgQIECBAgAABAgQIECBAoAYBAVANiKogQIAAAQIECBAgQIAAAQIECPSygACol3vHvREgQIAAAQIECBAgQIAAAQIEahAQANWAqAoCBAgQIECAAAECBAgQIECAQC8LCIB6uXfcGwECBAgQIECAAAECBAgQIECgBgEBUA2IqiBAgAABAgQIECBAgAABAgQI9LKAAKiXe8e9ESBAgAABAgQIECBAgAABAgRqEBAA1YCoCgIECBAgQIAAAQIECBAgQIBALwsIgHq5d9wbAQIECBAgQIAAAQIECBAgQKAGAQFQDYiqIECAAAECBAgQIECAAAECBAj0soAAqJd7x70RIECAAAECBAgQIECAAAECBGoQEADVgKgKAgQIECBAgAABAgQIECBAgEAvCwiAerl33BsBAgQIECBAgAABAgQIECBAoAYBAVANiKogQIAAAQIECBAgQIAAAQIECPSygACol3vHvREgQIAAAQIECBAgQIAAAQIEahAQANWAqAoCBAgQIECAAAECBAgQIECAQC8LCIB6uXfcGwECBAgQIECAAAECBAgQIECgBgEBUA2IqiBAgAABAgQIECBAgAABAgQI9LKAAKiXe8e9ESBAgAABAgQIECBAgAABAgRqEBAA1YCoCgIECBAgQIAAAQIECBAgQIBALwsIgHq5d9wbAQIECBAgQIAAAQIECBAgQKAGAQFQDYiqIECAAAECBAgQIECAAAECBAj0soAAqJd7x70RIECAAAECBAgQIECAAAECBGoQmFhDHT1dxcMPP5weeuihjnt84YUX0pxzzpnefPPNjnMOECBAgAABAgQIECBAgAABAgRyEsg+ALrkkkvSKaecUtlniy22WHrkkUcqzzlIgAABAgQIECBAgAABAgQIEMhFwBSwXHpSOwgQIECAAAECBAgQIECAAAECXQSyHwG0xhprpJ133rmj+ZMmTUq33nprx3EHCBAgQIAAAQIECBAgQIAAAQK5CWQfAG200UYp/rRv999/f/rNb37Tftg+AQIECBAgQIAAAQIECBAgQCA7AVPAsutSDSJAgAABAgQIECBAgAABAgQIlAUEQGUPewQIECBAgAABAgQIECBAgACB7AQEQNl1qQYRIECAAAECBAgQIECAAAECBMoCAqCyhz0CBAgQIECAAAECBAgQIECAQHYCAqDsulSDCBAgQIAAAQIECBAgQIAAAQJlAQFQ2cMeAQIECBAgQIAAAQIECBAgQCA7AQFQdl2qQQQIECBAgAABAgQIECBAgACBsoAAqOxhjwABAgQIECBAgAABAgQIECCQnYAAKLsu1SACBAgQIECAAAECBAgQIECAQFlAAFT2sEeAAAECBAgQIECAAAECBAgQyE5AAJRdl2oQAQIECBAgQIAAAQIECBAgQKAsIAAqe9gjQIAAAQIECBAgQIAAAQIECGQnIADKrks1iAABAgQIECBAgAABAgQIECBQFhAAlT3sESBAgAABAgQIECBAgAABAgSyExAAZdelGkSAAAECBAgQIECAAAECBAgQKAsIgMoe9ggQIECAAAECBAgQIECAAAEC2QkIgLLrUg0iQIAAAQIECBAgQIAAAQIECJQFBEBlD3sECBAgQIAAAQIECBAgQIAAgewEBEDZdakGESBAgAABAgQIECBAgAABAgTKAgKgsoc9AgQIECBAgAABAgQIECBAgEB2AgKg7LpUgwgQIECAAAECBAgQIECAAAECZQEBUNnDHgECBAgQIECAAAECBAgQIEAgOwEBUHZdqkEECBAgQIAAAQIECBAgQIAAgbKAAKjsYY8AAQIECBAgQIAAAQIECBAgkJ2AACi7LtUgAgQIECBAgAABAgQIECBAgEBZQABU9rBHgAABAgQIECBAgAABAgQIEMhOQACUXZdqEAECBAgQIECAAAECBAgQIECgLCAAKnvYI0CAAAECBAgQIECAAAECBAhkJyAAyq5LNYgAAQIECBAgQIAAAQIECBAgUBYQAJU97BEgQIAAAQIECBAgQIAAAQIEshMQAGXXpRpEgAABAgQIECBAgAABAgQIECgLCIDKHvYIECBAgAABAgQIECBAgAABAtkJCICy61INIkCAAAECBAgQIECAAAECBAiUBQRAZQ97BAgQIECAAAECBAgQIECAAIHsBARA2XWpBhEgQIAAAQIECBAgQIAAAQIEygICoLKHPQIECBAgQIAAAQIECBAgQIBAdgICoOy6VIMIECBAgAABAgQIECBAgAABAmUBAVDZwx4BAgQIECBAgAABAgQIECBAIDsBAVB2XapBBAgQIECAAAECBAgQIECAAIGygACo7GGPAAECBAgQIECAAAECBAgQIJCdgAAouy7VIAIECBAgQIAAAQIECBAgQIBAWUAAVPawR4AAAQIECBAgQIAAAQIECBDITkAAlF2XahABAgQIECBAgAABAgQIECBAoCwgACp72CNAgAABAgQIECBAgAABAgQIZCcgAMquSzWIAAECBAgQIECAAAECBAgQIFAWEACVPewRIECAAAECBAgQIECAAAECBLITEABl16UaRIAAAQIECBAgQIAAAQIECBAoCwiAyh72CBAgQIAAAQIECBAgQIAAAQLZCQiAsutSDSJAgAABAgQIECBAgAABAgQIlAUEQGUPewQIECBAgAABAgQIECBAgACB7AQEQNl1qQYRIECAAAECBAgQIECAAAECBMoCAqCyhz0CBAgQIECAAAECBAgQIECAQHYCAqDsulSDCBAgQIAAAQIECBAgQIAAAQJlAQFQ2cMeAQIECBAgQIAAAQIECBAgQCA7AQFQdl2qQQQIECBAgAABAgQIECBAgACBsoAAqOxhjwABAgQIECBAgAABAgQIECCQnYAAKLsu1SACBAgQIECAAAECBAgQIECAQFlAAFT2sEeAAAECBAgQIECAAAECBAgQyE5AAJRdl2oQAQIECBAgQIAAAQIECBAgQKAsMLG8a2+8BRZZ58DxvqTrESBAgAABAgQIECBAgAABAn0mYARQn3W45hIgQIAAAQIECBAgQIAAAQL9JyAA6r8+12ICBAgQIECAAAECBAgQIECgzwQEQH3W4ZpLgAABAgQIECBAgAABAgQI9J+AAKj/+lyLCRAgQIAAAQIECBAgQIAAgT4TEAD1WYdrLgECBAgQIECAAAECBAgQINB/AgKg/utzLSZAgAABAgQIECBAgAABAgT6TEAA1GcdrrkECBAgQIAAAQIECBAgQIBA/wkIgPqvz7WYAAECBAgQIECAAAECBAgQ6DMBAVCfdbjmEiBAgAABAgQIECBAgAABAv0nIADqvz7XYgIECBAgQIAAAQIECBAgQKDPBARAfdbhmkuAAAECBAgQIECAAAECBAj0n4AAqP/6XIsJECBAgAABAgQIECBAgACBPhMQAPVZh2suAQIECBAgQIAAAQIECBAg0H8CAqD+63MtJkCAAAECBAgQIECAAAECBPpMQADUZx2uuQQIECBAgAABAgQIECBAgED/CQiA+q/PtZgAAQIECBAgQIAAAQIECBDoMwEBUJ91uOYSIECAAAECBAgQIECAAAEC/ScgAOq/PtdiAgQIECBAgAABAgQIECBAoM8EJvZZeyub+6//+q9poYUWqjznIAECBAgQIECAAIFcBPbZZ5+0ySab5NIc7SBAgACBUQj0bQC0+uqrpw022CBdc8016frrrx8FmaK9LDDLLLOkueaaq7jFt99+O7311lu9fLvuLUMBv4MZdupM1qQJEyakueeeu7jrqVOnpilTpsxkLXC7M7uA38He7sFtttmmt2/Q3REgQIDAmAn0bQAU//rx8Y9/PK299tpjhqvi8ReYc84501JLLVVc+IUXXkjPPPPM+N+EK/a1wOyzzz74O/jSSy+lp556qq89NH78BWabbbbB38FXXnklPfHEE+N/E67Y1wITJ04c/B189dVX0+TJk/vaQ+MJECBAgECvCEwYaGy9cjPjfR8xOuTxxx8f78u63hgK3HzzzenAAw8srrDFFlukPfbYYwyvpmoCnQJ33XVX2nfffYsTn/70p1NMMbURGE+BBx98MO2+++7FJTfaaKN00EEHjeflXYtAETrusssuhcS6666bjjjiCCo9JLDoooumeeedt4fuyK0QIECAwHgJ9O0IoACOf6lffvnlx8vadcZBoPVfuueff379Ow7mLlEWePHFFwcPxH9g+ztmkMOLcRJonfI1zzzz+B0cJ3eX+YtAjABqbjEt29+DTQ0/CRAgQIDAjBXwFLAZ6+/qBAgQIECAAAECBAgQIECAAIExFxAAjTmxCxAgQIAAAQIECBAgQIAAAQIEZqyAAGjG+rs6AQIECBAgQIAAAQIECBAgQGDMBQRAY07sAgQIECBAgAABAgQIECBAgACBGSvQ108Bm7H0rj4WAvFQu2nTphVVzzLLLCn+2AiMt8DUqVOLS/odHG9512sK+B1sSvg5owT8Ds4oedclQIAAAQLdBQRA3W2cIUCAAAECBAgQIECAAAECBAhkIWB4RBbdqBEECBAgQIAAAQIECBAgQIAAge4CAqDuNs4QIECAAAECBAgQIECAAAECBLIQEABl0Y0aQYAAAQIECBAgQIAAAQIECBDoLiAA6m7jDAECBAgQIECAAAECBAgQIEAgC4GJWbRCIwiMUGC//fZLN9xwQ9pnn33SNttsM8J3KUZgeIHHH388nXvuuemee+5J8XqxxRZLq622WvrQhz6UNt544zTXXHMNX4kSBGoUuP3229Mee+yR5ptvvnTppZfWWLOqCFQLXHvttekXv/hFeuyxx4o/EydOTMsss0xabrnl0lZbbZXe//73V7/RUQIECBAgQGBcBARA48LsIr0gcNFFFxXhTy/ci3vIS+C8885LZ5xxRpo2bdpgwx5++OEUf+KL909/+tN03HHHFV/EBwt4QWAMBV555ZV09NFHp4GBgTG8iqoJ/H+ByZMnF3/H/eEPf+ggefHFF9Ntt92Wfvazn6Wtt9467brrrgLxDiUHCBAgQIDA+AgIgMbH2VVmsED8i+RJJ500g+/C5XMUiIDntNNOK5o2++yzF6N9YuTP008/na655pr0wAMPpDvvvDPtueee6cQTT0wLL7xwjgza1EMCr732Wtp3333To48+2kN35VZyFZgyZUo64IAD0oMPPlg0ccEFF0ybbLJJMernzTffLEZFXnnllUVAfuGFF6YIJw8++OBcObSLAAECBAj0tIAAqKe7x829W4H4D9Mzzzwz/ehHP/Iv4e8W0/s7BF544YV0wgknFMfnmWeeYsTFmmuuOVhul112Sd/4xjfSVVddVXw5Ovvss4sv5oMFvCBQs8Add9yRvvnNbxajz2quWnUEKgVOPfXUwfDnIx/5SDr00EPT/PPPXyq7ww47FH/3xd+ZV1xxRdpggw3SJz/5yVIZOwQIECBAgMDYC1gEeuyNXWEGCdxyyy3pC1/4QorpOe+8884MuguXzVngggsuSG+99VbRxN122y21hj9xMNa/OOSQQ9IHPvCBoszll1+eXn/99eK1/yFQp8Abb7yRTj755LT77rsLf+qEVdeQAlOnTk2XXXZZUSbWmjrooIM6wp84udJKK6X9999/sC5rUg1SeEGAAAECBMZVQAA0rtwuNh4CseZFjMr4yle+UixCGdeMRSgt+jwe+v11jeaXmFjgebPNNqts/CyzzJK233774lx8SY8QyEagToGYYrjzzjunmF4Tf/9NmDAh7bTTTqYb1omsrkqBWPQ+pnnFtuGGGw75O/exj30szTnnnEXZeJ+NAAECBAgQGH8BAdD4m7viGAvEaJ+LL7548Cqbb755MQ0s/gWyucUXJBuBdyPwxBNPpOeff76oIkb+zDbbbF2rW3vttQfPTZo0afC1FwTqEIgnL8XvY2zvec97ivXOYqHdWWedtTjm77uCwf+MgUCsN7XOOusU6/2svPLKQ14hwvCFFlqoKBMLQzdHTw75JicJECBAgACBWgWsAVQrp8p6SWDdddctpoCtvvrqvXRb7iUTgRh10dxaw8Xmsdaf8aUnvpg/99xzg2tltJ73msC7FYg1V2KkWYx0jPWobATGQyDW/Ik/I9leffXVwaAyRuXGovk2AgQIECBAYHwFBEDj6+1q4yAQ/8p4+umnp1VXXXUcruYS/Srw2GOPDTb9ve997+Drbi8WX3zxIgCKaWDPPvtsWmSRRboVdZzAqAQ23njj9PnPfz7NPffco3qfwgTGU+CSSy4ZvNwHP/jBwddeECBAgAABAuMnYArY+Fm70jgJxHQH4c84YffxZWLqQ3NrTmto7lf9jEcjN7eXX365+dJPAu9aYMUVVxT+vGtFFYylQITe55xzTnGJ+P/oLbfcciwvp24CBAgQIECgi4AAqAuMwwQIEBhKoDUAmmOOOYYqWpxrLdNcNHXYNylAgACBmVwgpn7tt99+qfl35rbbbptMzZ7JO9XtEyBAgMBMKyAAmmm7zo0TIDAjBVof5z6StSxay0yZMmVG3rprEyBAYFwE4u+6Aw44ID3wwAPF9ZZeeukUC5TbCBAgQIAAgRkjIACaMe6uSoDATC4wceJfllCbNm3asK1pLdMaBg37RgUIECAwEwrEk7723nvvdMsttxR3v9hii6Xjjz8+tY6GnAmb5ZYJECBAgMBMLfCXbzAzdTPcfK4CV111VbriiiuGbF4MLY//sLQRGE+Bueaaa/ByI3mcceuoH09pGqTzggCBDAVikfz4/+bHH3+8aN2SSy6ZTjrppDSSBfMz5NAkAgQIECDQMwICoJ7pCjdSJRD/EXnddddVnRo8Zj2VQQovxlGgNcRprm0x1OVbp4y1vneo9zhHgACBmU3gzjvvTF//+tdTjACKbeWVV07HHntsWnjhhWe2prhfAgQIECCQnYApYNl1qQYRIDAeAq3/kv30008Pe8lmmVlnnTXNP//8w5ZXgAABAjObwNVXX5322muvwfBnvfXWS9/5zneEPzNbR7pfAgQIEMhWwAigbLs2j4Zts8026TOf+cyQjVlkkUWGPO8kgbEQWG655QarbU5zGDzQ9mLq1KnpySefLI6usMIK1sBo87FLgMDML/CTn/wkfetb30oDAwNFY7baaqu0zz77pAi9bQQIECBAgEBvCAiAeqMf3EUXgXnnnTfFHxuBXhNYaaWV0myzzZbefvvtwUVOu93jXXfdVZSL86usskq3Yo4TIEBgphT4+c9/Xizw3Lz5PfbYI+2www7NXT8JECBAgACBHhEwBaxHOsJtECAwcwnMPffc6aMf/Whx03/+85/Tvffe27UBrQuZf+xjH+tazgkCBAjMbAIPPvhgscZP3PeECRPSQQcdJPyZ2TrR/RIgQIBA3wgIgPqmqzWUAIG6BT772c8OVnncccelV155ZXC/+SIWMb/00kuL3eWXXz6tv/76zVN+EiBAYKYXiGlf06ZNK9qxyy67pE033XSmb5MGECBAgACBXAVMAcu1Z7WLAIExF9hggw2KUUA33HBDuvvuu4vFT/fcc8+02mqrpZdffjn9+te/Tqeeemrx5Sj+ZfzLX/5y8S/kY35jLkCAAIFxELj88svTbbfdVlwp/o6L6a7777//iK4cI4UWWGCBEZVViAABAgQIEKhHQABUj6NaCBDoU4FDDjkkHXbYYenGG29M999//+Cip81/EW+yRDBk+ldTw08CBHIQuPjiiwebEYs/X3/99YP7w72YMmXKcEWcJ0CAAAECBGoWMAWsZlDVESDQXwLxSPfjjz8+7bTTTmm++eYrGt8a/sRTv4499ti03Xbb9ReM1hIgkL3AQw89lH0bNZAAAQIECOQkMKHxLzb//3mdObVKWwgQIDCDBCZPnpzuu+++4lHvSy+9dFpyySXTLLPI2mdQd7gsAQIECBAgQIAAAQL/JyAA8qtAgAABAgQIECBAgAABAgQIEMhcwD9LZ97BmkeAAAECBAgQIECAAAECBAgQEAD5HSBAgAABAgQIECBAgAABAgQIZC4gAMq8gzWPAAECBAgQIECAAAECBAgQICAA8jtAgAABAgQIECBAgAABAgQIEMhcQACUeQdrHgECBAgQIECAAAECBAgQIEBAAOR3gAABAgQIECBAgAABAgQIECCQuYAAKPMO1jwCBAgQIECAAAECBAgQIECAgADI7wABAgQIECBAgAABAgQIECBAIHMBAVDmHax5BAgQIECAAAECBAgQIECAAAEBkN8BAgQIECBAgAABAgQIECBAgEDmAgKgzDtY8wgQIECAAAECBAgQIECAAAECExEQIECAAIEcBKZMmZKeeeaZ9NZbb6Vll102zTrrrDk0SxsIECBAgAABAgQI1CIgAKqFUSUE+k/gmmuuSYcffnip4e9///vTKaecUjqWy87kyZPTj3/843T//fenBx54ID311FNpueWWSyuvvHLxZ8stt0wLLLDAkM29/fbb03777TdkmZGevPDCC9N888030uLTXW6s+/k//uM/0rXXXlu6v9122y1ttdVWpWNVO2+//Xa6+OKL06WXXpomTZqUnnzyycFic845Z/qrv/qrtMoqq6TVV189RZ0LLrjg4PluL66++up05JFHlk5/4AMfSCeffHLpmB0CBAgQIECAAAECM5uAAGhm6zH3S6BHBJ5++uniS3fr7Tz77LOtu1m8jnZ+85vfTN/97nfTm2++WWrTH/7wh8H9xRdfPB177LFpp512ShMmTBg83vri+eef7zBrPT+a1xF+jMc21v18yy23dJhsttlmwzbtggsuSAceeGARyFUVjr667bbbij//8z//UwQ4J5xwQtpxxx2rig8eixApwqTW7aWXXmrd9ZoAAQIECBAgQIDATClgDaCZstvcNAEC4yEQYcAaa6yRTjzxxI7wp/36MSJo5513Tptvvnl655132k/br0lg6tSp6Utf+lLabrvtuoY/VZeK/vn85z+fPvWpT6VHH320qohjBAgQIECAAAECBLIWEABl3b0aR4DA9ApE0LDtttumJ554YlRVXHbZZemYY44Z1XsUHpnAtGnT0t/93d+l//qv/xrZGypKXXXVVUUd7aO5Koo6RIAAAQIECBAgQCArAVPAsupOjSFAoC6BmPb1u9/9rqO6WOcoQohFF1003XXXXem8884rFh1uLXjooYcWI4Fi7ZmRbKuttlqKNWtGs02c2H9/fR9yyCHp5z//eSXTwgsvnNZee+201lprpdlnnz3de++96YorrkgvvvhiR/k//vGPaZ999kmnn356xzkHCBAgQIAAAQIECOQq0H/fIHLtSe0iQKBWgf/93//tqG+LLbZI559/fimsiUWd11tvvfTaa68Nlo/1eX72s58Viw8PHhzixUUXXZQiWLJ1F/jtb39brMVUVeIrX/lKOv7444vgp/V8rLl08MEHF+s3tR6P19/73vfSAQccUDwtrP2cfQIECBAgQIAAAQI5CpgClmOvahMBAu9K4IUXXkgxSqR1ixE3p556ain8ifMxemevvfZqLVq8bn9/RwEHRiUQT+aqWlspRmB9+9vf7gh/ovIYFXTaaacVTwBrv1jU9W6mkrXXZ58AAQIECBAgQIBArwsYAdTrPeT+CGQoEKNl4ilOEZI88sgj6bnnnise2f2hD32oGDWz5pprjuiR3e00UVdM24qnc8UToFZYYYW00UYbpY9//OODIz0efPDBjseOf+QjHymu36zv17/+dUfYEI97X3rppZtFSj9j6lH7FtPDZuQ2VsajadNDDz1U9MdNN92Ubr/99rTMMsuk9ddfv+iTeLT6SLc77rijmM7VXv5v//Zv0w477NB+uGM/AqJ4XHz7Y+Lvv//+jrLDHYhw8JprrknXXXdd+v3vf5+WXHLJtO666xZ/YiTYSLeBgYH0i1/8IsVj5ydPnlz8efnll4vf+wiull9++RTt++hHP5pmnXXWrtU2jVsLxH2stNJKxaFnnnmmmKYY9/v444+npZZaqpgmt84666S//uu/7vrEutb6mq/r+nw162v9GU8QvP7669PNN99c/JkyZUr68Ic/XCzCHj8/+MEPthb3mgABAgQIECBAYHoEGv8RaiNAgMCoBRrTlgYaf+eU/jTWXxmynsZ6LANf/vKXB+add97S+9rrmX/++QcaU3SGrKv95CmnnDIwxxxzdK13//33H2iM+hg466yzOso0RvaUqnv11VcHGoHFQGMNmYGzzz574Kijjho488wzS2VadxqjUDrq3HTTTVuLFK8bwVJHuWh7Y72ajrLTe6Bu4+np53D+1re+NTDbbLNVtnfChAkDjalZA41FnQe22mqrjjInnXRSqfmHHXZYR5lwawQGpXJD7RxxxBEDjcfLDxx99NEDjZBwoBEwVBb/0Y9+1HGtRghTlL388ssHFlpooY7zzd/fxqLhA6+88kplva0HG9MIBxqBYtd6mvXFz8bUwIH4vem2ff/73++o54wzzihsjz322CE/E5tssslAIxTrVnXpeJ2fr1LFjZ1zzz13YL755utoR6tD2DbCt/a32idAgAABAgQIEBiFgBFAjf/CtBEgMPYC8S/78VStGIEz3BYjIeJR3xdeeGGxVku3kTdRTyOsSTvttFOqWrOn9TqNL8PFCIgYDTTcNs888xRTu2J610i2G2+8saNYPD5+vLexMh5NO1566aW04447dl2sOepq/H9U+sY3vlGMoBnJ07iqFuOOUVcxOmakW6wFNL1b3G8sCn7QQQd1jAxrrTNGtcVopWuvvbbrCLYf/vCHxe9r1XS21rqar++7777i0fWTJk1Kn/zkJ5tNdOLuAAATWElEQVSHh/wZT0v73Oc+V6xXNVTBqDNG19xyyy1piSWWqCw6Fp+v5oXic77bbrulMBluC9sbbrihKLvBBhsMV9x5AgQIECBAgACBCgFrAFWgOESAQL0CDzzwQDHdZCThT+uV4ylOMWUoQoVuWwQJw4U/zff+4Ac/KBb+be7X8TOmBFWtJTPeAdBYGo/GqTFaZ8jwp7WuCCBiCtRQW4QvMTWofVtxxRXbD43ZfgR8sWD0SEKbP/3pT0VoWXUzEQ7tvPPOI6qn9f1Tp05NsdD1SLfGiLVhw59mXU899VQ6+eSTm7sdP8fy8xVtGkn407ypmIIWIVhMe7MRIECAAAECBAiMXkAANHoz7yBAYBQC8USsGI3QmBrT8a74Er/HHnsUi/jGSIDllluuo0ysWxJP2qraHn744covr3PPPXeKL8ExciRGYxx33HFpgQUWKKqIJ0PVtUU4sfvuu6cYydC6xWiKWL9lpFusxRJtH8mfK6+8sqPasTTuuNgQByLgi0WX27d4xH0EQxH2xFo08cSuZn+0l23fj8e4xyiU9m2oUWHtZd/tfvRzbO973/vS17/+9fTLX/4y/epXvypCoar1eRrTpSpDnhNPPDFFmNO6xdPfGtPSCpdYt+qSSy4pRvy0lonXd955Z7FeVvvxqv3HHnusOLz44osXn68IUmO9ofisVW3f/e53U/wOtW9j+fmK0TyNqV/tl0yNKYHFE/TCojG9rePpeHGfhx9+eMf7HCBAgAABAgQIEBiBQOM/bG0ECBAYtcBI14b5z//8z8q1PXbZZZeB119/vXTdWD+lERZVlm8EH6WysdOYatRRthEsDNx6660dZRsL/g40QoOO8o2/Jgfa1wDqeHOXA1/72tcq64s1Taq2bmsAxT2M9E8jIOioeiyNR9rPcVPbb799RztivafGCJqOe451jxoLKHeUD4fWNYCi36psGmFKR511HKhaAyiuH+1ohDAdl2iEWZX39+ijj5bKxppDjcWiS+sixVpXjQWgS+Vi54033hhohE0d9VZ9BqrWAIr7bUxjHGgsRN5RdyME6qg3yletQzVWn69YI6qx8HrHfXz1q1/tuN9Yj6uxOHypbOOJfJX32/FmBwgQIECAAAECBEoCRgA1/svXRoDA2AlUTY+KtVv++7//O80111ylCze+ZBf/6r/66quXjsdOTMFp36qmfu29997Fk8Tay8Zoo0MOOaT98HTvx5oyxxxzTMf746lj//iP/9hxfCwPjKXxSO+78f8sxeiV9vLRH/HEqfYtRr50G9nVWjam2FVtiy22WNXhMTv2ne98J62yyiod9ccIsMai1h3Hm6Nwmidmn332Ys2jGM0Ua+6cc845xWcgniLWvsWIqaonyw01FbK9jnjyWdWTs7p9BmIqWPs2Vp+v5hPUWq8Xo5WqRvbEelyNBcVbixajqGLUlI0AAQIECBAgQGB0AgKg0XkpTYDAKAQaowqKL73tb6kKTpplZplllmJKTHO/+TOmhLROn3niiSdSYwRR8/Tgz27TXKLAF77whdR4itNg2el9EcHFkUce2fH2CLBiOs14bmNpPJp2RH80Rq50vCUCoG7brrvumiIYGWprPEms8nQ83ny8tvid3HrrrSsvFyFmhBftW5VFlIn2xsLLsXD5Ntts0/62FIFXTH26++67O861TzXsKPB/B+J+d9hhh8rTEZwtuOCCHefa73csP1/33HNPx/Vjra/4/FRtMUWyMeqndCoWPLcRIECAAAECBAiMTqD8X1Sje6/SBAgQGFIgFsRt3+IL/YYbbth+uLRf9bSjxhSaFE9Eao5qiEWP27fGo6TTUCND4kvkCiuskG666ab2t454f6+99koxGqR9iy/2jelSadVVV20/Nez+FltskRrTgYYtFwWWWmqpUrmxNC5daJidqgW+I2hYdNFFu74zvvBHe/785z93LbPwwgtXnou1ocZri3scqn/aR7LFfcXv63BbjJqK/rvmmmuKha5jXZzY77bYdLfj7deJtYpiHaxuW3xOYm2l1q01XI3jY/n5is9x+xZPgzv//PPbDw/uR3DbGvqNZ/8P3oQXBAgQIECAAIGZXEAANJN3oNsn0MsCVU/riYWOqxbObW1HfKGOqTExCqF1u/3224cMgJZZZpnW4pWvl1122ekOgOKpRbHAb/sWU3bikfWf/vSn20+NaD+muMSUqOnZxtJ4NPdTFQCF9XDbcAHQ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" width="576" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb84-1"><a href="differential-abundance-analysis.html#cb84-1" tabindex="-1"></a>ancombc_rand_table_mag_status <span class="sc">%&gt;%</span> </span>
+<span id="cb84-2"><a href="differential-abundance-analysis.html#cb84-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">9</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre class="script-output"><code>  lfc_Bd_statusBd_positive              family          genus species
+1                -1.536306  Burkholderiaceae_B   Sphaerotilus        
+2                 1.700607    Dermabacteraceae       JAFFTF01        
+3                 2.177951 Erysipelotrichaceae        UBA2212        
+4                 2.369690   Flavobacteriaceae Flavobacterium        
+5                 2.372847  Burkholderiaceae_B     Acidovorax        
+6                 2.388475  Burkholderiaceae_B   Rhodoferax_C        
+7                 2.435418  Burkholderiaceae_B     Rhodoferax        </code></pre>
 
 </div>
 </div>
@@ -2229,8 +3008,8 @@ color: #a52929;
           </div>
         </div>
       </div>
-<a href="compositional-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="alpha-diversity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="beta-diversity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functional-differences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script>/*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */

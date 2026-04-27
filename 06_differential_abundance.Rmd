@@ -1,0 +1,168 @@
+# Differential abundance analysis
+```{r load_data_dif, warning=FALSE, comments="", message=FALSE}
+set.seed(1234) 
+load("data/data_filtered.Rdata")
+
+count_phy <- genome_counts_filt %>%
+  column_to_rownames(var = "genome") %>%
+  otu_table(., taxa_are_rows = T)
+
+sample_info_tab_phy <- sample_metadata %>%
+  column_to_rownames(var = "sample") %>%
+  sample_data()
+
+TAX <- genome_metadata %>%
+  column_to_rownames(var = "genome") %>%
+  select(1:7) %>%
+  as.matrix() %>%
+  tax_table()
+
+tree <- phy_tree(genome_tree)
+
+physeq_all = phyloseq(count_phy, TAX, sample_info_tab_phy, tree)
+```
+```{r ancom_rand_Bd, comment="", message=FALSE, warning=FALSE}
+ancom_rand_output_mag = ancombc2(data = physeq_all, 
+                  assay_name = "counts", 
+                  tax_level = NULL, 
+                  fix_formula = "Bd_status", 
+                  p_adj_method = "BH", 
+                  pseudo_sens = TRUE,
+                  prv_cut =0, 
+                  lib_cut = 0, 
+                  s0_perc = 0.05,
+                  group = "Bd_status", 
+                  struc_zero = TRUE, 
+                  neg_lb = FALSE,
+                  alpha = 0.05, 
+                  n_cl = 2, 
+                  verbose = TRUE,
+                  global = FALSE, 
+                  pairwise = FALSE, 
+                  dunnet = FALSE, 
+                  trend = FALSE,
+                  iter_control = list(tol = 1e-5, max_iter = 20, verbose = FALSE),
+                  em_control = list(tol = 1e-5, max_iter = 100),
+                  mdfdr_control = list(fwer_ctrl_method = "BH", B = 100), 
+                  trend_control = NULL)
+```
+
+## Structural zeros
+**Total number of structural zeros**
+```{r}
+# Extract structural zeros
+structural_zeros <- ancom_rand_output_mag$zero_ind
+
+# Convert to a data frame for better readability
+structural_zeros_df <- as.data.frame(structural_zeros) %>% 
+  column_to_rownames(., "taxon")
+
+structural_zero_taxa <- rownames(structural_zeros_df)[apply(structural_zeros_df, 1, any)]
+
+structural_zero_groups <- structural_zeros_df[structural_zero_taxa, , drop = FALSE] %>% 
+  rename("Bd_negative"=1) %>% 
+  rename("Bd_positive"=2)
+
+nrow(structural_zero_groups)
+```
+
+***Structural zeros in Bd_negative***
+```{r}
+structural_zero_groups %>% 
+  filter(Bd_negative==TRUE) %>% 
+  nrow()
+
+structural_zero_groups %>% 
+  filter(Bd_negative==TRUE) %>% 
+  rownames_to_column(., "genome") %>% 
+  left_join(., genome_metadata, by="genome") %>% 
+  count(phylum, name = "sample_count") %>%
+  arrange(desc(sample_count)) 
+
+structural_zero_groups %>% 
+  filter(Bd_negative==TRUE) %>% 
+  rownames_to_column(., "genome") %>% 
+  left_join(., genome_metadata, by="genome") %>% 
+  select(family, genus, species) %>% 
+  tt()
+```
+
+***Structural zeros in Bd_positive***
+```{r}
+structural_zero_groups %>% 
+  filter(Bd_positive==TRUE) %>% 
+  nrow()
+
+structural_zero_groups %>% 
+  filter(Bd_positive==TRUE) %>% 
+  rownames_to_column(., "genome") %>% 
+  left_join(., genome_metadata, by="genome") %>% 
+  count(phylum, name = "sample_count") %>%
+  arrange(desc(sample_count)) 
+
+structural_zero_groups %>% 
+  filter(Bd_positive==TRUE) %>% 
+  rownames_to_column(., "genome") %>% 
+  left_join(., genome_metadata, by="genome") %>% 
+  select(family, genus, species) %>% 
+  tt()
+```
+
+## Enriched MAGs
+```{r ancom_rand, comment="", message=FALSE, warning=FALSE}
+taxonomy <- data.frame(physeq_all@tax_table) %>%
+  rownames_to_column(., "taxon") %>%
+  mutate_at(vars(phylum, order, family, genus, species), ~ str_replace(., "[dpcofgs]__", ""))
+
+ancombc_rand_table_mag_status <- ancom_rand_output_mag$res %>%
+  dplyr::select(taxon, lfc_Bd_statusBd_positive, q_Bd_statusBd_positive) %>%
+  filter(q_Bd_statusBd_positive < 0.05) %>%
+  dplyr::arrange(q_Bd_statusBd_positive) %>%
+  left_join(taxonomy, by = join_by(taxon == taxon)) %>%
+  mutate_at(vars(phylum, species), ~ str_replace(., "[dpcofgs]__", ""))%>%
+  dplyr::arrange(lfc_Bd_statusBd_positive)
+  
+colors_alphabetic <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
+  mutate_at(vars(phylum), ~ str_replace(., "[dpcofgs]__", ""))  %>%
+  right_join(taxonomy, by=join_by(phylum == phylum)) %>%
+  dplyr::select(phylum, colors) %>%
+  mutate(colors = str_c(colors, "80")) %>% 
+	unique() %>%
+	dplyr::arrange(phylum)
+
+tax_table <- as.data.frame(unique(ancombc_rand_table_mag_status$phylum))
+  
+colnames(tax_table)[1] <- "phylum"
+tax_color <- merge(tax_table, colors_alphabetic, by="phylum")%>%
+	dplyr::arrange(phylum) %>%
+	dplyr::select(colors) %>%
+	pull()
+```
+```{r ancombc_rand_plot_status, comment="", message=FALSE, warning=FALSE, fig.height=6 , fig.width=6, fig.fullwidth=TRUE}
+ancombc_rand_table_mag_status %>%
+  mutate(genome=factor(taxon,levels=ancombc_rand_table_mag_status$taxon)) %>%
+  ggplot(., aes(x=lfc_Bd_statusBd_positive, y=forcats::fct_reorder(genome,lfc_Bd_statusBd_positive), fill=phylum)) +
+  geom_col() + 
+  scale_fill_manual(values=tax_color) + 
+  geom_hline(yintercept=0) + 
+  theme(panel.background = element_blank(),
+        axis.line = element_line(size = 0.5, linetype = "solid", colour = "black"),
+        axis.text.x = element_text(size = 12),
+        axis.text.y = element_blank(),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "right", legend.box = "vertical")+
+    labs(
+      title = "Enriched in negatives (− LFC) vs Enriched in positives (+ LFC)",
+      x = "log2FoldChange",
+      y = "Genome",
+      fill = "Phylum"
+    )
+```
+
+```{r enriched_status, comment="", message=FALSE, warning=FALSE}
+ancombc_rand_table_mag_status %>% 
+  select(2,8,9, 10)
+```
+

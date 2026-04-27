@@ -1,31 +1,7 @@
 # Compositional analysis
 
 ```{r load_data_composition, warning=FALSE, comments="", message=FALSE}
-load("data/data.Rdata")
-extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
-  rename(animal=sample) %>% 
-  rename(sample=EHI_code)
-sample_metadata <- sample_metadata %>% 
-  left_join(., extra_metadata, by="sample")
-
-genome_counts_filt <- genome_counts_filt %>%
-  select(one_of(c("genome",sample_metadata$sample)))%>%
-  filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
-  select_if(~!all(. == 0))
-
-genome_metadata <- genome_metadata %>%
-  semi_join(., genome_counts_filt, by = "genome") %>%
-  arrange(match(genome,genome_counts_filt$genome))
-
-genome_tree <- keep.tip(genome_tree, tip=genome_metadata$genome)
-
-phylum_colors <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
-    right_join(genome_metadata, by=join_by(phylum == phylum)) %>%
-    arrange(match(genome, genome_tree$tip.label)) %>%
-    select(phylum, colors) %>% 
-    unique() %>%
-    arrange(phylum) %>%
-    pull(colors, name=phylum)
+load("data/data_filtered.Rdata")
 ```
 
 ```{r}

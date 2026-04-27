@@ -19,10 +19,12 @@ filtered_reads <- read_counts %>%
   slice_max(order_by = depth, n = 1, with_ties = FALSE)
 ```
 
+
 ## Sequencing reads statistics
 
 ```{r reads_stats}
 sample_metadata %>%
+  filter(sample %in% filtered_reads$sample) %>% 
   summarise(Total=sum(reads_post_fastp * 150 / 1000000000) %>% round(2), 
             mean=mean(reads_post_fastp * 150 / 1000000000) %>% round(2),
             sd=sd(reads_post_fastp * 150 / 1000000000) %>% round(2)) %>%
@@ -34,7 +36,7 @@ sample_metadata %>%
 ## DNA fractions
 ```{r dna_fractions_stats}
 sequence_fractions <- read_counts %>%
-    select(all_of(c("genome",filtered_reads$sample))) %>% 
+  select(all_of(c("genome",filtered_reads$sample))) %>% 
   pivot_longer(-genome, names_to = "sample", values_to = "value") %>%
   group_by(sample) %>%
   summarise(mags = sum(value)) %>%
@@ -59,7 +61,7 @@ sequence_fractions %>%
   left_join(., extra_metadata, by="sample") %>% 
 	mutate(value = value / 1000000000) %>%
 	mutate(fraction = factor(fraction, levels = c("lowqual_bases","host_bases","unmapped_bases","mags_bases"))) %>%
-	ggplot(., aes(x = sample, y = value, fill=fraction)) +
+	ggplot(., aes(x = animal, y = value, fill=fraction)) +
   geom_bar(position="stack", stat = "identity") +
   scale_fill_manual(name="Sequence type",
                     breaks=c("lowqual_bases","host_bases","unmapped_bases","mags_bases"),
@@ -103,5 +105,45 @@ singlem_table %>%
 	          strip.background.y=element_rect(color = NA, fill= "#f4f4f4"))
 ```
 
+# Filtered samples
+```{r save_data_filtered, warning=FALSE, comments="", message=FALSE, eval=FALSE}
+load("data/data.Rdata")
+extra_metadata <- read_csv("data/Bombina_microbiome_metadata.csv") %>% 
+  rename(animal=sample) %>% 
+  rename(sample=EHI_code)
 
+sample_metadata <- sample_metadata %>% 
+  left_join(., extra_metadata, by="sample") %>% 
+  filter(sample %in% filtered_reads$sample)
 
+genome_counts_filt <- genome_counts_filt %>%
+  select(one_of(c("genome",sample_metadata$sample)))%>%
+  filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
+  select_if(~!all(. == 0))
+
+genome_metadata <- genome_metadata %>%
+  semi_join(., genome_counts_filt, by = "genome") %>%
+  arrange(match(genome,genome_counts_filt$genome))
+
+genome_tree <- keep.tip(genome_tree, tip=genome_metadata$genome)
+
+genome_gifts <- genome_gifts[rownames(genome_gifts) %in% genome_counts_filt$genome,]
+
+genome_gifts <- genome_gifts[, colSums(genome_gifts != 0) > 0]
+
+phylum_colors <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
+    right_join(genome_metadata, by=join_by(phylum == phylum)) %>%
+    arrange(match(genome, genome_tree$tip.label)) %>%
+    select(phylum, colors) %>% 
+    unique() %>%
+    arrange(phylum) %>%
+    pull(colors, name=phylum)
+
+save(sample_metadata, 
+     genome_metadata, 
+     genome_counts_filt, 
+     genome_tree,
+     genome_gifts, 
+     phylum_colors,
+     file = "data/data_filtered.Rdata")
+```

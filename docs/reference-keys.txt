@@ -20,6 +20,7 @@ data-statistics
 sequencing-reads-statistics
 dna-fractions
 recovered-microbial-fraction
+filtered-samples
 mag-catalogue
 genome-phylogeny
 genome-quality
@@ -27,14 +28,15 @@ functional-overview
 functional-ordination
 compositional-analysis
 phylum-relative-abundances
-differential-abundance-analysis
-ancombc2-mag-level
 alpha-diversity
 beta-diversity
 richness
 neutral
 phylogenetic
 functional
+differential-abundance-analysis
+structural-zeros
+enriched-mags
 functional-differences
 bd_status
 region
