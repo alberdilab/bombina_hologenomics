@@ -1,7 +1,8 @@
 ---
 title: "AlberdiLab | van-Riemsdijk et al. in prep"
-subtitle: "Study title to be added"
-author:
+subtitle: "Comparison of Chytrid infected and healthy Bombina individuals"
+authors:
+  - Isolde van Riemsdijk^[University of Copenhagen, isolde.vanriemsdijk@sund.ku.dk]
   - Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
   - Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
 date: "`r Sys.Date()`"
@@ -46,7 +47,7 @@ Once the R project has been created, follow the instructions and code chunks sho
 
 The following R packages are required for the data analysis.
 
-```{r load_libraries, warning=FALSE, comments="", message=FALSE}
+```{r load_libraries, warning=TRUE, comments="", message=TRUE}
 # Base
 library(R.utils)
 library(knitr)
@@ -57,7 +58,7 @@ library(rairtable)
 
 # For tree handling
 library(ape)
-library(phyloseq)
+library(phyloseq) 
 library(phytools)
 
 # For plotting
@@ -66,11 +67,11 @@ library(ggrepel)
 library(ggpubr)
 library(ggnewscale)
 library(gridExtra)
-library(ggtreeExtra)
 library(ggtree)
 library(ggh4x)
 
 # For statistics
+library(nlme)
 library(spaa)
 library(vegan)
 library(Rtsne)
@@ -79,5 +80,26 @@ library(hilldiv2)
 library(distillR)
 library(broom.mixed)
 library(corrplot)
-library(ANCOMBC)
+library(ANCOMBC) ## package not available for version 4.5
+```
+If some of the above packages are not installed use:
+
+BiocManager:
+- phyloseq
+- gridExtra
+
+devtools & github:
+- ggtree (GuangchuangYu/ggtree)
+- hilldiv2 (anttonalberdi/hilldiv2)
+- distillR (anttonalberdi/distillR)
+- ANCOMBC (FrederickHuangLin/ANCOMBC)
+
+```{R}
+# For BiocManager use:
+if (!require("BiocManager", quietly = TRUE))
+install.packages("BiocManager")
+BiocManager::install("phyloseq")
+
+# For Github packages use:
+pak::pak("GuangchuangYu/ggtree")
 ```
