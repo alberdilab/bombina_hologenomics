@@ -77,13 +77,12 @@ alpha_div %>%
 ```
 
 ###mixed models
-# THIS CHUNCK GIVES ERRORS!!
 ```{r alpha_div, comment"", message=FALSE, warning=FALSE}
 alpha_div_meta <- alpha_div %>%
   left_join(sample_metadata, by = join_by(sample == sample))
 
 Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
-               random = Location)
+               random = ~ 1 | "Location")
 
 summary(Model_richness_random)
 
