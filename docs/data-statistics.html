@@ -1988,6 +1988,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#environment"><i class="fa fa-check"></i><b>1.1.1</b> Environment</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#libraries"><i class="fa fa-check"></i><b>1.1.2</b> Libraries</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#installation-trouble-shooting"><i class="fa fa-check"></i><b>1.1.3</b> Installation trouble shooting</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>2</b> Data preparation</a>
@@ -2036,7 +2037,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 <li class="chapter" data-level="8.2" data-path="beta-diversity.html"><a href="beta-diversity.html#neutral"><i class="fa fa-check"></i><b>8.2</b> Neutral</a></li>
 <li class="chapter" data-level="8.3" data-path="beta-diversity.html"><a href="beta-diversity.html#phylogenetic"><i class="fa fa-check"></i><b>8.3</b> Phylogenetic</a></li>
 <li class="chapter" data-level="8.4" data-path="beta-diversity.html"><a href="beta-diversity.html#functional"><i class="fa fa-check"></i><b>8.4</b> Functional</a></li>
-<li class="chapter" data-level="8.5" data-path="beta-diversity.html"><a href="beta-diversity.html#hill-numbers"><i class="fa fa-check"></i><b>8.5</b> Hill numbers</a></li>
+<li class="chapter" data-level="8.5" data-path="beta-diversity.html"><a href="beta-diversity.html#hill-numbers-on-the-bd-positive-and-bd-negative-groups"><i class="fa fa-check"></i><b>8.5</b> Hill numbers on the bd positive and bd negative groups</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>9</b> Differential abundance analysis</a>
 <ul>
@@ -2335,19 +2336,19 @@ function tinytable_rank_sorter(a, b, aRow, bRow, column, dir, sorterParams) {
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_7fbmvezcdiw3ndu9ccqe = TinyTable.createTableFunctions("tinytable_7fbmvezcdiw3ndu9ccqe");
+      const tableFns_mvezcdiw3ndu9ccqezqd = TinyTable.createTableFunctions("tinytable_mvezcdiw3ndu9ccqezqd");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '1', j: 1 }, { i: '1', j: 2 } ], css_id: 'tinytable_css_erintmqtb2uyj3cfuakz',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_zqddhlcjua2u9hp23ukx',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '1', j: 2 } ], css_id: 'tinytable_css_ntmqtb2uyj3cfuakzest',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_dhlcjua2u9hp23ukxeri',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_7fbmvezcdiw3ndu9ccqe.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_mvezcdiw3ndu9ccqezqd.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -2550,11 +2551,11 @@ line-height: var(--tt-line-height-footnote-tight);
 </style>
     <style>
 
-#tinytable_7fbmvezcdiw3ndu9ccqe td.tinytable_css_erintmqtb2uyj3cfuakz, #tinytable_7fbmvezcdiw3ndu9ccqe th.tinytable_css_erintmqtb2uyj3cfuakz { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
-#tinytable_7fbmvezcdiw3ndu9ccqe td.tinytable_css_zqddhlcjua2u9hp23ukx, #tinytable_7fbmvezcdiw3ndu9ccqe th.tinytable_css_zqddhlcjua2u9hp23ukx { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
+#tinytable_mvezcdiw3ndu9ccqezqd td.tinytable_css_ntmqtb2uyj3cfuakzest, #tinytable_mvezcdiw3ndu9ccqezqd th.tinytable_css_ntmqtb2uyj3cfuakzest { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
+#tinytable_mvezcdiw3ndu9ccqezqd td.tinytable_css_dhlcjua2u9hp23ukxeri, #tinytable_mvezcdiw3ndu9ccqezqd th.tinytable_css_dhlcjua2u9hp23ukxeri { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
 </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_7fbmvezcdiw3ndu9ccqe" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_mvezcdiw3ndu9ccqezqd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -2832,19 +2833,19 @@ function tinytable_rank_sorter(a, b, aRow, bRow, column, dir, sorterParams) {
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_9nj5xsmen0wj5ukr8wy5 = TinyTable.createTableFunctions("tinytable_9nj5xsmen0wj5ukr8wy5");
+      const tableFns_5xsmen0wj5ukr8wy5uho = TinyTable.createTableFunctions("tinytable_5xsmen0wj5ukr8wy5uho");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '39', j: 1 }, { i: '39', j: 2 }, { i: '39', j: 3 }, { i: '39', j: 4 }, { i: '39', j: 5 } ], css_id: 'tinytable_css_v6d66c60tyeirwnepfx0',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_uhoklgh1wkat6mjavdlq',}, 
+          { positions: [ { i: '39', j: 1 }, { i: '39', j: 2 }, { i: '39', j: 3 }, { i: '39', j: 4 }, { i: '39', j: 5 } ], css_id: 'tinytable_css_66c60tyeirwnepfx0dbe',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_klgh1wkat6mjavdlqv6d',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_9nj5xsmen0wj5ukr8wy5.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_5xsmen0wj5ukr8wy5uho.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -3047,11 +3048,11 @@ line-height: var(--tt-line-height-footnote-tight);
 </style>
     <style>
 
-#tinytable_9nj5xsmen0wj5ukr8wy5 td.tinytable_css_v6d66c60tyeirwnepfx0, #tinytable_9nj5xsmen0wj5ukr8wy5 th.tinytable_css_v6d66c60tyeirwnepfx0 { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
-#tinytable_9nj5xsmen0wj5ukr8wy5 td.tinytable_css_uhoklgh1wkat6mjavdlq, #tinytable_9nj5xsmen0wj5ukr8wy5 th.tinytable_css_uhoklgh1wkat6mjavdlq { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
+#tinytable_5xsmen0wj5ukr8wy5uho td.tinytable_css_66c60tyeirwnepfx0dbe, #tinytable_5xsmen0wj5ukr8wy5uho th.tinytable_css_66c60tyeirwnepfx0dbe { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
+#tinytable_5xsmen0wj5ukr8wy5uho td.tinytable_css_klgh1wkat6mjavdlqv6d, #tinytable_5xsmen0wj5ukr8wy5uho th.tinytable_css_klgh1wkat6mjavdlqv6d { position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; }
 </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_9nj5xsmen0wj5ukr8wy5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_5xsmen0wj5ukr8wy5uho" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>

@@ -1,20 +1,29 @@
 ---
 title: "AlberdiLab | van-Riemsdijk et al. in prep"
 subtitle: Comparison of chytrid infected (Bd positive) and uninfected (Bd negative) Bombina individuals from natural populations.
+
 date: "`r Sys.Date()`"
+
 authors:
 - Isolde van Riemsdijk^[University of Copenhagen, isolde.vanriemsdijk@sund.ku.dk]
 - Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
 - Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
+
 site: bookdown::bookdown_site
+
 documentclass: book
+
 bibliography:
 - book.bib
 - packages.bib
+
 url: https://alberdilab.github.io/bombina_hologenomics
+
 description: |
   Data analysis code for the study on the recovery of metagenome‑assembled genomes and derived microbial communities from Bombina toad skin samples, with Bd infected and healthy individuals.
+
 link-citations: true
+
 github-repo: alberdilab/bombina_hologenomics
 ---
 
@@ -87,18 +96,20 @@ library(corrplot)
 library(ANCOMBC) ## package not available for version 4.5
 library(microbiome)
 ```
+
+### Installation trouble shooting
 If some of the above packages are not installed use:
 
 BiocManager:
-- phyloseq
-- gridExtra
-- ggtreeExtra
+phyloseq
+gridExtra
+ggtreeExtra
 
-devtools & github:
-- ggtree (GuangchuangYu/ggtree)
-- hilldiv2 (anttonalberdi/hilldiv2)
-- distillR (anttonalberdi/distillR)
-- ANCOMBC (FrederickHuangLin/ANCOMBC)
+Devtools & github:
+ggtree (GuangchuangYu/ggtree)
+hilldiv2 (anttonalberdi/hilldiv2)
+distillR (anttonalberdi/distillR)
+ANCOMBC (FrederickHuangLin/ANCOMBC)
 
 ```{r install_libs, eval=F}
 # For BiocManager use:
