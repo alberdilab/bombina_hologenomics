@@ -84,38 +84,54 @@ alpha_div_meta <- alpha_div %>%
 
 Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
                random = ~ 1 | "Location")
-
-summary(Model_richness_random) %>%
-  tt()
+## make this more pretty?
+summary(Model_richness_random)
 
 ```
 # Beta diversity
 
 ```{r beta_div, comment="", message=FALSE, warning=FALSE}
+# prep to fix the column names
+rownames<-colnames(genome_counts_filt)[-1]
+colnames<-colnames(genome_counts_filt)[-1]
+
+# species richness
 beta_q0n <- genome_counts_filt %>%
-  column_to_rownames(., "genome") %>%
+  tibble::column_to_rownames("genome") %>%
   filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
   select_if(~!all(. == 0)) %>%
   hillpair(., q = 0)
+# make the column names and rownames re-appear
+beta_q0n<-lapply(beta_q0n, 'dimnames<-', list(rownames, colnames))
 
+# Shannon diversity
 beta_q1n <- genome_counts_filt %>%
   column_to_rownames(., "genome") %>%
   filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
   select_if(~!all(. == 0)) %>%
   hillpair(., q = 1)
+# make the column names and rownames re-appear
+beta_q1n<-lapply(beta_q1n, 'dimnames<-', list(rownames, colnames))
 
+# Shannon diversity, with genome tree?
 beta_q1p <- genome_counts_filt %>%
   column_to_rownames(., "genome") %>%
   filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
   select_if(~!all(. == 0)) %>%
   hillpair(., q = 1, tree = genome_tree)
+# make the column names and rownames re-appear
+beta_q1p<-lapply(beta_q1p, 'dimnames<-', list(rownames, colnames))
 
+# Shannon diversity, with ..?
 beta_q1f <- genome_counts_filt %>%
   filter(genome %in% labels(dist)[[1]]) %>%
   column_to_rownames(., "genome") %>%
   filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
   select_if(~!all(. == 0)) %>%
   hillpair(., q = 1, dist = dist)
+# make the column names and rownames re-appear
+beta_q1f<-lapply(beta_q1f, 'dimnames<-', list(rownames, colnames))
+
 ```
 
 ## Richness
@@ -272,6 +288,7 @@ adonis2(beta_q1p_dis ~ Bd_status+region+sex,
 
 ## Functional
 ```{r beta_div_nmds_func, fig.height=7, fig.width=12, fig.fullwidth=TRUE}
+
 beta_q1f$S %>%
   vegan::metaMDS(., trymax = 500, k = 2, trace=0) %>%
   vegan::scores() %>%
@@ -322,6 +339,6 @@ adonis2(beta_q1f_dis ~ Bd_status+region+sex,
 ```
 
 ## Hill numbers
-```{r Hill numbers, comment="", message=FALSE, warning=FALSE}
+```{r hill_numbers, comment="", message=FALSE, warning=FALSE}
 
 ```
