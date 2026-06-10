@@ -54,6 +54,7 @@ alpha_div <- richness %>%
   full_join(phylogenetic, by = join_by(sample == sample)) %>%
   full_join(functional, by = join_by(sample == sample))
 ```
+
 ```{r alpha_plots_loc, fig.height=5, fig.width=12, fig.fullwidth=TRUE}
 alpha_div %>%
   pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
@@ -84,7 +85,8 @@ alpha_div_meta <- alpha_div %>%
 Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
                random = ~ 1 | "Location")
 
-summary(Model_richness_random)
+summary(Model_richness_random) %>%
+  tt()
 
 ```
 # Beta diversity

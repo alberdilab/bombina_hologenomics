@@ -69,9 +69,9 @@ genome_metadata %>%
   summarise(completeness_mean=mean(completeness) %>% round(2) %>% as.character(), 
             completeness_sd=sd(completeness) %>% round(2) %>% as.character(), 
             contamination_mean=mean(contamination) %>% round(2), 
-            contamination_sd=sd(contamination) %>% round(2)) %>%
-  unite("Completeness",completeness_mean, completeness_sd, sep = " ± ", remove = TRUE) %>%
-  unite("Contamination",contamination_mean, contamination_sd, sep = " ± ", remove = TRUE) %>%
+            contamination_sd=sd(contamination) %>% round(2))  %>%
+  unite("Completeness",completeness_mean, completeness_sd, sep = "\u00B1", remove = TRUE) %>%
+  unite("Contamination",contamination_mean, contamination_sd, sep = "\u00B1", remove = TRUE) %>%
   tt()
 ```
 
@@ -186,19 +186,8 @@ function_tree
 ## Functional ordination
 
 ```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+
 # Generate the tSNE ordination
-```
-
-
-```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
-```
-
-
-```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
-```
-
-
-```{r function_ordination, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
 tSNE_function <- Rtsne(X=function_table, dims = 2, check_duplicates = FALSE)
 
 # Plot the ordination
@@ -220,8 +209,9 @@ function_ordination
 
 ## Average relative abundance PCoA
 Instead of genome size, use average relative abundance as input for the circle size.
-### WORKING ON THIS 08-05-2026
-```{r function_rel_abun, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+
+```{r relative_abundance_PCoA, message=FALSE, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+
 gift_pcoa <- genome_gifts %>%
     to.elements(., GIFT_db) %>%
     as.data.frame() %>%

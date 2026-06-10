@@ -7,7 +7,8 @@ load("data/data_filtered.Rdata")
 ```{r}
 sample_metadata %>% 
   group_by(region, Bd_status, sex) %>% 
-  summarise(count=n())
+  summarise(count=n())%>% 
+  tt()
 ```
 
 ```{r barplot_individuals, fig.height=8, fig.width=10, fig.fullwidth=TRUE}
@@ -61,9 +62,9 @@ phylum_summary %>%
     negative_sd = sd(relabun[Bd_status == "Bd_negative"] * 100, na.rm = T)
   ) %>%
   mutate(
-    total = str_c(round(total_mean, 3), "±", round(total_sd, 3)),
-    Positive = str_c(round(positive_mean, 3), "±", round(positive_sd, 3)),
-    Negative = str_c(round(negative_mean, 3), "±", round(negative_sd, 3))
+    total = str_c(round(total_mean, 3), "\u00B1", round(total_sd, 3)),
+    Positive = str_c(round(positive_mean, 3), "\u00B1", round(positive_sd, 3)),
+    Negative = str_c(round(negative_mean, 3), "\u00B1", round(negative_sd, 3))
     ) %>%
   arrange(-total_mean) %>%
   dplyr::select(phylum, total, Positive, Negative) %>%
