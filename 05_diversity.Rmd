@@ -77,16 +77,16 @@ alpha_div %>%
 ```
 
 ###mixed models
-```{r alpha_div, comment"", message=FALSE, warning=FALSE}
-alpha_div_meta <- alpha_div %>%
-  left_join(sample_metadata, by = join_by(sample == sample))
+#```{r alpha_div_meta, comment"", message=FALSE, warning=FALSE}
+#alpha_div_meta <- alpha_div %>%
+#  left_join(sample_metadata, by = join_by(sample == sample))
 
-Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
-               random = ~ 1 | "Location")
+#Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
+#               random = ~ 1 | "Location")
 
-summary(Model_richness_random)
+#summary(Model_richness_random)
 
-```
+#```
 # Beta diversity
 
 ```{r beta_div, comment="", message=FALSE, warning=FALSE}
@@ -317,4 +317,9 @@ adonis2(beta_q1f_dis ~ Bd_status+region+sex,
         permutations = 999, by="margin") %>%
         broom::tidy() %>%
         tt()
+```
+
+## Hill numbers
+```{r Hill numbers, comment="", message=FALSE, warning=FALSE}
+
 ```
