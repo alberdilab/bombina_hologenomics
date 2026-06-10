@@ -338,7 +338,43 @@ adonis2(beta_q1f_dis ~ Bd_status+region+sex,
         tt()
 ```
 
-## Hill numbers
+## Hill numbers on the bd positive and bd negative groups
 ```{r hill_numbers, comment="", message=FALSE, warning=FALSE}
+# calculate Hill numbers for each sample
+hill_profile <- genome_counts_filt %>%
+    column_to_rownames(., "genome") %>%
+    filter(rowSums(. != 0, na.rm = TRUE) > 0) %>%
+    select_if(~!all(. == 0)) %>%
+    hilldiv(., q = c(0,1,2))
+
+# transpose and merge with metadata and add Bd status
+df_hill<-data.frame(t(hill_profile))
+df_hill$Status<-sample_metadata_ordered$Bd_status
+
+# test species richness (q=0)
+wilcox.test(q0~Status, data = df_hill)
+
+# test Shannon richness (q=1)
+wilcox.test(q1~Status, data = df_hill)
+
+# test Shannon richness (q=2)
+wilcox.test(q2~Status, data = df_hill)
+
+
+## and plot q1 (nearly sign)
+ggplot(df_hill, aes(x=Status, y= q1, fill = Status))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(width = 0.2, alpha = 0.5)+
+  theme_classic()+
+  labs(y = "Hill Number (q = 1)", x = "Health status")+
+  stat_compare_means(method = "wilcox.test")
+
+## and plot q2 (sign)
+ggplot(df_hill, aes(x=Status, y= q2, fill = Status))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(width = 0.2, alpha = 0.5)+
+  theme_classic()+
+  labs(y = "Hill Number (q = 2)", x = "Health status")+
+  stat_compare_means(method = "wilcox.test")
 
 ```
