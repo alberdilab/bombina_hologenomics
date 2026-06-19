@@ -75,17 +75,37 @@ alpha_div %>%
     axis.title.y = element_blank(),
     axis.text.x = element_blank()
   )
+
 ```
 
 ###mixed models
 ```{r alpha_div_meta, comment"", message=FALSE, warning=FALSE}
+# join the data with the metadata on chytrid fungus
 alpha_div_meta <- alpha_div %>%
   left_join(sample_metadata, by = join_by(sample == sample))
 
-Model_richness_random <- lme(fixed = phylogenetic ~ Bd_status, data = alpha_div_meta,
-               random = ~ 1 | "Location")
+# Phylogenetic mixed model, alpha diversity explained by Bd_status
+Model_phylogenetic_random <- lmer(phylogenetic ~ Bd_status + (1 | Location), 
+                                data = alpha_div_meta)
 ## make this more pretty?
-summary(Model_richness_random)
+summary(Model_phylogenetic_random)
+
+# functional
+Model_functional_random <- lmer(functional ~ Bd_status + (1 | Location), 
+                                data = alpha_div_meta)
+
+# look for model parameters and significance
+## make this more pretty?
+summary(Model_functional_random)
+# overall significance of multi-level factors (applies Type III Anove by default)
+## make this more pretty?
+anova(Model_functional_random)
+
+# reduce model complexity by backward elimination of nonsignificant fixed and random effects
+# it looks that the random treatment of location isn't appropriate: discuss this with Antton / Ostaizka 
+step(Model_functional_random)
+# random effects testing via likelihood ratio tests
+ranova(Model_functional_random)
 
 ```
 # Beta diversity
